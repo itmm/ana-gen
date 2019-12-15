@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Trivialer Generator</title>
+<link rel="stylesheet" type="text/css" href="slides/slides.css"></head>
+<body>
+<h1>Trivialer Generator</h1>
+<div class="slides">
+<div>
+<div>
+<h1>Trivialer Generator</h1>
+</div>
+</div>
+<div><div>
+<code>
+<span class="macro">@Def(<span class="name">file: gen.cpp</span>)</span><br/>
+<span class="in1"></span><span class="macro">@put(<span class="name">gen main prereqs</span>)</span>;<br/>
+<span class="in1"></span><span class="type">int</span> <span class="fn">main</span>() {<br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">gen loop</span>)</span><br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@End(<span class="name">file: gen.cpp</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@def(<span class="name">gen main prereqs</span>)</span><br/>
+<span class="in1"></span><span class="macro">@put(<span class="name">next prereqs</span>)</span>;<br/>
+<span class="in1"></span><span class="keyword">inline</span> <span class="type">bool</span> <span class="fn">next</span>(<span class="type">char</span> &amp;<span class="var">ch</span>) {<br/>
+<span class="in2"></span><span class="type">bool</span> <span class="var">ok</span> { <span class="num">false</span> };<br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">next</span>)</span>;<br/>
+<span class="in2"></span><span class="keyword">return</span> <span class="var">ok</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">gen main prereqs</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@add(<span class="name">gen main prereqs</span>)</span><br/>
+<span class="in1"></span><span class="keyword">#include</span> &lt;<span class="var">iostream</span>&gt;<br/>
+<span class="macro">@end(<span class="name">gen main prereqs</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@def(<span class="name">gen loop</span>)</span><br/>
+<span class="in1"></span><span class="macro">@mul(<span class="name">initialise</span>)</span>;<br/>
+<span class="in1"></span><span class="keyword">for</span> (;;) {<br/>
+<span class="in2"></span><span class="type">char</span> <span class="var">ch</span>;<br/>
+<span class="in2"></span><span class="keyword">if</span> (<span class="fn">next</span>(<span class="var">ch</span>)) {<br/>
+<span class="in3"></span><span class="type">std</span>::<span class="var">cout</span> &lt;&lt; <span class="var">ch</span>;<br/>
+<span class="in2"></span>} <span class="keyword">else</span> {<br/>
+<span class="in3"></span><span class="macro">@mul(<span class="name">initialise</span>)</span>;<br/>
+<span class="in2"></span>}<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">gen loop</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@def(<span class="name">next</span>)</span><br/>
+<span class="in1"></span><span class="var">ch</span> = <span class="str">'x'</span>;<br/>
+<span class="in1"></span><span class="var">ok</span> = <span class="num">true</span>;<br/>
+<span class="macro">@end(<span class="name">next</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@def(<span class="name">initialise</span>)</span><br/>
+<span class="macro">@end(<span class="name">initialise</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@def(<span class="name">next prereqs</span>)</span><br/>
+<span class="in1"></span><span class="type">int</span> <span class="var">prev_length</span> { <span class="num">3</span> };<br/>
+<span class="in1"></span><span class="type">char</span> *<span class="var">previous</span> { <span class="num">nullptr</span> };<br/>
+<span class="macro">@end(<span class="name">next prereqs</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@rep(<span class="name">initialise</span>)</span><br/>
+<span class="in1"></span><span class="keyword">if</span> (! <span class="var">previous</span>) {<br/>
+<span class="in2"></span><span class="var">previous</span> = <span class="keyword">new</span> <span class="type">char</span>[<span class="var">prev_length</span>];<br/>
+<span class="in1"></span>}<br/>
+<span class="in1"></span><span class="var">previous</span>[<span class="num">0</span>] = <span class="str">'a'</span>;<br/>
+<span class="in1"></span><span class="var">previous</span>[<span class="num">1</span>] = <span class="str">'b'</span>;<br/>
+<span class="in1"></span><span class="var">previous</span>[<span class="num">2</span>] = <span class="str">'c'</span>;<br/>
+<span class="macro">@end(<span class="name">initialise</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@rep(<span class="name">next</span>)</span><br/>
+<span class="in1"></span><span class="var">ch</span> = <span class="var">previous</span>[<span class="num">0</span>];<br/>
+<span class="in1"></span><span class="var">previous</span>[<span class="num">0</span>] = <span class="var">previous</span>[<span class="num">1</span>];<br/>
+<span class="in1"></span><span class="var">previous</span>[<span class="num">1</span>] = <span class="var">previous</span>[<span class="num">2</span>];<br/>
+<span class="in1"></span><span class="var">previous</span>[<span class="num">2</span>] = <span class="var">ch</span>;<br/>
+<span class="in1"></span><span class="var">ok</span> = <span class="num">true</span>;<br/>
+<span class="macro">@end(<span class="name">next</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@Def(<span class="name">file: ana.cpp</span>)</span><br/>
+<span class="in1"></span><span class="macro">@put(<span class="name">ana main prereqs</span>)</span>;<br/>
+<span class="in1"></span><span class="type">int</span> <span class="fn">main</span>() {<br/>
+<span class="in2"></span><span class="type">char</span> <span class="var">ch</span>;<br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">read input</span>)</span>;<br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">write table</span>)</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@End(<span class="name">file: ana.cpp</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@def(<span class="name">ana main prereqs</span>)</span><br/>
+<span class="in1"></span><span class="keyword">#include</span> &lt;<span class="var">iostream</span>&gt;<br/>
+<span class="macro">@end(<span class="name">ana main prereqs</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@def(<span class="name">def collection</span>)</span><br/>
+<span class="in1"></span><span class="keyword">using</span> <span class="type">Collection</span> = <span class="type">std</span>::<span class="type">map</span>&lt;<span class="type">char</span>, <span class="type">int</span>&gt;;<br/>
+<span class="macro">@end(<span class="name">def collection</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@add(<span class="name">ana main prereqs</span>)</span><br/>
+<span class="in1"></span><span class="keyword">#include</span> &lt;<span class="type">map</span>&gt;<br/>
+<span class="in1"></span><span class="macro">@put(<span class="name">def collection</span>)</span>;<br/>
+<span class="in1"></span><span class="type">Collection</span> <span class="var">collection</span>;<br/>
+<span class="macro">@end(<span class="name">ana main prereqs</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@def(<span class="name">read input</span>)</span><br/>
+<span class="in1"></span><span class="keyword">while</span> (<span class="type">std</span>::<span class="var">cin</span>.<span class="fn">get</span>(<span class="var">ch</span>)) {<br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">add to collection</span>)</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">read input</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@def(<span class="name">add to collection</span>)</span><br/>
+<span class="in1"></span>++<span class="var">collection</span>[<span class="var">ch</span>];<br/>
+<span class="macro">@end(<span class="name">add to collection</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@def(<span class="name">write table</span>)</span><br/>
+<span class="in1"></span><span class="keyword">for</span> (<span class="type">const</span> <span class="type">auto</span> &amp;<span class="var">e</span> : <span class="var">collection</span>) {<br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">write key</span>)</span>;<br/>
+<span class="in2"></span><span class="type">std</span>::<span class="var">cout</span> &lt;&lt; <span class="str">"\t"</span> &lt;&lt;<br/>
+<span class="in3"></span><span class="var">e</span>.<span class="var">second</span> &lt;&lt; <span class="str">"\n"</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">write table</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@add(<span class="name">ana main prereqs</span>)</span><br/>
+<span class="in1"></span><span class="keyword">#include</span> &lt;<span class="var">cctype</span>&gt;<br/>
+<span class="in1"></span><span class="type">void</span> <span class="fn">write_byte</span>(<span class="type">char</span> <span class="var">b</span>) {<br/>
+<span class="in2"></span><span class="keyword">if</span> (<span class="fn">isprint</span>(<span class="var">b</span>) &amp;&amp; <span class="var">b</span> != <span class="str">'\\'</span>) {<br/>
+<span class="in3"></span><span class="type">std</span>::<span class="var">cout</span> &lt;&lt; <span class="var">b</span>;<br/>
+<span class="in2"></span>} <span class="keyword">else</span> {<br/>
+<span class="in3"></span><span class="keyword">static</span> <span class="type">const</span> <span class="type">char</span> <span class="var">digits</span>[] =<br/>
+<span class="in4"></span><span class="str">"0123456789abcdef"</span>;<br/>
+<span class="in3"></span><span class="type">std</span>::<span class="var">cout</span> &lt;&lt; <span class="str">"\\x"</span> &lt;&lt;<br/>
+<span class="in4"></span><span class="var">digits</span>[(<span class="var">b</span> &gt;&gt; <span class="num">4</span>) &amp; <span class="num">0xf</span>] &lt;&lt;<br/>
+<span class="in4"></span><span class="var">digits</span>[<span class="var">b</span> &amp; <span class="num">0xf</span>];<br/>
+<span class="in2"></span>}<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">ana main prereqs</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@def(<span class="name">write key</span>)</span><br/>
+<span class="in1"></span><span class="fn">write_byte</span>(<span class="var">e</span>.<span class="var">first</span>);<br/>
+<span class="macro">@end(<span class="name">write key</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@def(<span class="name">def collection prereqs</span>)</span><br/>
+<span class="in1"></span><span class="type">int</span> <span class="var">key_length</span> { <span class="num">2</span> };<br/>
+<span class="in1"></span><span class="keyword">#include</span> &lt;<span class="var">cstring</span>&gt;<br/>
+<span class="in1"></span><span class="keyword">class</span> <span class="type">Key</span> {<br/>
+<span class="in2"></span><span class="keyword">private</span>:<br/>
+<span class="in3"></span><span class="type">char</span> *<span class="var">_key</span>;<br/>
+<span class="in2"></span><span class="keyword">public</span>:<br/>
+<span class="in3"></span><span class="fn">Key</span>(): <span class="var">_key</span> { <span class="keyword">new</span> <span class="type">char</span>[<span class="var">key_length</span>] } {<br/>
+<span class="in4"></span><span class="fn">memset</span>(<span class="var">_key</span>, <span class="num">0</span>, <span class="var">key_length</span>);<br/>
+<span class="in3"></span>}<br/>
+<span class="in3"></span><span class="fn">Key</span>(<span class="type">const</span> <span class="type">Key</span> &amp;<span class="var">other</span>): <span class="var">_key</span> { <span class="keyword">new</span> <span class="type">char</span>[<span class="var">key_length</span>] } {<br/>
+<span class="in4"></span><span class="fn">memcpy</span>(<span class="var">_key</span>, <span class="var">other</span>.<span class="var">_key</span>, <span class="var">key_length</span>);<br/>
+<span class="in3"></span>}<br/>
+<span class="in3"></span><span class="type">Key</span> &amp;<span class="var">operator</span>=(<span class="type">const</span> <span class="type">Key</span> &amp;<span class="var">other</span>) {<br/>
+<span class="in4"></span><span class="fn">memcpy</span>(<span class="var">_key</span>, <span class="var">other</span>.<span class="var">_key</span>, <span class="var">key_length</span>);<br/>
+<span class="in4"></span><span class="keyword">return</span> *<span class="var">this</span>;<br/>
+<span class="in3"></span>}<br/>
+<span class="in3"></span>~<span class="fn">Key</span>() {<br/>
+<span class="in4"></span><span class="keyword">delete</span> <span class="var">_key</span>;<br/>
+<span class="in3"></span>}<br/>
+<span class="in3"></span><span class="type">bool</span> <span class="var">operator</span>==(<span class="type">const</span> <span class="type">Key</span> &amp;<span class="var">other</span>) <span class="type">const</span> {<br/>
+<span class="in4"></span><span class="keyword">return</span> <span class="fn">memcmp</span>(<span class="var">_key</span>, <span class="var">other</span>.<span class="var">_key</span>, <span class="var">key_length</span>) == <span class="num">0</span>;<br/>
+<span class="in3"></span>}<br/>
+<span class="in3"></span><span class="type">bool</span> <span class="var">operator</span>&lt;(<span class="type">const</span> <span class="type">Key</span> &amp;<span class="var">other</span>) <span class="type">const</span> {<br/>
+<span class="in4"></span><span class="keyword">return</span> <span class="fn">memcmp</span>(<span class="var">_key</span>, <span class="var">other</span>.<span class="var">_key</span>, <span class="var">key_length</span>) &lt; <span class="num">0</span>;<br/>
+<span class="in3"></span>}<br/>
+<span class="in3"></span><span class="type">char</span> <span class="var">operator</span>[](<span class="type">int</span> <span class="var">i</span>) <span class="type">const</span> {<br/>
+<span class="in4"></span><span class="keyword">return</span> <span class="var">_key</span>[<span class="var">i</span>];<br/>
+<span class="in3"></span>}<br/>
+<span class="in3"></span><span class="type">void</span> <span class="fn">push</span>(<span class="type">char</span> <span class="var">ch</span>) {<br/>
+<span class="in4"></span><span class="fn">memmove</span>(<span class="var">_key</span>, <span class="var">_key</span> + <span class="num">1</span>, <span class="var">key_length</span> - <span class="num">1</span>);<br/>
+<span class="in4"></span><span class="var">_key</span>[<span class="var">key_length</span> - <span class="num">1</span>] = <span class="var">ch</span>;<br/>
+<span class="in3"></span>}<br/>
+<span class="in1"></span>};<br/>
+<span class="macro">@end(<span class="name">def collection prereqs</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@rep(<span class="name">write key</span>)</span><br/>
+<span class="macro">@end(<span class="name">write key</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@rep(<span class="name">add to collection</span>)</span><br/>
+<span class="macro">@end(<span class="name">add to collection</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@rep(<span class="name">def collection</span>)</span><br/>
+<span class="in1"></span><span class="macro">@put(<span class="name">def collection prereqs</span>)</span><br/>
+<span class="in1"></span><span class="keyword">using</span> <span class="type">Collection</span> = <span class="type">std</span>::<span class="type">map</span>&lt;<span class="type">Key</span>, <span class="type">int</span>&gt;;<br/>
+<span class="in1"></span><span class="type">Key</span> <span class="var">key</span>;<br/>
+<span class="macro">@end(<span class="name">def collection</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@rep(<span class="name">add to collection</span>)</span><br/>
+<span class="in1"></span><span class="var">key</span>.<span class="fn">push</span>(<span class="var">ch</span>);<br/>
+<span class="in1"></span>++<span class="var">collection</span>[<span class="var">key</span>];<br/>
+<span class="macro">@end(<span class="name">add to collection</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@rep(<span class="name">write key</span>)</span><br/>
+<span class="in1"></span><span class="keyword">for</span> (<span class="type">int</span> <span class="var">i</span> = <span class="num">0</span>; <span class="var">i</span> &lt; <span class="var">key_length</span>; ++<span class="var">i</span>) {<br/>
+<span class="in2"></span><span class="fn">write_byte</span>(<span class="var">e</span>.<span class="var">first</span>[<span class="var">i</span>]);<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">write key</span>)</span><br/>
+</code></div>
+</div>
+</body>
+</html>
