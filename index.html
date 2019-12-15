@@ -105,7 +105,10 @@
 <code>
 <span class="macro">@Def(<span class="name">file: ana.cpp</span>)</span><br/>
 <span class="in1"></span><span class="macro">@put(<span class="name">ana main prereqs</span>)</span>;<br/>
-<span class="in1"></span><span class="type">int</span> <span class="fn">main</span>() {<br/>
+<span class="in1"></span><span class="type">int</span> <span class="fn">main</span>(<br/>
+<span class="in2"></span><span class="type">int</span> <span class="var">argc</span>, <span class="type">const</span> <span class="type">char</span> *<span class="var">argv</span>[]<br/>
+<span class="in1"></span>) {<br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">parse args</span>)</span>;<br/>
 <span class="in2"></span><span class="type">char</span> <span class="var">ch</span>;<br/>
 <span class="in2"></span><span class="macro">@put(<span class="name">read input</span>)</span>;<br/>
 <span class="in2"></span><span class="macro">@put(<span class="name">write table</span>)</span>;<br/>
@@ -123,7 +126,8 @@
 <div><div>
 <code>
 <span class="macro">@def(<span class="name">def collection</span>)</span><br/>
-<span class="in1"></span><span class="keyword">using</span> <span class="type">Collection</span> = <span class="type">std</span>::<span class="type">map</span>&lt;<span class="type">char</span>, <span class="type">int</span>&gt;;<br/>
+<span class="in1"></span><span class="keyword">using</span> <span class="type">Collection</span> =<br/>
+<span class="in2"></span><span class="type">std</span>::<span class="type">map</span>&lt;<span class="type">char</span>, <span class="type">int</span>&gt;;<br/>
 <span class="macro">@end(<span class="name">def collection</span>)</span><br/>
 </code></div>
 </div>
@@ -190,45 +194,6 @@
 </div>
 <div><div>
 <code>
-<span class="macro">@def(<span class="name">def collection prereqs</span>)</span><br/>
-<span class="in1"></span><span class="type">int</span> <span class="var">key_length</span> { <span class="num">2</span> };<br/>
-<span class="in1"></span><span class="keyword">#include</span> &lt;<span class="var">cstring</span>&gt;<br/>
-<span class="in1"></span><span class="keyword">class</span> <span class="type">Key</span> {<br/>
-<span class="in2"></span><span class="keyword">private</span>:<br/>
-<span class="in3"></span><span class="type">char</span> *<span class="var">_key</span>;<br/>
-<span class="in2"></span><span class="keyword">public</span>:<br/>
-<span class="in3"></span><span class="fn">Key</span>(): <span class="var">_key</span> { <span class="keyword">new</span> <span class="type">char</span>[<span class="var">key_length</span>] } {<br/>
-<span class="in4"></span><span class="fn">memset</span>(<span class="var">_key</span>, <span class="num">0</span>, <span class="var">key_length</span>);<br/>
-<span class="in3"></span>}<br/>
-<span class="in3"></span><span class="fn">Key</span>(<span class="type">const</span> <span class="type">Key</span> &amp;<span class="var">other</span>): <span class="var">_key</span> { <span class="keyword">new</span> <span class="type">char</span>[<span class="var">key_length</span>] } {<br/>
-<span class="in4"></span><span class="fn">memcpy</span>(<span class="var">_key</span>, <span class="var">other</span>.<span class="var">_key</span>, <span class="var">key_length</span>);<br/>
-<span class="in3"></span>}<br/>
-<span class="in3"></span><span class="type">Key</span> &amp;<span class="var">operator</span>=(<span class="type">const</span> <span class="type">Key</span> &amp;<span class="var">other</span>) {<br/>
-<span class="in4"></span><span class="fn">memcpy</span>(<span class="var">_key</span>, <span class="var">other</span>.<span class="var">_key</span>, <span class="var">key_length</span>);<br/>
-<span class="in4"></span><span class="keyword">return</span> *<span class="var">this</span>;<br/>
-<span class="in3"></span>}<br/>
-<span class="in3"></span>~<span class="fn">Key</span>() {<br/>
-<span class="in4"></span><span class="keyword">delete</span> <span class="var">_key</span>;<br/>
-<span class="in3"></span>}<br/>
-<span class="in3"></span><span class="type">bool</span> <span class="var">operator</span>==(<span class="type">const</span> <span class="type">Key</span> &amp;<span class="var">other</span>) <span class="type">const</span> {<br/>
-<span class="in4"></span><span class="keyword">return</span> <span class="fn">memcmp</span>(<span class="var">_key</span>, <span class="var">other</span>.<span class="var">_key</span>, <span class="var">key_length</span>) == <span class="num">0</span>;<br/>
-<span class="in3"></span>}<br/>
-<span class="in3"></span><span class="type">bool</span> <span class="var">operator</span>&lt;(<span class="type">const</span> <span class="type">Key</span> &amp;<span class="var">other</span>) <span class="type">const</span> {<br/>
-<span class="in4"></span><span class="keyword">return</span> <span class="fn">memcmp</span>(<span class="var">_key</span>, <span class="var">other</span>.<span class="var">_key</span>, <span class="var">key_length</span>) &lt; <span class="num">0</span>;<br/>
-<span class="in3"></span>}<br/>
-<span class="in3"></span><span class="type">char</span> <span class="var">operator</span>[](<span class="type">int</span> <span class="var">i</span>) <span class="type">const</span> {<br/>
-<span class="in4"></span><span class="keyword">return</span> <span class="var">_key</span>[<span class="var">i</span>];<br/>
-<span class="in3"></span>}<br/>
-<span class="in3"></span><span class="type">void</span> <span class="fn">push</span>(<span class="type">char</span> <span class="var">ch</span>) {<br/>
-<span class="in4"></span><span class="fn">memmove</span>(<span class="var">_key</span>, <span class="var">_key</span> + <span class="num">1</span>, <span class="var">key_length</span> - <span class="num">1</span>);<br/>
-<span class="in4"></span><span class="var">_key</span>[<span class="var">key_length</span> - <span class="num">1</span>] = <span class="var">ch</span>;<br/>
-<span class="in3"></span>}<br/>
-<span class="in1"></span>};<br/>
-<span class="macro">@end(<span class="name">def collection prereqs</span>)</span><br/>
-</code></div>
-</div>
-<div><div>
-<code>
 <span class="macro">@rep(<span class="name">write key</span>)</span><br/>
 <span class="macro">@end(<span class="name">write key</span>)</span><br/>
 </code></div>
@@ -241,11 +206,117 @@
 </div>
 <div><div>
 <code>
+<span class="macro">@def(<span class="name">def collection prereqs</span>)</span><br/>
+<span class="in1"></span><span class="macro">@put(<span class="name">key prereqs</span>)</span>;<br/>
+<span class="in1"></span><span class="keyword">class</span> <span class="type">Key</span> {<br/>
+<span class="in2"></span><span class="keyword">private</span>:<br/>
+<span class="in3"></span><span class="type">char</span> *<span class="var">_key</span>;<br/>
+<span class="in2"></span><span class="keyword">public</span>:<br/>
+<span class="in3"></span><span class="macro">@put(<span class="name">key publics</span>)</span>;<br/>
+<span class="in1"></span>};<br/>
+<span class="macro">@end(<span class="name">def collection prereqs</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@def(<span class="name">key prereqs</span>)</span><br/>
+<span class="in1"></span><span class="type">int</span> <span class="var">key_length</span> { <span class="num">2</span> };<br/>
+<span class="macro">@end(<span class="name">key prereqs</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@add(<span class="name">key prereqs</span>)</span><br/>
+<span class="in1"></span><span class="keyword">#include</span> &lt;<span class="var">cstring</span>&gt;<br/>
+<span class="macro">@end(<span class="name">key prereqs</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@def(<span class="name">key publics</span>)</span><br/>
+<span class="in1"></span><span class="fn">Key</span>():<br/>
+<span class="in2"></span><span class="var">_key</span> { <span class="keyword">new</span> <span class="type">char</span>[<span class="var">key_length</span>] }<br/>
+<span class="in1"></span>{<br/>
+<span class="in2"></span><span class="fn">memset</span>(<span class="var">_key</span>, <span class="num">0</span>, <span class="var">key_length</span>);<br/>
+<span class="in1"></span>}<br/>
+<span class="in1"></span>~<span class="fn">Key</span>() {<br/>
+<span class="in2"></span><span class="keyword">delete</span> <span class="var">_key</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">key publics</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@add(<span class="name">key publics</span>)</span><br/>
+<span class="in1"></span><span class="fn">Key</span>(<span class="type">const</span> <span class="type">Key</span> &amp;<span class="var">other</span>):<br/>
+<span class="in2"></span><span class="var">_key</span> { <span class="keyword">new</span> <span class="type">char</span>[<span class="var">key_length</span>] }<br/>
+<span class="in1"></span>{<br/>
+<span class="in2"></span><span class="fn">memcpy</span>(<br/>
+<span class="in3"></span><span class="var">_key</span>, <span class="var">other</span>.<span class="var">_key</span>, <span class="var">key_length</span><br/>
+<span class="in2"></span>);<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">key publics</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@add(<span class="name">key publics</span>)</span><br/>
+<span class="in1"></span><span class="type">Key</span> &amp;<span class="var">operator</span>=(<span class="type">const</span> <span class="type">Key</span> &amp;<span class="var">other</span>) {<br/>
+<span class="in2"></span><span class="fn">memcpy</span>(<br/>
+<span class="in3"></span><span class="var">_key</span>, <span class="var">other</span>.<span class="var">_key</span>, <span class="var">key_length</span><br/>
+<span class="in2"></span>);<br/>
+<span class="in2"></span><span class="keyword">return</span> *<span class="var">this</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">key publics</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@add(<span class="name">key publics</span>)</span><br/>
+<span class="in1"></span><span class="type">bool</span> <span class="var">operator</span>==(<br/>
+<span class="in2"></span><span class="type">const</span> <span class="type">Key</span> &amp;<span class="var">other</span><br/>
+<span class="in1"></span>) <span class="type">const</span> {<br/>
+<span class="in2"></span><span class="keyword">return</span> <span class="fn">memcmp</span>(<br/>
+<span class="in3"></span><span class="var">_key</span>, <span class="var">other</span>.<span class="var">_key</span>, <span class="var">key_length</span><br/>
+<span class="in2"></span>) == <span class="num">0</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">key publics</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@add(<span class="name">key publics</span>)</span><br/>
+<span class="in1"></span><span class="type">bool</span> <span class="var">operator</span>&lt;(<br/>
+<span class="in2"></span><span class="type">const</span> <span class="type">Key</span> &amp;<span class="var">other</span><br/>
+<span class="in1"></span>) <span class="type">const</span> {<br/>
+<span class="in2"></span><span class="keyword">return</span> <span class="fn">memcmp</span>(<br/>
+<span class="in3"></span><span class="var">_key</span>, <span class="var">other</span>.<span class="var">_key</span>, <span class="var">key_length</span><br/>
+<span class="in2"></span>) &lt; <span class="num">0</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">key publics</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
 <span class="macro">@rep(<span class="name">def collection</span>)</span><br/>
 <span class="in1"></span><span class="macro">@put(<span class="name">def collection prereqs</span>)</span><br/>
-<span class="in1"></span><span class="keyword">using</span> <span class="type">Collection</span> = <span class="type">std</span>::<span class="type">map</span>&lt;<span class="type">Key</span>, <span class="type">int</span>&gt;;<br/>
+<span class="in1"></span><span class="keyword">using</span> <span class="type">Collection</span> =<br/>
+<span class="in2"></span><span class="type">std</span>::<span class="type">map</span>&lt;<span class="type">Key</span>, <span class="type">int</span>&gt;;<br/>
 <span class="in1"></span><span class="type">Key</span> <span class="var">key</span>;<br/>
 <span class="macro">@end(<span class="name">def collection</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@add(<span class="name">key publics</span>)</span><br/>
+<span class="in1"></span><span class="type">void</span> <span class="fn">push</span>(<span class="type">char</span> <span class="var">ch</span>) {<br/>
+<span class="in2"></span><span class="fn">memmove</span>(<br/>
+<span class="in3"></span><span class="var">_key</span>, <span class="var">_key</span> + <span class="num">1</span>,<br/>
+<span class="in3"></span><span class="var">key_length</span> - <span class="num">1</span><br/>
+<span class="in2"></span>);<br/>
+<span class="in2"></span><span class="var">_key</span>[<span class="var">key_length</span> - <span class="num">1</span>] = <span class="var">ch</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">key publics</span>)</span><br/>
 </code></div>
 </div>
 <div><div>
@@ -258,11 +329,38 @@
 </div>
 <div><div>
 <code>
+<span class="macro">@add(<span class="name">key publics</span>)</span><br/>
+<span class="in1"></span><span class="type">char</span> <span class="var">operator</span>[](<span class="type">int</span> <span class="var">i</span>) <span class="type">const</span> {<br/>
+<span class="in2"></span><span class="keyword">return</span> <span class="var">_key</span>[<span class="var">i</span>];<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">key publics</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
 <span class="macro">@rep(<span class="name">write key</span>)</span><br/>
-<span class="in1"></span><span class="keyword">for</span> (<span class="type">int</span> <span class="var">i</span> = <span class="num">0</span>; <span class="var">i</span> &lt; <span class="var">key_length</span>; ++<span class="var">i</span>) {<br/>
+<span class="in1"></span><span class="keyword">for</span> (<br/>
+<span class="in2"></span><span class="type">int</span> <span class="var">i</span> = <span class="num">0</span>; <span class="var">i</span> &lt; <span class="var">key_length</span>; ++<span class="var">i</span><br/>
+<span class="in1"></span>) {<br/>
 <span class="in2"></span><span class="fn">write_byte</span>(<span class="var">e</span>.<span class="var">first</span>[<span class="var">i</span>]);<br/>
 <span class="in1"></span>}<br/>
 <span class="macro">@end(<span class="name">write key</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@def(<span class="name">parse args</span>)</span><br/>
+<span class="in1"></span><span class="keyword">if</span> (<span class="var">argc</span> == <span class="num">2</span>) {<br/>
+<span class="in2"></span><span class="type">const</span> <span class="type">char</span> *<span class="var">arg</span> { <span class="var">argv</span>[<span class="num">1</span>] };<br/>
+<span class="in2"></span><span class="keyword">if</span> (<br/>
+<span class="in3"></span><span class="var">arg</span>[<span class="num">0</span>] == <span class="str">'-'</span> &amp;&amp; <span class="var">arg</span>[<span class="num">1</span>] == <span class="str">'n'</span><br/>
+<span class="in2"></span>) {<br/>
+<span class="in3"></span><span class="var">key_length</span> = <span class="type">std</span>::<span class="fn">stoi</span>(<span class="var">arg</span> + <span class="num">2</span>);<br/>
+<span class="in3"></span><span class="var">key</span>.~<span class="fn">Key</span>();<br/>
+<span class="in3"></span><span class="keyword">new</span> (&amp;<span class="var">key</span>) <span class="type">Key</span> { };<br/>
+<span class="in2"></span>}<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">parse args</span>)</span><br/>
 </code></div>
 </div>
 </body>

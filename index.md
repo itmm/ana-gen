@@ -83,7 +83,10 @@
 ```
 @Def(file: ana.cpp)
 	@put(ana main prereqs);
-	int main() {
+	int main(
+		int argc, const char *argv[]
+	) {
+		@put(parse args);
 		char ch;
 		@put(read input);
 		@put(write table);
@@ -99,7 +102,8 @@
 
 ```
 @def(def collection)
-	using Collection = std::map<char, int>;
+	using Collection =
+		std::map<char, int>;
 @end(def collection)
 ```
 
@@ -160,44 +164,6 @@
 ```
 
 ```
-@def(def collection prereqs)
-	int key_length { 2 };
-	#include <cstring>
-	class Key {
-		private:
-			char *_key;
-		public:
-			Key(): _key { new char[key_length] } {
-				memset(_key, 0, key_length);
-			}
-			Key(const Key &other): _key { new char[key_length] } {
-				memcpy(_key, other._key, key_length);
-			}
-			Key &operator=(const Key &other) {
-				memcpy(_key, other._key, key_length);
-				return *this;
-			}
-			~Key() {
-				delete _key;
-			}
-			bool operator==(const Key &other) const {
-				return memcmp(_key, other._key, key_length) == 0;
-			}
-			bool operator<(const Key &other) const {
-				return memcmp(_key, other._key, key_length) < 0;
-			}
-			char operator[](int i) const {
-				return _key[i];
-			}
-			void push(char ch) {
-				memmove(_key, _key + 1, key_length - 1);
-				_key[key_length - 1] = ch;
-			}
-	};
-@end(def collection prereqs)
-```
-
-```
 @rep(write key)
 @end(write key)
 ```
@@ -208,11 +174,108 @@
 ```
 
 ```
+@def(def collection prereqs)
+	@put(key prereqs);
+	class Key {
+		private:
+			char *_key;
+		public:
+			@put(key publics);
+	};
+@end(def collection prereqs)
+```
+
+```
+@def(key prereqs)
+	int key_length { 2 };
+@end(key prereqs)
+```
+
+```
+@add(key prereqs)
+	#include <cstring>
+@end(key prereqs)
+```
+
+```
+@def(key publics)
+	Key():
+		_key { new char[key_length] }
+	{
+		memset(_key, 0, key_length);
+	}
+	~Key() {
+		delete _key;
+	}
+@end(key publics)
+```
+
+```
+@add(key publics)
+	Key(const Key &other):
+		_key { new char[key_length] }
+	{
+		memcpy(
+			_key, other._key, key_length
+		);
+	}
+@end(key publics)
+```
+
+```
+@add(key publics)
+	Key &operator=(const Key &other) {
+		memcpy(
+			_key, other._key, key_length
+		);
+		return *this;
+	}
+@end(key publics)
+```
+
+```
+@add(key publics)
+	bool operator==(
+		const Key &other
+	) const {
+		return memcmp(
+			_key, other._key, key_length
+		) == 0;
+	}
+@end(key publics)
+```
+
+```
+@add(key publics)
+	bool operator<(
+		const Key &other
+	) const {
+		return memcmp(
+			_key, other._key, key_length
+		) < 0;
+	}
+@end(key publics)
+```
+
+```
 @rep(def collection)
 	@put(def collection prereqs)
-	using Collection = std::map<Key, int>;
+	using Collection =
+		std::map<Key, int>;
 	Key key;
 @end(def collection)
+```
+
+```
+@add(key publics)
+	void push(char ch) {
+		memmove(
+			_key, _key + 1,
+			key_length - 1
+		);
+		_key[key_length - 1] = ch;
+	}
+@end(key publics)
 ```
 
 ```
@@ -223,9 +286,34 @@
 ```
 
 ```
+@add(key publics)
+	char operator[](int i) const {
+		return _key[i];
+	}
+@end(key publics)
+```
+
+```
 @rep(write key)
-	for (int i = 0; i < key_length; ++i) {
+	for (
+		int i = 0; i < key_length; ++i
+	) {
 		write_byte(e.first[i]);
 	}
 @end(write key)
+```
+
+```
+@def(parse args)
+	if (argc == 2) {
+		const char *arg { argv[1] };
+		if (
+			arg[0] == '-' && arg[1] == 'n'
+		) {
+			key_length = std::stoi(arg + 2);
+			key.~Key();
+			new (&key) Key { };
+		}
+	}
+@end(parse args)
 ```
