@@ -88,12 +88,14 @@
 @add(ana main prereqs)
 	#include <cctype>
 	void write_byte(char b) {
-		if (isprint(b) && b != '\\') {
+		if (isprint(b) &&
+			b != '%' && b > ' '
+		) {
 			std::cout << b;
 		} else {
 			static const char digits[] =
 				"0123456789abcdef";
-			std::cout << "\\x" <<
+			std::cout << '%' <<
 				digits[(b >> 4) & 0xf] <<
 				digits[b & 0xf];
 		}
@@ -134,6 +136,12 @@
 
 ```
 @def(def collection prereqs)
+	@mul(key class);
+@end(def collection prereqs)
+```
+
+```
+@def(key class)
 	@put(key prereqs);
 	#include <memory>
 	class Key {
@@ -143,7 +151,7 @@
 			@put(key publics);
 	};
 	@put(key impl);
-@end(def collection prereqs)
+@end(key class)
 ```
 * die `Key` Klasse enthält die Byte-Folgen
 * eine eigene Klasse wird verwendet, da sie kompakter als `std::vector`
@@ -335,7 +343,8 @@
 @Def(file: gen.cpp)
 	@put(gen main prereqs);
 	int main() {
-		@put(gen loop)
+		@put(read receipt);
+		@put(gen loop);
 	}
 @End(file: gen.cpp)
 ```
@@ -412,3 +421,126 @@
 @end(next)
 ```
 
+```
+@add(gen main prereqs)
+	int hex_digit(char ch) {
+		if (ch >= '0' && ch <= '9') {
+			return ch - '0';
+		} else if (ch >= 'a' && ch <= 'f') {
+			return ch - 'a' + 10;
+		} else {
+			std::cerr << "invalid digit\n";
+			return 0;
+		}
+	}
+	std::string normalize(const std::string &key) {
+		std::string result;
+		for (unsigned i { 0 }; i < key.size(); ++i) {
+			if (key[i] == '%') {
+				result += static_cast<char>(
+					(hex_digit(key[i + 1]) << 4) + hex_digit(key[i + 2])
+				);
+				i += 2;
+			} else {
+				result += key[i];
+			}
+		}
+		return result;
+	}
+@end(gen main prereqs)
+```
+
+```
+@add(gen main prereqs)
+	#include <memory>
+	#include <cassert>
+	#include <random>
+	class Entry {
+		private:
+			std::unique_ptr<Entry> _next;
+			char _ch;
+			int _count;
+		public:
+			Entry(char ch, int count): _ch { ch }, _count { count} { }
+			char ch() const { return _ch; }
+			int count() const { return _count; }
+			bool last() const { return ! _next; }
+			Entry &next() const { return *_next; }
+			void add(std::unique_ptr<Entry> &&entry) {
+				if (last()) {
+					_next = std::move(entry);
+				} else {
+					_next->add(std::move(entry));
+				}
+			}
+	};
+
+	std::random_device _dev;
+	std::mt19937 _rng { _dev() };
+
+	class List {
+		private:
+			std::unique_ptr<Entry> _entries;
+			int _sum { 0 };
+		public:
+			void add(char ch, int count) {
+				auto entry { std::make_unique<Entry>(ch, count) };
+				if (_entries) {
+					_entries->add(std::move(entry));
+				} else {
+					_entries = std::move(entry);
+				}
+			}
+			char next() {
+				assert(_sum > 0);
+				auto dist { std::uniform_int_distribution<std::mt19937::result_type>(0, _sum - 1) };
+				int result = dist(_rng);
+				for (Entry *e { &*_entries }; ! e->last(); e = &e->next()) {
+					if (result < e->count()) {
+						return e->ch();
+					}
+					result -= e->count();
+				}
+			}
+	};
+
+	@mul(key class);
+
+	#include <map>
+	using Collection = std::map<Key, List>;
+	Collection collection;
+@end(gen main prereqs)
+```
+
+```
+@def(read receipt)
+	bool first { true };
+	Key k;
+	for (;;) {
+		std::string key;
+		std::cin >> key;
+		if (! std::cin) { break; }
+		int count;
+		std::cin >> count;
+		if (! std::cin) { break; }
+		key = normalize(key);
+		if (first) {
+			Key::length = key.size() - 1;
+			first = false;
+			k.~Key();
+			new (&k) Key { };
+		}
+		@put(add entry);
+	}
+@end(read receipt)
+```
+
+```
+@def(add entry)
+	assert((int) key.size() == Key::length + 1);
+	for (unsigned i { 0 }; i + 1 < key.size(); ++i) {
+		k.push(key[i]);
+	}
+	collection[k].add(key.back(), count);
+@end(add entry)
+```
