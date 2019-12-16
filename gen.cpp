@@ -5,61 +5,7 @@
 #line 353 "index.md"
 
 	
-#line 396 "index.md"
-
-	int prev_length { 3 };
-	char *previous { nullptr };
-
-#line 354 "index.md"
-;
-	inline bool next(char &ch) {
-		bool ok { false };
-		
-#line 415 "index.md"
-
-	ch = previous[0];
-	previous[0] = previous[1];
-	previous[1] = previous[2];
-	previous[2] = ch;
-	ok = true;
-
-#line 357 "index.md"
-;
-		return ok;
-	}
-
-#line 364 "index.md"
-
-	#include <iostream>
-
-#line 425 "index.md"
-
-	int hex_digit(char ch) {
-		if (ch >= '0' && ch <= '9') {
-			return ch - '0';
-		} else if (ch >= 'a' && ch <= 'f') {
-			return ch - 'a' + 10;
-		} else {
-			std::cerr << "invalid digit\n";
-			return 0;
-		}
-	}
-	std::string normalize(const std::string &key) {
-		std::string result;
-		for (unsigned i { 0 }; i < key.size(); ++i) {
-			if (key[i] == '%') {
-				result += static_cast<char>(
-					(hex_digit(key[i + 1]) << 4) + hex_digit(key[i + 2])
-				);
-				i += 2;
-			} else {
-				result += key[i];
-			}
-		}
-		return result;
-	}
-
-#line 454 "index.md"
+#line 455 "index.md"
 
 	#include <memory>
 	#include <cassert>
@@ -207,18 +153,69 @@
 #line 153 "index.md"
 ;
 
-#line 507 "index.md"
+#line 508 "index.md"
 ;
 
 	#include <map>
 	using Collection = std::map<Key, List>;
 	Collection collection;
 
+#line 354 "index.md"
+;
+	
+#line 560 "index.md"
+
+	Key prev;
+
+#line 355 "index.md"
+;
+	inline bool next(char &ch) {
+		bool ok { false };
+		
+#line 550 "index.md"
+
+
+#line 358 "index.md"
+;
+		return ok;
+	}
+
+#line 365 "index.md"
+
+	#include <iostream>
+
+#line 426 "index.md"
+
+	int hex_digit(char ch) {
+		if (ch >= '0' && ch <= '9') {
+			return ch - '0';
+		} else if (ch >= 'a' && ch <= 'f') {
+			return ch - 'a' + 10;
+		} else {
+			std::cerr << "invalid digit\n";
+			return 0;
+		}
+	}
+	std::string normalize(const std::string &key) {
+		std::string result;
+		for (unsigned i { 0 }; i < key.size(); ++i) {
+			if (key[i] == '%') {
+				result += static_cast<char>(
+					(hex_digit(key[i + 1]) << 4) + hex_digit(key[i + 2])
+				);
+				i += 2;
+			} else {
+				result += key[i];
+			}
+		}
+		return result;
+	}
+
 #line 344 "index.md"
 ;
 	int main() {
 		
-#line 516 "index.md"
+#line 517 "index.md"
 
 	bool first { true };
 	Key k;
@@ -237,7 +234,7 @@
 			new (&k) Key { };
 		}
 		
-#line 539 "index.md"
+#line 540 "index.md"
 
 	assert((int) key.size() == Key::length + 1);
 	for (unsigned i { 0 }; i + 1 < key.size(); ++i) {
@@ -245,27 +242,21 @@
 	}
 	collection[k].add(key.back(), count);
 
-#line 533 "index.md"
+#line 534 "index.md"
 ;
 	}
 
 #line 346 "index.md"
 ;
 		
-#line 370 "index.md"
+#line 371 "index.md"
 
 	
-#line 403 "index.md"
+#line 566 "index.md"
 
-	if (! previous) {
-		previous =
-			new char[prev_length];
-	}
-	previous[0] = 'a';
-	previous[1] = 'b';
-	previous[2] = 'c';
+	prev = Key { };
 
-#line 371 "index.md"
+#line 372 "index.md"
 ;
 	for (;;) {
 		char ch;
@@ -273,17 +264,11 @@
 			std::cout << ch;
 		} else {
 			
-#line 403 "index.md"
+#line 566 "index.md"
 
-	if (! previous) {
-		previous =
-			new char[prev_length];
-	}
-	previous[0] = 'a';
-	previous[1] = 'b';
-	previous[2] = 'c';
+	prev = Key { };
 
-#line 377 "index.md"
+#line 378 "index.md"
 ;
 		}
 	}

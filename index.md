@@ -351,6 +351,7 @@
 
 ```
 @def(gen main prereqs)
+	@put(static next prereqs);
 	@put(next prereqs);
 	inline bool next(char &ch) {
 		bool ok { false };
@@ -451,7 +452,7 @@
 ```
 
 ```
-@add(gen main prereqs)
+@def(static next prereqs)
 	#include <memory>
 	#include <cassert>
 	#include <random>
@@ -509,7 +510,7 @@
 	#include <map>
 	using Collection = std::map<Key, List>;
 	Collection collection;
-@end(gen main prereqs)
+@end(static next prereqs)
 ```
 
 ```
@@ -544,3 +545,26 @@
 	collection[k].add(key.back(), count);
 @end(add entry)
 ```
+
+```
+@rep(next)
+@end(next)
+```
+
+```
+@rep(initialise)
+@end(initialise)
+```
+
+```
+@rep(next prereqs)
+	Key prev;
+@end(next prereqs)
+```
+
+```
+@rep(initialise)
+	prev = Key { };
+@end(initialise)
+```
+
