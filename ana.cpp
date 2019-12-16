@@ -1,117 +1,122 @@
 
-#line 84 "index.md"
+#line 11 "index.md"
 
 	
-#line 98 "index.md"
+#line 34 "index.md"
 
 	#include <iostream>
 
-#line 111 "index.md"
+#line 50 "index.md"
 
 	#include <map>
 	
-#line 261 "index.md"
+#line 243 "index.md"
 
 	
-#line 177 "index.md"
+#line 136 "index.md"
 
 	
-#line 189 "index.md"
-
-	int key_length { 2 };
-
-#line 195 "index.md"
+#line 174 "index.md"
 
 	#include <cstring>
 
-#line 178 "index.md"
+#line 137 "index.md"
 ;
+	#include <memory>
 	class Key {
 		private:
-			char *_key;
+			std::unique_ptr<char> _key;
 		public:
 			
-#line 201 "index.md"
+#line 155 "index.md"
+
+	static int length;
+
+#line 181 "index.md"
 
 	Key():
-		_key { new char[key_length] }
+		_key { new char[length] }
 	{
-		memset(_key, 0, key_length);
-	}
-	~Key() {
-		delete _key;
+		memset(&*_key, 0, length);
 	}
 
-#line 214 "index.md"
+#line 192 "index.md"
 
 	Key(const Key &other):
-		_key { new char[key_length] }
+		_key { new char[length] }
 	{
 		memcpy(
-			_key, other._key, key_length
+			&*_key, &*other._key, length
 		);
 	}
 
-#line 226 "index.md"
+#line 205 "index.md"
 
 	Key &operator=(const Key &other) {
 		memcpy(
-			_key, other._key, key_length
+			&*_key, &*other._key, length
 		);
 		return *this;
 	}
 
-#line 237 "index.md"
+#line 217 "index.md"
 
 	bool operator==(
 		const Key &other
 	) const {
 		return memcmp(
-			_key, other._key, key_length
+			&*_key, &*other._key, length
 		) == 0;
 	}
 
-#line 249 "index.md"
+#line 230 "index.md"
 
 	bool operator<(
 		const Key &other
 	) const {
 		return memcmp(
-			_key, other._key, key_length
+			&*_key, &*other._key, length
 		) < 0;
 	}
 
-#line 270 "index.md"
+#line 253 "index.md"
 
 	void push(char ch) {
 		memmove(
-			_key, _key + 1,
-			key_length - 1
+			&*_key, &*_key + 1,
+			length - 1
 		);
-		_key[key_length - 1] = ch;
+		(&*_key)[length - 1] = ch;
 	}
 
-#line 289 "index.md"
+#line 276 "index.md"
 
 	char operator[](int i) const {
-		return _key[i];
+		return (&*_key)[i];
 	}
 
-#line 183 "index.md"
+#line 143 "index.md"
 ;
 	};
+	
+#line 167 "index.md"
 
-#line 262 "index.md"
+	int Key::length { 2 };
+
+#line 145 "index.md"
+;
+
+#line 244 "index.md"
 
 	using Collection =
 		std::map<Key, int>;
 	Key key;
 
-#line 113 "index.md"
+#line 52 "index.md"
 ;
 	Collection collection;
 
-#line 144 "index.md"
+#line 88 "index.md"
 
 	#include <cctype>
 	void write_byte(char b) {
@@ -126,63 +131,74 @@
 		}
 	}
 
-#line 85 "index.md"
+#line 12 "index.md"
 ;
 	int main(
 		int argc, const char *argv[]
 	) {
 		
-#line 307 "index.md"
+#line 302 "index.md"
 
 	if (argc == 2) {
 		const char *arg { argv[1] };
 		if (
-			arg[0] == '-' && arg[1] == 'n'
+			arg[0] == '-' &&
+				arg[1] == 'n'
 		) {
-			key_length = std::stoi(arg + 2);
-			key.~Key();
-			new (&key) Key { };
+			
+#line 317 "index.md"
+
+	Key::length = std::stoi(arg + 2);
+	if (Key::length < 1) {
+		std::cerr << "wrong length\n";
+		Key::length = 2;
+	}
+	key.~Key();
+	new (&key) Key { };
+
+#line 309 "index.md"
+;
 		}
 	}
 
-#line 89 "index.md"
+#line 16 "index.md"
 ;
 		char ch;
 		
-#line 119 "index.md"
+#line 59 "index.md"
 
 	while (std::cin.get(ch)) {
 		
-#line 282 "index.md"
+#line 267 "index.md"
 
 	key.push(ch);
 	++collection[key];
 
-#line 121 "index.md"
+#line 61 "index.md"
 ;
 	}
 
-#line 91 "index.md"
+#line 18 "index.md"
 ;
 		
-#line 134 "index.md"
+#line 77 "index.md"
 
 	for (const auto &e : collection) {
 		
-#line 297 "index.md"
+#line 285 "index.md"
 
 	for (
-		int i = 0; i < key_length; ++i
+		int i = 0; i < Key::length; ++i
 	) {
 		write_byte(e.first[i]);
 	}
 
-#line 136 "index.md"
+#line 79 "index.md"
 ;
 		std::cout << "\t" <<
 			e.second << "\n";
 	}
 
-#line 92 "index.md"
+#line 19 "index.md"
 ;
 	}

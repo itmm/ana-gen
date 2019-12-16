@@ -1,4 +1,335 @@
-# Trivialer Generator
+# Dateien mit fester Verteilung erzeugen
+* die Programme `ana` und `gen` können Dateien analysieren
+* und neue Dateien erzeugen, welche die gleiche Verteilung der
+  enthaltenen Bytes haben
+
+## Dateien analysieren
+* `ana` erstellt Statistiken der Verteilungen von Byte-Folgen in
+  Dateien
+
+```
+@Def(file: ana.cpp)
+	@put(ana main prereqs);
+	int main(
+		int argc, const char *argv[]
+	) {
+		@put(parse args);
+		char ch;
+		@put(read input);
+		@put(write table);
+	}
+@End(file: ana.cpp)
+```
+* die Funktion `@f(main)` wertet Argumente der Kommandozeile aus
+* dann liest `@f(main)` die Standard-Eingabe komplett und wertet sie aus
+* zum Schluss schreibt `@f(main)` die resultierende Statistik in die
+  Standard-Eingabe
+
+### Einfache Statistik
+* zuerst zählt `ana` nur Häufigkeiten von Bytes
+* mit späteren Änderungen zählt es Byte-Folgen einer festen Länge
+* aber zum Anfang werden nur einzelne Bytes berücksichtigt
+
+```
+@def(ana main prereqs)
+	#include <iostream>
+@end(ana main prereqs)
+```
+* benötigt Standard Ein- und Ausgabe
+
+```
+@def(def collection)
+	using Collection =
+		std::map<char, int>;
+@end(def collection)
+```
+* für jedes Byte wird ein eigener Zähler benutzt
+* eigenes Fragment, da es später überschrieben wird
+
+```
+@add(ana main prereqs)
+	#include <map>
+	@put(def collection);
+	Collection collection;
+@end(ana main prereqs)
+```
+* es gibt eine globale Variable mit den Häufigkeiten
+
+```
+@def(read input)
+	while (std::cin.get(ch)) {
+		@put(add to collection);
+	}
+@end(read input)
+```
+* jedes gelesene Zeichen wird in die Statistik integriert
+
+```
+@def(add to collection)
+	++collection[ch];
+@end(add to collection)
+```
+* fügt Zeichen in die Statistik ein
+* eigenes Fragment, um es später zu ersetzen
+
+
+```
+@def(write table)
+	for (const auto &e : collection) {
+		@put(write key);
+		std::cout << "\t" <<
+			e.second << "\n";
+	}
+@end(write table)
+```
+* jeder Eintrag der Statistik wird ausgegeben
+
+```
+@add(ana main prereqs)
+	#include <cctype>
+	void write_byte(char b) {
+		if (isprint(b) && b != '\\') {
+			std::cout << b;
+		} else {
+			static const char digits[] =
+				"0123456789abcdef";
+			std::cout << "\\x" <<
+				digits[(b >> 4) & 0xf] <<
+				digits[b & 0xf];
+		}
+	}
+@end(ana main prereqs)
+```
+* druckbare Zeichen werden direkt ausgegeben
+* andere Bytes werden mit dem Präfix `\x` als zwei hexadezimale Ziffern
+  ausgegeben
+
+```
+@def(write key)
+	write_byte(e.first);
+@end(write key)
+```
+* gibt den Schlüssel aus
+* eigenes Fragment, da sich der Typ des Schlüssels später ändert
+
+### Byte-Folgen analysieren
+* passt das Programm an, um ganze Byte-Folgen fester Länge zu analysieren
+* anstatt nur einzelner Bytes
+
+```
+@rep(write key)
+@end(write key)
+```
+* löscht das Fragment, da es sonst Zwischenstände gibt, die nicht
+  kompilieren
+* nach der Typ-Änderung werden die Fragmente neu gefüllt
+
+```
+@rep(add to collection)
+@end(add to collection)
+```
+* löscht das Fragment, da es sonst Zwischenstände gibt, die nicht
+  kompilieren
+* nach der Typ-Änderung werden die Fragmente neu gefüllt
+
+```
+@def(def collection prereqs)
+	@put(key prereqs);
+	#include <memory>
+	class Key {
+		private:
+			std::unique_ptr<char> _key;
+		public:
+			@put(key publics);
+	};
+	@put(key impl);
+@end(def collection prereqs)
+```
+* die `Key` Klasse enthält die Byte-Folgen
+* eine eigene Klasse wird verwendet, da sie kompakter als `std::vector`
+  implementiert werden kann
+* aber die Länge des Schlüssels nicht zum Zeitpunkt der Übersetzung
+  bekannt ist
+
+```
+@def(key publics)
+	static int length;
+@end(key publics)
+```
+* verwendete Schlüssel-Länge ist eine statische Variable
+* sauberer wäre es, sie in jede `Key`-Instanz abzulegen, aber das
+  würde viel Speicher verbrauchen
+* der Wert `length` wird nur geändert, bevor viele `Key`s instantiiert
+  wurden
+* diese müssen manuell korrigiert werden
+
+```
+@def(key impl)
+	int Key::length { 2 };
+@end(key impl)
+```
+* als Vorgabe betrachtet `app` Byte-Folgen der Länge 2
+
+```
+@def(key prereqs)
+	#include <cstring>
+@end(key prereqs)
+```
+* benötigt Speicher-Funktionen/Makros
+
+```
+@add(key publics)
+	Key():
+		_key { new char[length] }
+	{
+		memset(&*_key, 0, length);
+	}
+@end(key publics)
+```
+* Konstruktor legt Speicher an und initialisiert Bytes
+
+```
+@add(key publics)
+	Key(const Key &other):
+		_key { new char[length] }
+	{
+		memcpy(
+			&*_key, &*other._key, length
+		);
+	}
+@end(key publics)
+```
+* Copy-Konstruktor legt einen eigenen Speicherbereich an
+
+```
+@add(key publics)
+	Key &operator=(const Key &other) {
+		memcpy(
+			&*_key, &*other._key, length
+		);
+		return *this;
+	}
+@end(key publics)
+```
+* Assignment kopiert nur die Speicherbereiche
+
+```
+@add(key publics)
+	bool operator==(
+		const Key &other
+	) const {
+		return memcmp(
+			&*_key, &*other._key, length
+		) == 0;
+	}
+@end(key publics)
+```
+* Gleichheit wird über die Speicherbereiche definiert
+
+```
+@add(key publics)
+	bool operator<(
+		const Key &other
+	) const {
+		return memcmp(
+			&*_key, &*other._key, length
+		) < 0;
+	}
+@end(key publics)
+```
+* Ordnung wird über die Speicherbereiche definiert
+
+```
+@rep(def collection)
+	@put(def collection prereqs)
+	using Collection =
+		std::map<Key, int>;
+	Key key;
+@end(def collection)
+```
+* Collection zählt nun `Key` Instanzen
+
+```
+@add(key publics)
+	void push(char ch) {
+		memmove(
+			&*_key, &*_key + 1,
+			length - 1
+		);
+		(&*_key)[length - 1] = ch;
+	}
+@end(key publics)
+```
+* verschiebt die bestehenden Zeichen im Schlüssel
+* und fügt das neue Byte am Ende ein
+
+```
+@rep(add to collection)
+	key.push(ch);
+	++collection[key];
+@end(add to collection)
+```
+* passt Schlüssel an
+* und zählt neuen Schlüssel 
+
+```
+@add(key publics)
+	char operator[](int i) const {
+		return (&*_key)[i];
+	}
+@end(key publics)
+```
+* liefert einzelnes Byte des Schlüssels
+
+```
+@rep(write key)
+	for (
+		int i = 0; i < Key::length; ++i
+	) {
+		write_byte(e.first[i]);
+	}
+@end(write key)
+```
+* gibt alle Bytes des Schlüssels aus
+
+### Andere Längen der Byte-Folgen
+* als Vorgabe werden Byte-Folgen der Länge 2 betrachtet
+* um andere Längen zu verwenden, kann die neue Länge mit der Option
+  `-n` auf der Kommandozeile angegeben werden
+* so betrachtet zum Beispiel `-n3` Byte-Folgen der Länge 3
+
+```
+@def(parse args)
+	if (argc == 2) {
+		const char *arg { argv[1] };
+		if (
+			arg[0] == '-' &&
+				arg[1] == 'n'
+		) {
+			@put(change length);
+		}
+	}
+@end(parse args)
+```
+* bearbeite Option `-n`
+
+```
+@def(change length)
+	Key::length = std::stoi(arg + 2);
+	if (Key::length < 1) {
+		std::cerr << "wrong length\n";
+		Key::length = 2;
+	}
+	key.~Key();
+	new (&key) Key { };
+@end(change length)
+```
+* setze neue Länge
+* `key` wird neu instantiiert
+* wenn die Länge zu kurz ist, wird statt dessen 2 verwendet
+
+
+## Dokumente generieren
 
 ```
 @Def(file: gen.cpp)
@@ -62,7 +393,8 @@
 ```
 @rep(initialise)
 	if (! previous) {
-		previous = new char[prev_length];
+		previous =
+			new char[prev_length];
 	}
 	previous[0] = 'a';
 	previous[1] = 'b';
@@ -80,240 +412,3 @@
 @end(next)
 ```
 
-```
-@Def(file: ana.cpp)
-	@put(ana main prereqs);
-	int main(
-		int argc, const char *argv[]
-	) {
-		@put(parse args);
-		char ch;
-		@put(read input);
-		@put(write table);
-	}
-@End(file: ana.cpp)
-```
-
-```
-@def(ana main prereqs)
-	#include <iostream>
-@end(ana main prereqs)
-```
-
-```
-@def(def collection)
-	using Collection =
-		std::map<char, int>;
-@end(def collection)
-```
-
-```
-@add(ana main prereqs)
-	#include <map>
-	@put(def collection);
-	Collection collection;
-@end(ana main prereqs)
-```
-
-```
-@def(read input)
-	while (std::cin.get(ch)) {
-		@put(add to collection);
-	}
-@end(read input)
-```
-
-```
-@def(add to collection)
-	++collection[ch];
-@end(add to collection)
-```
-
-
-```
-@def(write table)
-	for (const auto &e : collection) {
-		@put(write key);
-		std::cout << "\t" <<
-			e.second << "\n";
-	}
-@end(write table)
-```
-
-```
-@add(ana main prereqs)
-	#include <cctype>
-	void write_byte(char b) {
-		if (isprint(b) && b != '\\') {
-			std::cout << b;
-		} else {
-			static const char digits[] =
-				"0123456789abcdef";
-			std::cout << "\\x" <<
-				digits[(b >> 4) & 0xf] <<
-				digits[b & 0xf];
-		}
-	}
-@end(ana main prereqs)
-```
-
-```
-@def(write key)
-	write_byte(e.first);
-@end(write key)
-```
-
-```
-@rep(write key)
-@end(write key)
-```
-
-```
-@rep(add to collection)
-@end(add to collection)
-```
-
-```
-@def(def collection prereqs)
-	@put(key prereqs);
-	class Key {
-		private:
-			char *_key;
-		public:
-			@put(key publics);
-	};
-@end(def collection prereqs)
-```
-
-```
-@def(key prereqs)
-	int key_length { 2 };
-@end(key prereqs)
-```
-
-```
-@add(key prereqs)
-	#include <cstring>
-@end(key prereqs)
-```
-
-```
-@def(key publics)
-	Key():
-		_key { new char[key_length] }
-	{
-		memset(_key, 0, key_length);
-	}
-	~Key() {
-		delete _key;
-	}
-@end(key publics)
-```
-
-```
-@add(key publics)
-	Key(const Key &other):
-		_key { new char[key_length] }
-	{
-		memcpy(
-			_key, other._key, key_length
-		);
-	}
-@end(key publics)
-```
-
-```
-@add(key publics)
-	Key &operator=(const Key &other) {
-		memcpy(
-			_key, other._key, key_length
-		);
-		return *this;
-	}
-@end(key publics)
-```
-
-```
-@add(key publics)
-	bool operator==(
-		const Key &other
-	) const {
-		return memcmp(
-			_key, other._key, key_length
-		) == 0;
-	}
-@end(key publics)
-```
-
-```
-@add(key publics)
-	bool operator<(
-		const Key &other
-	) const {
-		return memcmp(
-			_key, other._key, key_length
-		) < 0;
-	}
-@end(key publics)
-```
-
-```
-@rep(def collection)
-	@put(def collection prereqs)
-	using Collection =
-		std::map<Key, int>;
-	Key key;
-@end(def collection)
-```
-
-```
-@add(key publics)
-	void push(char ch) {
-		memmove(
-			_key, _key + 1,
-			key_length - 1
-		);
-		_key[key_length - 1] = ch;
-	}
-@end(key publics)
-```
-
-```
-@rep(add to collection)
-	key.push(ch);
-	++collection[key];
-@end(add to collection)
-```
-
-```
-@add(key publics)
-	char operator[](int i) const {
-		return _key[i];
-	}
-@end(key publics)
-```
-
-```
-@rep(write key)
-	for (
-		int i = 0; i < key_length; ++i
-	) {
-		write_byte(e.first[i]);
-	}
-@end(write key)
-```
-
-```
-@def(parse args)
-	if (argc == 2) {
-		const char *arg { argv[1] };
-		if (
-			arg[0] == '-' && arg[1] == 'n'
-		) {
-			key_length = std::stoi(arg + 2);
-			key.~Key();
-			new (&key) Key { };
-		}
-	}
-@end(parse args)
-```
