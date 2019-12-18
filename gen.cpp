@@ -1,11 +1,11 @@
 
-#line 343 "index.md"
+#line 345 "index.md"
 
 	
-#line 353 "index.md"
+#line 355 "index.md"
 
 	
-#line 455 "index.md"
+#line 457 "index.md"
 
 	#include <memory>
 	#include <cassert>
@@ -132,14 +132,16 @@
 #line 261 "index.md"
 
 	void push(char ch) {
-		memmove(
-			&*_key, &*_key + 1,
-			length - 1
-		);
-		(&*_key)[length - 1] = ch;
+		if (length > 0) {
+			memmove(
+				&*_key, &*_key + 1,
+				length - 1
+			);
+			(&*_key)[length - 1] = ch;
+		}
 	}
 
-#line 284 "index.md"
+#line 286 "index.md"
 
 	char operator[](int i) const {
 		return (&*_key)[i];
@@ -156,41 +158,41 @@
 #line 153 "index.md"
 ;
 
-#line 511 "index.md"
+#line 513 "index.md"
 ;
 
 	#include <map>
 	using Collection = std::map<Key, List>;
 	Collection collection;
 
-#line 354 "index.md"
+#line 356 "index.md"
 ;
 	
-#line 563 "index.md"
+#line 565 "index.md"
 
 	Key prev;
 
-#line 355 "index.md"
+#line 357 "index.md"
 ;
 	inline bool next(char &ch) {
 		bool ok { false };
 		
-#line 575 "index.md"
+#line 577 "index.md"
 
 	ch = collection[prev].next();
 	ok = ch != '\0';
 	prev.push(ch);
 
-#line 358 "index.md"
+#line 360 "index.md"
 ;
 		return ok;
 	}
 
-#line 365 "index.md"
+#line 367 "index.md"
 
 	#include <iostream>
 
-#line 426 "index.md"
+#line 428 "index.md"
 
 	int hex_digit(char ch) {
 		if (ch >= '0' && ch <= '9') {
@@ -217,11 +219,11 @@
 		return result;
 	}
 
-#line 344 "index.md"
+#line 346 "index.md"
 ;
 	int main() {
 		
-#line 520 "index.md"
+#line 522 "index.md"
 
 	bool first { true };
 	Key k;
@@ -240,7 +242,7 @@
 			new (&k) Key { };
 		}
 		
-#line 543 "index.md"
+#line 545 "index.md"
 
 	assert((int) key.size() == Key::length + 1);
 	for (unsigned i { 0 }; i + 1 < key.size(); ++i) {
@@ -248,21 +250,21 @@
 	}
 	collection[k].add(key.back(), count);
 
-#line 537 "index.md"
+#line 539 "index.md"
 ;
 	}
 
-#line 346 "index.md"
+#line 348 "index.md"
 ;
 		
-#line 371 "index.md"
+#line 373 "index.md"
 
 	
-#line 569 "index.md"
+#line 571 "index.md"
 
 	prev = Key { };
 
-#line 372 "index.md"
+#line 374 "index.md"
 ;
 	for (;;) {
 		char ch;
@@ -270,15 +272,15 @@
 			std::cout << ch;
 		} else {
 			
-#line 569 "index.md"
+#line 571 "index.md"
 
 	prev = Key { };
 
-#line 378 "index.md"
+#line 380 "index.md"
 ;
 		}
 	}
 
-#line 347 "index.md"
+#line 349 "index.md"
 ;
 	}

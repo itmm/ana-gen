@@ -369,11 +369,13 @@ Collection zählt nun <code><span class="type">Key</span></code> Instanzen
 <code>
 <span class="macro">@add(<span class="name">key publics</span>)</span><br/>
 <span class="in1"></span><span class="type">void</span> <span class="fn">push</span>(<span class="type">char</span> <span class="var">ch</span>) {<br/>
-<span class="in2"></span><span class="fn">memmove</span>(<br/>
-<span class="in3"></span>&amp;*<span class="var">_key</span>, &amp;*<span class="var">_key</span> + <span class="num">1</span>,<br/>
-<span class="in3"></span><span class="var">length</span> - <span class="num">1</span><br/>
-<span class="in2"></span>);<br/>
-<span class="in2"></span>(&amp;*<span class="var">_key</span>)[<span class="var">length</span> - <span class="num">1</span>] = <span class="var">ch</span>;<br/>
+<span class="in2"></span><span class="keyword">if</span> (<span class="var">length</span> &gt; <span class="num">0</span>) {<br/>
+<span class="in3"></span><span class="fn">memmove</span>(<br/>
+<span class="in4"></span>&amp;*<span class="var">_key</span>, &amp;*<span class="var">_key</span> + <span class="num">1</span>,<br/>
+<span class="in4"></span><span class="var">length</span> - <span class="num">1</span><br/>
+<span class="in3"></span>);<br/>
+<span class="in3"></span>(&amp;*<span class="var">_key</span>)[<span class="var">length</span> - <span class="num">1</span>] = <span class="var">ch</span>;<br/>
+<span class="in2"></span>}<br/>
 <span class="in1"></span>}<br/>
 <span class="macro">@end(<span class="name">key publics</span>)</span><br/>
 </code></div>

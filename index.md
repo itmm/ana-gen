@@ -260,11 +260,13 @@
 ```
 @add(key publics)
 	void push(char ch) {
-		memmove(
-			&*_key, &*_key + 1,
-			length - 1
-		);
-		(&*_key)[length - 1] = ch;
+		if (length > 0) {
+			memmove(
+				&*_key, &*_key + 1,
+				length - 1
+			);
+			(&*_key)[length - 1] = ch;
+		}
 	}
 @end(key publics)
 ```

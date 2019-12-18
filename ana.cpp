@@ -85,14 +85,16 @@
 #line 261 "index.md"
 
 	void push(char ch) {
-		memmove(
-			&*_key, &*_key + 1,
-			length - 1
-		);
-		(&*_key)[length - 1] = ch;
+		if (length > 0) {
+			memmove(
+				&*_key, &*_key + 1,
+				length - 1
+			);
+			(&*_key)[length - 1] = ch;
+		}
 	}
 
-#line 284 "index.md"
+#line 286 "index.md"
 
 	char operator[](int i) const {
 		return (&*_key)[i];
@@ -145,7 +147,7 @@
 		int argc, const char *argv[]
 	) {
 		
-#line 310 "index.md"
+#line 312 "index.md"
 
 	if (argc == 2) {
 		const char *arg { argv[1] };
@@ -154,7 +156,7 @@
 				arg[1] == 'n'
 		) {
 			
-#line 325 "index.md"
+#line 327 "index.md"
 
 	Key::length = std::stoi(arg + 2);
 	if (Key::length < 1) {
@@ -164,7 +166,7 @@
 	key.~Key();
 	new (&key) Key { };
 
-#line 317 "index.md"
+#line 319 "index.md"
 ;
 		}
 	}
@@ -177,7 +179,7 @@
 
 	while (std::cin.get(ch)) {
 		
-#line 275 "index.md"
+#line 277 "index.md"
 
 	key.push(ch);
 	++collection[key];
@@ -193,7 +195,7 @@
 
 	for (const auto &e : collection) {
 		
-#line 293 "index.md"
+#line 295 "index.md"
 
 	for (
 		int i = 0; i < Key::length; ++i
