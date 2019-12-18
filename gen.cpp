@@ -8,7 +8,6 @@
 #line 457 "index.md"
 
 	#include <memory>
-	#include <cassert>
 	#include <random>
 	class Entry {
 		private:
@@ -48,15 +47,16 @@
 				_sum += count;
 			}
 			char next() {
-				assert(_sum > 0);
-				auto dist { std::uniform_int_distribution<std::mt19937::result_type>(0, _sum - 1) };
-				int result = dist(_rng);
-				for (Entry *e { &*_entries };; e = &e->next()) {
-					if (result < e->count()) {
-						return e->ch();
+				if (_sum > 0) {
+					auto dist { std::uniform_int_distribution<std::mt19937::result_type>(0, _sum - 1) };
+					int result = dist(_rng);
+					for (Entry *e { &*_entries };; e = &e->next()) {
+						if (result < e->count()) {
+							return e->ch();
+						}
+						result -= e->count();
+						if (e->last()) { break; }
 					}
-					result -= e->count();
-					if (e->last()) { break; }
 				}
 				return '\0';
 			}
@@ -168,7 +168,7 @@
 #line 356 "index.md"
 ;
 	
-#line 565 "index.md"
+#line 564 "index.md"
 
 	Key prev;
 
@@ -177,7 +177,7 @@
 	inline bool next(char &ch) {
 		bool ok { false };
 		
-#line 577 "index.md"
+#line 576 "index.md"
 
 	ch = collection[prev].next();
 	ok = ch != '\0';
@@ -244,7 +244,6 @@
 		
 #line 545 "index.md"
 
-	assert((int) key.size() == Key::length + 1);
 	for (unsigned i { 0 }; i + 1 < key.size(); ++i) {
 		k.push(key[i]);
 	}
@@ -260,7 +259,7 @@
 #line 373 "index.md"
 
 	
-#line 571 "index.md"
+#line 570 "index.md"
 
 	prev = Key { };
 
@@ -272,7 +271,7 @@
 			std::cout << ch;
 		} else {
 			
-#line 571 "index.md"
+#line 570 "index.md"
 
 	prev = Key { };
 

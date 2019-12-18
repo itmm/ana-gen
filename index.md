@@ -456,7 +456,6 @@
 ```
 @def(static next prereqs)
 	#include <memory>
-	#include <cassert>
 	#include <random>
 	class Entry {
 		private:
@@ -496,15 +495,16 @@
 				_sum += count;
 			}
 			char next() {
-				assert(_sum > 0);
-				auto dist { std::uniform_int_distribution<std::mt19937::result_type>(0, _sum - 1) };
-				int result = dist(_rng);
-				for (Entry *e { &*_entries };; e = &e->next()) {
-					if (result < e->count()) {
-						return e->ch();
+				if (_sum > 0) {
+					auto dist { std::uniform_int_distribution<std::mt19937::result_type>(0, _sum - 1) };
+					int result = dist(_rng);
+					for (Entry *e { &*_entries };; e = &e->next()) {
+						if (result < e->count()) {
+							return e->ch();
+						}
+						result -= e->count();
+						if (e->last()) { break; }
 					}
-					result -= e->count();
-					if (e->last()) { break; }
 				}
 				return '\0';
 			}
@@ -543,7 +543,6 @@
 
 ```
 @def(add entry)
-	assert((int) key.size() == Key::length + 1);
 	for (unsigned i { 0 }; i + 1 < key.size(); ++i) {
 		k.push(key[i]);
 	}
