@@ -45,17 +45,20 @@
 				} else {
 					_entries = std::move(entry);
 				}
+				_sum += count;
 			}
 			char next() {
 				assert(_sum > 0);
 				auto dist { std::uniform_int_distribution<std::mt19937::result_type>(0, _sum - 1) };
 				int result = dist(_rng);
-				for (Entry *e { &*_entries }; ! e->last(); e = &e->next()) {
+				for (Entry *e { &*_entries };; e = &e->next()) {
 					if (result < e->count()) {
 						return e->ch();
 					}
 					result -= e->count();
+					if (e->last()) { break; }
 				}
+				return '\0';
 			}
 	};
 
@@ -153,7 +156,7 @@
 #line 153 "index.md"
 ;
 
-#line 508 "index.md"
+#line 511 "index.md"
 ;
 
 	#include <map>
@@ -163,7 +166,7 @@
 #line 354 "index.md"
 ;
 	
-#line 560 "index.md"
+#line 563 "index.md"
 
 	Key prev;
 
@@ -172,8 +175,11 @@
 	inline bool next(char &ch) {
 		bool ok { false };
 		
-#line 550 "index.md"
+#line 575 "index.md"
 
+	ch = collection[prev].next();
+	ok = ch != '\0';
+	prev.push(ch);
 
 #line 358 "index.md"
 ;
@@ -215,7 +221,7 @@
 ;
 	int main() {
 		
-#line 517 "index.md"
+#line 520 "index.md"
 
 	bool first { true };
 	Key k;
@@ -234,7 +240,7 @@
 			new (&k) Key { };
 		}
 		
-#line 540 "index.md"
+#line 543 "index.md"
 
 	assert((int) key.size() == Key::length + 1);
 	for (unsigned i { 0 }; i + 1 < key.size(); ++i) {
@@ -242,7 +248,7 @@
 	}
 	collection[k].add(key.back(), count);
 
-#line 534 "index.md"
+#line 537 "index.md"
 ;
 	}
 
@@ -252,7 +258,7 @@
 #line 371 "index.md"
 
 	
-#line 566 "index.md"
+#line 569 "index.md"
 
 	prev = Key { };
 
@@ -264,7 +270,7 @@
 			std::cout << ch;
 		} else {
 			
-#line 566 "index.md"
+#line 569 "index.md"
 
 	prev = Key { };
 

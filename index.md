@@ -491,17 +491,20 @@
 				} else {
 					_entries = std::move(entry);
 				}
+				_sum += count;
 			}
 			char next() {
 				assert(_sum > 0);
 				auto dist { std::uniform_int_distribution<std::mt19937::result_type>(0, _sum - 1) };
 				int result = dist(_rng);
-				for (Entry *e { &*_entries }; ! e->last(); e = &e->next()) {
+				for (Entry *e { &*_entries };; e = &e->next()) {
 					if (result < e->count()) {
 						return e->ch();
 					}
 					result -= e->count();
+					if (e->last()) { break; }
 				}
+				return '\0';
 			}
 	};
 
@@ -568,3 +571,10 @@
 @end(initialise)
 ```
 
+```
+@rep(next)
+	ch = collection[prev].next();
+	ok = ch != '\0';
+	prev.push(ch);
+@end(next)
+```

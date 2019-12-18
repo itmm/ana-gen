@@ -646,17 +646,20 @@ wenn die Länge zu kurz ist, wird statt dessen 2 verwendet
 <span class="in4"></span>} <span class="keyword">else</span> {<br/>
 <span class="in5"></span><span class="var">_entries</span> = <span class="type">std</span>::<span class="fn">move</span>(<span class="var">entry</span>);<br/>
 <span class="in4"></span>}<br/>
+<span class="in4"></span><span class="var">_sum</span> += <span class="var">count</span>;<br/>
 <span class="in3"></span>}<br/>
 <span class="in3"></span><span class="type">char</span> <span class="fn">next</span>() {<br/>
 <span class="in4"></span><span class="fn">assert</span>(<span class="var">_sum</span> &gt; <span class="num">0</span>);<br/>
 <span class="in4"></span><span class="type">auto</span> <span class="var">dist</span> { <span class="type">std</span>::<span class="var">uniform_int_distribution</span>&lt;<span class="type">std</span>::<span class="var">mt19937</span>::<span class="var">result_type</span>&gt;(<span class="num">0</span>, <span class="var">_sum</span> - <span class="num">1</span>) };<br/>
 <span class="in4"></span><span class="type">int</span> <span class="var">result</span> = <span class="fn">dist</span>(<span class="var">_rng</span>);<br/>
-<span class="in4"></span><span class="keyword">for</span> (<span class="type">Entry</span> *<span class="var">e</span> { &amp;*<span class="var">_entries</span> }; ! <span class="var">e</span>-&gt;<span class="fn">last</span>(); <span class="var">e</span> = &amp;<span class="var">e</span>-&gt;<span class="fn">next</span>()) {<br/>
+<span class="in4"></span><span class="keyword">for</span> (<span class="type">Entry</span> *<span class="var">e</span> { &amp;*<span class="var">_entries</span> };; <span class="var">e</span> = &amp;<span class="var">e</span>-&gt;<span class="fn">next</span>()) {<br/>
 <span class="in5"></span><span class="keyword">if</span> (<span class="var">result</span> &lt; <span class="var">e</span>-&gt;<span class="fn">count</span>()) {<br/>
 <span class="in6"></span><span class="keyword">return</span> <span class="var">e</span>-&gt;<span class="fn">ch</span>();<br/>
 <span class="in5"></span>}<br/>
 <span class="in5"></span><span class="var">result</span> -= <span class="var">e</span>-&gt;<span class="fn">count</span>();<br/>
+<span class="in5"></span><span class="keyword">if</span> (<span class="var">e</span>-&gt;<span class="fn">last</span>()) { <span class="keyword">break</span>; }<br/>
 <span class="in4"></span>}<br/>
+<span class="in4"></span><span class="keyword">return</span> <span class="str">'\0'</span>;<br/>
 <span class="in3"></span>}<br/>
 <span class="in1"></span>};<br/>
 <br/>
@@ -727,6 +730,15 @@ wenn die Länge zu kurz ist, wird statt dessen 2 verwendet
 <span class="macro">@rep(<span class="name">initialise</span>)</span><br/>
 <span class="in1"></span><span class="var">prev</span> = <span class="type">Key</span> { };<br/>
 <span class="macro">@end(<span class="name">initialise</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@rep(<span class="name">next</span>)</span><br/>
+<span class="in1"></span><span class="var">ch</span> = <span class="var">collection</span>[<span class="var">prev</span>].<span class="fn">next</span>();<br/>
+<span class="in1"></span><span class="var">ok</span> = <span class="var">ch</span> != <span class="str">'\0'</span>;<br/>
+<span class="in1"></span><span class="var">prev</span>.<span class="fn">push</span>(<span class="var">ch</span>);<br/>
+<span class="macro">@end(<span class="name">next</span>)</span><br/>
 </code></div>
 </div>
 </body>
