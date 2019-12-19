@@ -1,11 +1,11 @@
 
-#line 345 "index.md"
+#line 4 "gen.md"
 
 	
-#line 355 "index.md"
+#line 14 "gen.md"
 
 	
-#line 457 "index.md"
+#line 120 "gen.md"
 
 	#include <memory>
 	#include <random>
@@ -62,137 +62,68 @@
 			}
 	};
 
+	#include <map>
 	
-#line 144 "index.md"
+#line 4 "key.md"
 
-	
-#line 182 "index.md"
+	using Key = std::string;
+	unsigned key_length { 2 };
+	Key key;
 
-	#include <cstring>
+#line 12 "key.md"
 
-#line 145 "index.md"
-;
-	#include <memory>
-	class Key {
-		private:
-			std::unique_ptr<char> _key;
-		public:
-			
-#line 163 "index.md"
-
-	static int length;
-
-#line 189 "index.md"
-
-	Key():
-		_key { new char[length] }
-	{
-		memset(&*_key, 0, length);
-	}
-
-#line 200 "index.md"
-
-	Key(const Key &other):
-		_key { new char[length] }
-	{
-		memcpy(
-			&*_key, &*other._key, length
-		);
-	}
-
-#line 213 "index.md"
-
-	Key &operator=(const Key &other) {
-		memcpy(
-			&*_key, &*other._key, length
-		);
-		return *this;
-	}
-
-#line 225 "index.md"
-
-	bool operator==(
-		const Key &other
-	) const {
-		return memcmp(
-			&*_key, &*other._key, length
-		) == 0;
-	}
-
-#line 238 "index.md"
-
-	bool operator<(
-		const Key &other
-	) const {
-		return memcmp(
-			&*_key, &*other._key, length
-		) < 0;
-	}
-
-#line 261 "index.md"
-
-	void push(char ch) {
-		if (length > 0) {
-			memmove(
-				&*_key, &*_key + 1,
-				length - 1
-			);
-			(&*_key)[length - 1] = ch;
+	void init(Key &k) {
+		k = std::string { };
+		for (unsigned i { 0 }; i < key_length; ++i) {
+			k += '\0';
 		}
 	}
 
-#line 286 "index.md"
+#line 23 "key.md"
 
-	char operator[](int i) const {
-		return (&*_key)[i];
+	void push(Key &key, char ch) {
+		if (key.size() > 0) {
+			for (unsigned i = 1; i < key.size(); ++i) {
+				key[i - 1] = key[i];
+			}
+			key[key.size() - 1] = ch;
+		}
 	}
 
-#line 151 "index.md"
-;
-	};
-	
-#line 175 "index.md"
+#line 177 "gen.md"
 
-	int Key::length { 2 };
-
-#line 153 "index.md"
-;
-
-#line 513 "index.md"
-;
-
-	#include <map>
 	using Collection = std::map<Key, List>;
 	Collection collection;
 
-#line 356 "index.md"
+#line 15 "gen.md"
 ;
 	
-#line 564 "index.md"
+#line 225 "gen.md"
 
 	Key prev;
+	#include <iostream>
 
-#line 357 "index.md"
+#line 16 "gen.md"
 ;
 	inline bool next(char &ch) {
 		bool ok { false };
 		
-#line 576 "index.md"
+#line 238 "gen.md"
 
 	ch = collection[prev].next();
 	ok = ch != '\0';
-	prev.push(ch);
+	push(prev, ch);
 
-#line 360 "index.md"
+#line 19 "gen.md"
 ;
 		return ok;
 	}
 
-#line 367 "index.md"
+#line 26 "gen.md"
 
 	#include <iostream>
 
-#line 428 "index.md"
+#line 91 "gen.md"
 
 	int hex_digit(char ch) {
 		if (ch >= '0' && ch <= '9') {
@@ -219,11 +150,11 @@
 		return result;
 	}
 
-#line 346 "index.md"
+#line 5 "gen.md"
 ;
 	int main() {
 		
-#line 522 "index.md"
+#line 184 "gen.md"
 
 	bool first { true };
 	Key k;
@@ -236,34 +167,33 @@
 		if (! std::cin) { break; }
 		key = normalize(key);
 		if (first) {
-			Key::length = key.size() - 1;
+			key_length = key.size() - 1;
 			first = false;
-			k.~Key();
-			new (&k) Key { };
+			init(k);
 		}
 		
-#line 545 "index.md"
+#line 206 "gen.md"
 
 	for (unsigned i { 0 }; i + 1 < key.size(); ++i) {
-		k.push(key[i]);
+		push(k, key[i]);
 	}
 	collection[k].add(key.back(), count);
 
-#line 539 "index.md"
+#line 200 "gen.md"
 ;
 	}
 
-#line 348 "index.md"
+#line 7 "gen.md"
 ;
 		
-#line 373 "index.md"
+#line 32 "gen.md"
 
 	
-#line 570 "index.md"
+#line 232 "gen.md"
 
-	prev = Key { };
+	init(prev);
 
-#line 374 "index.md"
+#line 33 "gen.md"
 ;
 	for (;;) {
 		char ch;
@@ -271,15 +201,15 @@
 			std::cout << ch;
 		} else {
 			
-#line 570 "index.md"
+#line 232 "gen.md"
 
-	prev = Key { };
+	init(prev);
 
-#line 380 "index.md"
+#line 39 "gen.md"
 ;
 		}
 	}
 
-#line 349 "index.md"
+#line 8 "gen.md"
 ;
 	}

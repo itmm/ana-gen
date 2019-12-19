@@ -3,7 +3,7 @@ CPPs = $(shell hx-files.sh $(MDs))
 APPs = $(CPPs:.cpp=)
 CXXFLAGS += -Wall -std=c++17
 
-.PHONY: clean short
+.PHONY: clean
 
 hx-run: $(MDs)
 	@echo "HX"
@@ -19,5 +19,3 @@ clean:
 	@echo "RM"
 	@rm -f $(APPs) $(CPPs) hx-run
 
-short:
-	@zcat receipt.gz | ./gen | head -c100

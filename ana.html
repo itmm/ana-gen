@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Dateien analysieren</title>
+<link rel="stylesheet" type="text/css" href="slides/slides.css"></head>
+<body>
+<h1>Dateien analysieren</h1>
+<div class="slides">
+<div>
+<div>
+<h1>Dateien analysieren</h1>
+</div>
+<ul><li>
+<code><span class="var">ana</span></code> erstellt Statistiken der Verteilungen von Byte-Folgen in  Dateien
+</li></ul>
+</div>
+<div><div>
+<code>
+<span class="macro">@Def(<span class="name">file: ana.cpp</span>)</span><br/>
+<span class="in1"></span><span class="macro">@put(<span class="name">ana main prereqs</span>)</span>;<br/>
+<span class="in1"></span><span class="type">int</span> <span class="fn">main</span>(<br/>
+<span class="in2"></span><span class="type">int</span> <span class="var">argc</span>, <span class="type">const</span> <span class="type">char</span> *<span class="var">argv</span>[]<br/>
+<span class="in1"></span>) {<br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">parse args</span>)</span>;<br/>
+<span class="in2"></span><span class="type">char</span> <span class="var">ch</span>;<br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">read input</span>)</span>;<br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">write table</span>)</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@End(<span class="name">file: ana.cpp</span>)</span><br/>
+</code></div>
+<ul><li>
+die Funktion <code><span class="fn">main</span></code> wertet Argumente der Kommandozeile aus
+</li><li>
+dann liest <code><span class="fn">main</span></code> die Standard-Eingabe komplett und wertet sie aus
+</li><li>
+zum Schluss schreibt <code><span class="fn">main</span></code> die resultierende Statistik in die  Standard-Eingabe
+</li></ul>
+</div>
+</div>
+<h3>Einfache Statistik</h3>
+<div class="slides">
+<div>
+<div>
+<h3>Einfache Statistik</h3>
+</div>
+<ul><li>
+zuerst zählt <code><span class="var">ana</span></code> nur Häufigkeiten von Bytes
+</li><li>
+mit späteren Änderungen zählt es Byte-Folgen einer festen Länge
+</li><li>
+aber zum Anfang werden nur einzelne Bytes berücksichtigt
+</li></ul>
+</div>
+<div><div>
+<code>
+<span class="macro">@def(<span class="name">ana main prereqs</span>)</span><br/>
+<span class="in1"></span><span class="keyword">#include</span> &lt;<span class="var">iostream</span>&gt;<br/>
+<span class="macro">@end(<span class="name">ana main prereqs</span>)</span><br/>
+</code></div>
+<ul><li>
+benötigt Standard Ein- und Ausgabe
+</li></ul>
+</div>
+<div><div>
+<code>
+<span class="macro">@def(<span class="name">def collection</span>)</span><br/>
+<span class="in1"></span><span class="keyword">using</span> <span class="type">Collection</span> =<br/>
+<span class="in2"></span><span class="type">std</span>::<span class="type">map</span>&lt;<span class="type">char</span>, <span class="type">int</span>&gt;;<br/>
+<span class="macro">@end(<span class="name">def collection</span>)</span><br/>
+</code></div>
+<ul><li>
+für jedes Byte wird ein eigener Zähler benutzt
+</li><li>
+eigenes Fragment, da es später überschrieben wird
+</li></ul>
+</div>
+<div><div>
+<code>
+<span class="macro">@add(<span class="name">ana main prereqs</span>)</span><br/>
+<span class="in1"></span><span class="keyword">#include</span> &lt;<span class="type">map</span>&gt;<br/>
+<span class="in1"></span><span class="macro">@put(<span class="name">def collection</span>)</span>;<br/>
+<span class="in1"></span><span class="type">Collection</span> <span class="var">collection</span>;<br/>
+<span class="macro">@end(<span class="name">ana main prereqs</span>)</span><br/>
+</code></div>
+<ul><li>
+es gibt eine globale Variable mit den Häufigkeiten
+</li></ul>
+</div>
+<div><div>
+<code>
+<span class="macro">@def(<span class="name">read input</span>)</span><br/>
+<span class="in1"></span><span class="macro">@put(<span class="name">init key</span>)</span>;<br/>
+<span class="in1"></span><span class="keyword">while</span> (<span class="type">std</span>::<span class="var">cin</span>.<span class="fn">get</span>(<span class="var">ch</span>)) {<br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">add to collection</span>)</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">read input</span>)</span><br/>
+</code></div>
+<ul><li>
+jedes gelesene Zeichen wird in die Statistik integriert
+</li></ul>
+</div>
+<div><div>
+<code>
+<span class="macro">@def(<span class="name">add to collection</span>)</span><br/>
+<span class="in1"></span>++<span class="var">collection</span>[<span class="var">ch</span>];<br/>
+<span class="macro">@end(<span class="name">add to collection</span>)</span><br/>
+</code></div>
+<ul><li>
+fügt Zeichen in die Statistik ein
+</li><li>
+eigenes Fragment, um es später zu ersetzen
+</li></ul>
+</div>
+<div><div>
+<code>
+<span class="macro">@def(<span class="name">write table</span>)</span><br/>
+<span class="in1"></span><span class="keyword">for</span> (<span class="type">const</span> <span class="type">auto</span> &amp;<span class="var">e</span> : <span class="var">collection</span>) {<br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">write key</span>)</span>;<br/>
+<span class="in2"></span><span class="type">std</span>::<span class="var">cout</span> &lt;&lt; <span class="str">"\t"</span> &lt;&lt;<br/>
+<span class="in3"></span><span class="var">e</span>.<span class="var">second</span> &lt;&lt; <span class="str">"\n"</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">write table</span>)</span><br/>
+</code></div>
+<ul><li>
+jeder Eintrag der Statistik wird ausgegeben
+</li></ul>
+</div>
+<div><div>
+<code>
+<span class="macro">@add(<span class="name">ana main prereqs</span>)</span><br/>
+<span class="in1"></span><span class="keyword">#include</span> &lt;<span class="var">cctype</span>&gt;<br/>
+<span class="in1"></span><span class="type">void</span> <span class="fn">write_byte</span>(<span class="type">char</span> <span class="var">b</span>) {<br/>
+<span class="in2"></span><span class="keyword">if</span> (<span class="fn">isprint</span>(<span class="var">b</span>) &amp;&amp;<br/>
+<span class="in3"></span><span class="var">b</span> != <span class="str">'%'</span> &amp;&amp; <span class="var">b</span> &gt; <span class="str">' '</span><br/>
+<span class="in2"></span>) {<br/>
+<span class="in3"></span><span class="type">std</span>::<span class="var">cout</span> &lt;&lt; <span class="var">b</span>;<br/>
+<span class="in2"></span>} <span class="keyword">else</span> {<br/>
+<span class="in3"></span><span class="keyword">static</span> <span class="type">const</span> <span class="type">char</span> <span class="var">digits</span>[] =<br/>
+<span class="in4"></span><span class="str">"0123456789abcdef"</span>;<br/>
+<span class="in3"></span><span class="type">std</span>::<span class="var">cout</span> &lt;&lt; <span class="str">'%'</span> &lt;&lt;<br/>
+<span class="in4"></span><span class="var">digits</span>[(<span class="var">b</span> &gt;&gt; <span class="num">4</span>) &amp; <span class="num">0xf</span>] &lt;&lt;<br/>
+<span class="in4"></span><span class="var">digits</span>[<span class="var">b</span> &amp; <span class="num">0xf</span>];<br/>
+<span class="in2"></span>}<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">ana main prereqs</span>)</span><br/>
+</code></div>
+<ul><li>
+druckbare Zeichen werden direkt ausgegeben
+</li><li>
+andere Bytes werden mit dem Präfix <code>\<span class="var">x</span></code> als zwei hexadezimale Ziffern  ausgegeben
+</li></ul>
+</div>
+<div><div>
+<code>
+<span class="macro">@def(<span class="name">write key</span>)</span><br/>
+<span class="in1"></span><span class="fn">write_byte</span>(<span class="var">e</span>.<span class="var">first</span>);<br/>
+<span class="macro">@end(<span class="name">write key</span>)</span><br/>
+</code></div>
+<ul><li>
+gibt den Schlüssel aus
+</li><li>
+eigenes Fragment, da sich der Typ des Schlüssels später ändert
+</li></ul>
+</div>
+</div>
+<h3>Byte-Folgen analysieren</h3>
+<div class="slides">
+<div>
+<div>
+<h3>Byte-Folgen analysieren</h3>
+</div>
+<ul><li>
+passt das Programm an, um ganze Byte-Folgen fester Länge zu analysieren
+</li><li>
+anstatt nur einzelner Bytes
+</li></ul>
+</div>
+<div><div>
+<code>
+<span class="macro">@rep(<span class="name">write key</span>)</span><br/>
+<span class="macro">@end(<span class="name">write key</span>)</span><br/>
+</code></div>
+<ul><li>
+löscht das Fragment, da es sonst Zwischenstände gibt, die nicht  kompilieren
+</li><li>
+nach der Typ-Änderung werden die Fragmente neu gefüllt
+</li></ul>
+</div>
+<div><div>
+<code>
+<span class="macro">@rep(<span class="name">add to collection</span>)</span><br/>
+<span class="macro">@end(<span class="name">add to collection</span>)</span><br/>
+</code></div>
+<ul><li>
+löscht das Fragment, da es sonst Zwischenstände gibt, die nicht  kompilieren
+</li><li>
+nach der Typ-Änderung werden die Fragmente neu gefüllt
+</li></ul>
+</div>
+<div><div>
+<code>
+<span class="macro">@inc(<span class="name"><a href="key.html">key.md</a></span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@rep(<span class="name">def collection</span>)</span><br/>
+<span class="in1"></span><span class="macro">@Mul(<span class="name">key</span>)</span>;<br/>
+<span class="in1"></span><span class="keyword">using</span> <span class="type">Collection</span> =<br/>
+<span class="in2"></span><span class="type">std</span>::<span class="type">map</span>&lt;<span class="type">Key</span>, <span class="type">int</span>&gt;;<br/>
+<span class="macro">@end(<span class="name">def collection</span>)</span><br/>
+</code></div>
+<ul><li>
+Collection zählt nun <code><span class="type">Key</span></code> Instanzen
+</li></ul>
+</div>
+<div><div>
+<code>
+<span class="macro">@def(<span class="name">init key</span>)</span><br/>
+<span class="in1"></span><span class="fn">init</span>(<span class="var">key</span>);<br/>
+<span class="macro">@end(<span class="name">init key</span>)</span><br/>
+</code></div>
+</div>
+<div><div>
+<code>
+<span class="macro">@rep(<span class="name">add to collection</span>)</span><br/>
+<span class="in1"></span><span class="fn">push</span>(<span class="var">key</span>, <span class="var">ch</span>);<br/>
+<span class="in1"></span>++<span class="var">collection</span>[<span class="var">key</span>];<br/>
+<span class="macro">@end(<span class="name">add to collection</span>)</span><br/>
+</code></div>
+<ul><li>
+passt Schlüssel an
+</li><li>
+und zählt neuen Schlüssel 
+</li></ul>
+</div>
+<div><div>
+<code>
+<span class="macro">@rep(<span class="name">write key</span>)</span><br/>
+<span class="in1"></span><span class="keyword">for</span> (<br/>
+<span class="in2"></span><span class="type">unsigned</span> <span class="var">i</span> = <span class="num">0</span>; <span class="var">i</span> &lt; <span class="var">key_length</span>; ++<span class="var">i</span><br/>
+<span class="in1"></span>) {<br/>
+<span class="in2"></span><span class="fn">write_byte</span>(<span class="var">e</span>.<span class="var">first</span>[<span class="var">i</span>]);<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">write key</span>)</span><br/>
+</code></div>
+<ul><li>
+gibt alle Bytes des Schlüssels aus
+</li></ul>
+</div>
+</div>
+<h3>Andere Längen der Byte-Folgen</h3>
+<div class="slides">
+<div>
+<div>
+<h3>Andere Längen der Byte-Folgen</h3>
+</div>
+<ul><li>
+als Vorgabe werden Byte-Folgen der Länge 2 betrachtet
+</li><li>
+um andere Längen zu verwenden, kann die neue Länge mit der Option  <code>-<span class="var">n</span></code> auf der Kommandozeile angegeben werden
+</li><li>
+so betrachtet zum Beispiel <code>-<span class="var">n3</span></code> Byte-Folgen der Länge 3
+</li></ul>
+</div>
+<div><div>
+<code>
+<span class="macro">@def(<span class="name">parse args</span>)</span><br/>
+<span class="in1"></span><span class="keyword">if</span> (<span class="var">argc</span> == <span class="num">2</span>) {<br/>
+<span class="in2"></span><span class="type">const</span> <span class="type">char</span> *<span class="var">arg</span> { <span class="var">argv</span>[<span class="num">1</span>] };<br/>
+<span class="in2"></span><span class="keyword">if</span> (<br/>
+<span class="in3"></span><span class="var">arg</span>[<span class="num">0</span>] == <span class="str">'-'</span> &amp;&amp;<br/>
+<span class="in4"></span><span class="var">arg</span>[<span class="num">1</span>] == <span class="str">'n'</span><br/>
+<span class="in2"></span>) {<br/>
+<span class="in3"></span><span class="macro">@put(<span class="name">change length</span>)</span>;<br/>
+<span class="in2"></span>}<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">parse args</span>)</span><br/>
+</code></div>
+<ul><li>
+bearbeite Option <code>-<span class="var">n</span></code>
+</li></ul>
+</div>
+<div><div>
+<code>
+<span class="macro">@def(<span class="name">change length</span>)</span><br/>
+<span class="in1"></span><span class="var">key_length</span> = <span class="type">std</span>::<span class="fn">stoi</span>(<span class="var">arg</span> + <span class="num">2</span>);<br/>
+<span class="in1"></span><span class="keyword">if</span> (<span class="var">key_length</span> &lt; <span class="num">1</span>) {<br/>
+<span class="in2"></span><span class="type">std</span>::<span class="var">cerr</span> &lt;&lt; <span class="str">"wrong length\n"</span>;<br/>
+<span class="in2"></span><span class="var">key_length</span> = <span class="num">2</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">change length</span>)</span><br/>
+</code></div>
+<ul><li>
+setze neue Länge
+</li><li>
+<code><span class="var">key</span></code> wird neu instantiiert
+</li><li>
+wenn die Länge zu kurz ist, wird statt dessen 2 verwendet
+</li></ul>
+</div>
+</body>
+</html>

@@ -1,130 +1,54 @@
 
-#line 11 "index.md"
+#line 6 "ana.md"
 
 	
-#line 34 "index.md"
+#line 29 "ana.md"
 
 	#include <iostream>
 
-#line 50 "index.md"
+#line 45 "ana.md"
 
 	#include <map>
 	
-#line 251 "index.md"
+#line 138 "ana.md"
 
 	
-#line 138 "index.md"
+#line 4 "key.md"
 
-	
-#line 144 "index.md"
+	using Key = std::string;
+	unsigned key_length { 2 };
+	Key key;
 
-	
-#line 182 "index.md"
+#line 12 "key.md"
 
-	#include <cstring>
-
-#line 145 "index.md"
-;
-	#include <memory>
-	class Key {
-		private:
-			std::unique_ptr<char> _key;
-		public:
-			
-#line 163 "index.md"
-
-	static int length;
-
-#line 189 "index.md"
-
-	Key():
-		_key { new char[length] }
-	{
-		memset(&*_key, 0, length);
-	}
-
-#line 200 "index.md"
-
-	Key(const Key &other):
-		_key { new char[length] }
-	{
-		memcpy(
-			&*_key, &*other._key, length
-		);
-	}
-
-#line 213 "index.md"
-
-	Key &operator=(const Key &other) {
-		memcpy(
-			&*_key, &*other._key, length
-		);
-		return *this;
-	}
-
-#line 225 "index.md"
-
-	bool operator==(
-		const Key &other
-	) const {
-		return memcmp(
-			&*_key, &*other._key, length
-		) == 0;
-	}
-
-#line 238 "index.md"
-
-	bool operator<(
-		const Key &other
-	) const {
-		return memcmp(
-			&*_key, &*other._key, length
-		) < 0;
-	}
-
-#line 261 "index.md"
-
-	void push(char ch) {
-		if (length > 0) {
-			memmove(
-				&*_key, &*_key + 1,
-				length - 1
-			);
-			(&*_key)[length - 1] = ch;
+	void init(Key &k) {
+		k = std::string { };
+		for (unsigned i { 0 }; i < key_length; ++i) {
+			k += '\0';
 		}
 	}
 
-#line 286 "index.md"
+#line 23 "key.md"
 
-	char operator[](int i) const {
-		return (&*_key)[i];
+	void push(Key &key, char ch) {
+		if (key.size() > 0) {
+			for (unsigned i = 1; i < key.size(); ++i) {
+				key[i - 1] = key[i];
+			}
+			key[key.size() - 1] = ch;
+		}
 	}
 
-#line 151 "index.md"
+#line 139 "ana.md"
 ;
-	};
-	
-#line 175 "index.md"
-
-	int Key::length { 2 };
-
-#line 153 "index.md"
-;
-
-#line 139 "index.md"
-;
-
-#line 252 "index.md"
-
 	using Collection =
 		std::map<Key, int>;
-	Key key;
 
-#line 52 "index.md"
+#line 47 "ana.md"
 ;
 	Collection collection;
 
-#line 88 "index.md"
+#line 84 "ana.md"
 
 	#include <cctype>
 	void write_byte(char b) {
@@ -141,13 +65,13 @@
 		}
 	}
 
-#line 12 "index.md"
+#line 7 "ana.md"
 ;
 	int main(
 		int argc, const char *argv[]
 	) {
 		
-#line 312 "index.md"
+#line 179 "ana.md"
 
 	if (argc == 2) {
 		const char *arg { argv[1] };
@@ -156,59 +80,64 @@
 				arg[1] == 'n'
 		) {
 			
-#line 327 "index.md"
+#line 194 "ana.md"
 
-	Key::length = std::stoi(arg + 2);
-	if (Key::length < 1) {
+	key_length = std::stoi(arg + 2);
+	if (key_length < 1) {
 		std::cerr << "wrong length\n";
-		Key::length = 2;
+		key_length = 2;
 	}
-	key.~Key();
-	new (&key) Key { };
 
-#line 319 "index.md"
+#line 186 "ana.md"
 ;
 		}
 	}
 
-#line 16 "index.md"
+#line 11 "ana.md"
 ;
 		char ch;
 		
-#line 59 "index.md"
+#line 54 "ana.md"
 
+	
+#line 147 "ana.md"
+
+	init(key);
+
+#line 55 "ana.md"
+;
 	while (std::cin.get(ch)) {
 		
-#line 277 "index.md"
+#line 153 "ana.md"
 
-	key.push(ch);
+	push(key, ch);
 	++collection[key];
 
-#line 61 "index.md"
+#line 57 "ana.md"
 ;
 	}
 
-#line 18 "index.md"
+#line 13 "ana.md"
 ;
 		
-#line 77 "index.md"
+#line 73 "ana.md"
 
 	for (const auto &e : collection) {
 		
-#line 295 "index.md"
+#line 162 "ana.md"
 
 	for (
-		int i = 0; i < Key::length; ++i
+		unsigned i = 0; i < key_length; ++i
 	) {
 		write_byte(e.first[i]);
 	}
 
-#line 79 "index.md"
+#line 75 "ana.md"
 ;
 		std::cout << "\t" <<
 			e.second << "\n";
 	}
 
-#line 19 "index.md"
+#line 14 "ana.md"
 ;
 	}
