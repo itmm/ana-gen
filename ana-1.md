@@ -1,6 +1,11 @@
 # Dateien analysieren
 * `ana` erstellt Statistiken der Verteilungen von Byte-Folgen in
   Dateien
+* die erste Version des Programms analysiert nur Byte-Folgen der Länge
+  eins
+* also die die Häufigkeiten der einzelnen Bytes
+* das Programm wird später für beliebige Byte-Folgen fester Länge
+  erweitert
 
 ```
 @Def(file: ana.cpp)
@@ -9,7 +14,6 @@
 		int argc, const char *argv[]
 	) {
 		@Put(parse args);
-		char ch;
 		@put(read input);
 		@put(write table);
 	}
@@ -18,19 +22,11 @@
 * die Funktion `@f(main)` wertet Argumente der Kommandozeile aus
 * dann liest `@f(main)` die Standard-Eingabe komplett und wertet sie aus
 * zum Schluss schreibt `@f(main)` die resultierende Statistik in die
-  Standard-Eingabe
+  Standard-Ausgabe
 
-### Einfache Statistik
-* zuerst zählt `ana` nur Häufigkeiten von Bytes
-* mit späteren Änderungen zählt es Byte-Folgen einer festen Länge
-* aber zum Anfang werden nur einzelne Bytes berücksichtigt
-
-```
-@def(main prereqs)
-	#include <iostream>
-@end(main prereqs)
-```
-* benötigt Standard Ein- und Ausgabe
+## Datenstruktur für Statistik
+* für jedes gelesene Byte wird gezählt, wie häufig der Byte-Wert in der
+  gelesenen Eingabe vorkommt
 
 ```
 @Def(def collection)
@@ -39,26 +35,39 @@
 @End(def collection)
 ```
 * für jedes Byte wird ein eigener Zähler benutzt
-* eigenes Fragment, da es später überschrieben wird
+* später wird die `Collection` umdefinieren
+* daher ist die Definition in einem eigenen globalen Fragment gekapselt
 
 ```
-@add(main prereqs)
+@def(main prereqs)
 	#include <map>
 	@Put(def collection);
 	Collection collection;
 @end(main prereqs)
 ```
-* es gibt eine globale Variable mit den Häufigkeiten
+* es gibt eine globale Variable, welche die Häufigkeiten enthält
+
+```
+@add(main prereqs)
+	#include <iostream>
+@end(main prereqs)
+```
+* benötigt Standard Ein- und Ausgabe
 
 ```
 @def(read input)
-	@Put(init key);
+	@Put(init state);
+	char ch;
 	while (std::cin.get(ch)) {
 		@Put(add to collection);
 	}
 @end(read input)
 ```
 * jedes gelesene Zeichen wird in die Statistik integriert
+* später benötigt das Programm einen Ort, um den aktuellen Schlüssel zu
+  initialisieren
+* das passende Fragment wird schon vorab definiert
+* aber nicht gefüllt
 
 ```
 @Def(add to collection)
@@ -66,7 +75,7 @@
 @End(add to collection)
 ```
 * fügt Zeichen in die Statistik ein
-* eigenes Fragment, um es später zu ersetzen
+* eigenes globales Fragment, um es später zu ersetzen
 
 
 ```

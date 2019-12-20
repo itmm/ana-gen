@@ -64,35 +64,39 @@
 
 	#include <map>
 	
-#line 4 "key.md"
+#line 8 "prefix.md"
 
-	using Key = std::string;
-	unsigned key_length { 2 };
-	Key key;
+	#include <string>
+	using Prefix = std::string;
+	unsigned prefix_length { 2 };
 
-#line 12 "key.md"
+#line 18 "prefix.md"
 
-	void init(Key &k) {
-		k = std::string { };
-		for (unsigned i { 0 }; i < key_length; ++i) {
-			k += '\0';
+	void init(Prefix &p) {
+		p = std::string { };
+		for (unsigned i { 0 };
+			i < prefix_length; ++i
+		) {
+			p += '\0';
 		}
 	}
 
-#line 23 "key.md"
+#line 32 "prefix.md"
 
-	void push(Key &key, char ch) {
-		if (key.size() > 0) {
-			for (unsigned i = 1; i < key.size(); ++i) {
-				key[i - 1] = key[i];
+	void push(Prefix &p, char ch) {
+		if (p.size() > 0) {
+			for (unsigned i = 1;
+				i < p.size(); ++i
+			) {
+				p[i - 1] = p[i];
 			}
-			key[key.size() - 1] = ch;
+			p[p.size() - 1] = ch;
 		}
 	}
 
 #line 177 "gen.md"
 
-	using Collection = std::map<Key, List>;
+	using Collection = std::map<Prefix, List>;
 	Collection collection;
 
 #line 15 "gen.md"
@@ -100,7 +104,7 @@
 	
 #line 225 "gen.md"
 
-	Key prev;
+	Prefix prev;
 	#include <iostream>
 
 #line 16 "gen.md"
@@ -157,7 +161,7 @@
 #line 184 "gen.md"
 
 	bool first { true };
-	Key k;
+	Prefix k;
 	for (;;) {
 		std::string key;
 		std::cin >> key;
@@ -167,7 +171,7 @@
 		if (! std::cin) { break; }
 		key = normalize(key);
 		if (first) {
-			key_length = key.size() - 1;
+			prefix_length = key.size() - 1;
 			first = false;
 			init(k);
 		}

@@ -1,54 +1,58 @@
 
-#line 6 "ana-1.md"
+#line 11 "ana-1.md"
 
 	
-#line 29 "ana-1.md"
-
-	#include <iostream>
-
-#line 45 "ana-1.md"
+#line 42 "ana-1.md"
 
 	#include <map>
 	
 #line 26 "ana-n.md"
 
 	
-#line 4 "key.md"
+#line 8 "prefix.md"
 
-	using Key = std::string;
-	unsigned key_length { 2 };
-	Key key;
+	#include <string>
+	using Prefix = std::string;
+	unsigned prefix_length { 2 };
 
-#line 12 "key.md"
+#line 18 "prefix.md"
 
-	void init(Key &k) {
-		k = std::string { };
-		for (unsigned i { 0 }; i < key_length; ++i) {
-			k += '\0';
+	void init(Prefix &p) {
+		p = std::string { };
+		for (unsigned i { 0 };
+			i < prefix_length; ++i
+		) {
+			p += '\0';
 		}
 	}
 
-#line 23 "key.md"
+#line 32 "prefix.md"
 
-	void push(Key &key, char ch) {
-		if (key.size() > 0) {
-			for (unsigned i = 1; i < key.size(); ++i) {
-				key[i - 1] = key[i];
+	void push(Prefix &p, char ch) {
+		if (p.size() > 0) {
+			for (unsigned i = 1;
+				i < p.size(); ++i
+			) {
+				p[i - 1] = p[i];
 			}
-			key[key.size() - 1] = ch;
+			p[p.size() - 1] = ch;
 		}
 	}
 
 #line 27 "ana-n.md"
 ;
 	using Collection =
-		std::map<Key, int>;
+		std::map<Prefix, int>;
 
-#line 47 "ana-1.md"
+#line 44 "ana-1.md"
 ;
 	Collection collection;
 
-#line 84 "ana-1.md"
+#line 51 "ana-1.md"
+
+	#include <iostream>
+
+#line 93 "ana-1.md"
 
 	#include <cctype>
 	void write_byte(char b) {
@@ -65,13 +69,13 @@
 		}
 	}
 
-#line 7 "ana-1.md"
+#line 12 "ana-1.md"
 ;
 	int main(
 		int argc, const char *argv[]
 	) {
 		
-#line 67 "ana-n.md"
+#line 68 "ana-n.md"
 
 	if (argc == 2) {
 		const char *arg { argv[1] };
@@ -80,64 +84,65 @@
 				arg[1] == 'n'
 		) {
 			
-#line 82 "ana-n.md"
+#line 83 "ana-n.md"
 
-	key_length = std::stoi(arg + 2);
-	if (key_length < 1) {
+	prefix_length = std::stoi(arg + 2);
+	if (prefix_length < 1) {
 		std::cerr << "wrong length\n";
-		key_length = 2;
+		prefix_length = 2;
 	}
 
-#line 74 "ana-n.md"
+#line 75 "ana-n.md"
 ;
 		}
 	}
 
-#line 11 "ana-1.md"
+#line 16 "ana-1.md"
 ;
-		char ch;
 		
-#line 54 "ana-1.md"
+#line 58 "ana-1.md"
 
 	
 #line 35 "ana-n.md"
 
-	init(key);
+	Prefix state;
+	init(state);
 
-#line 55 "ana-1.md"
+#line 59 "ana-1.md"
 ;
+	char ch;
 	while (std::cin.get(ch)) {
 		
-#line 41 "ana-n.md"
+#line 42 "ana-n.md"
 
-	push(key, ch);
-	++collection[key];
+	push(state, ch);
+	++collection[state];
 
-#line 57 "ana-1.md"
+#line 62 "ana-1.md"
 ;
 	}
 
-#line 13 "ana-1.md"
+#line 17 "ana-1.md"
 ;
 		
-#line 73 "ana-1.md"
+#line 82 "ana-1.md"
 
 	for (const auto &e : collection) {
 		
-#line 50 "ana-n.md"
+#line 51 "ana-n.md"
 
 	for (
-		unsigned i = 0; i < key_length; ++i
+		unsigned i = 0; i < prefix_length; ++i
 	) {
 		write_byte(e.first[i]);
 	}
 
-#line 75 "ana-1.md"
+#line 84 "ana-1.md"
 ;
 		std::cout << "\t" <<
 			e.second << "\n";
 	}
 
-#line 14 "ana-1.md"
+#line 18 "ana-1.md"
 ;
 	}

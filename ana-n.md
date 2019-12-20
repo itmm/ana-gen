@@ -19,28 +19,29 @@
 * nach der Typ-Änderung werden die Fragmente neu gefüllt
 
 ```
-@inc(key.md)
+@inc(prefix.md)
 ```
 
 ```
 @Rep(def collection)
-	@Mul(key);
+	@Mul(prefix);
 	using Collection =
-		std::map<Key, int>;
+		std::map<Prefix, int>;
 @End(def collection)
 ```
-* Collection zählt nun `Key` Instanzen
+* Collection zählt nun `Prefix` Instanzen
 
 ```
-@Def(init key)
-	init(key);
-@End(init key)
+@Def(init state)
+	Prefix state;
+	init(state);
+@End(init state)
 ```
 
 ```
 @Rep(add to collection)
-	push(key, ch);
-	++collection[key];
+	push(state, ch);
+	++collection[state];
 @End(add to collection)
 ```
 * passt Schlüssel an
@@ -49,7 +50,7 @@
 ```
 @Rep(write key)
 	for (
-		unsigned i = 0; i < key_length; ++i
+		unsigned i = 0; i < prefix_length; ++i
 	) {
 		write_byte(e.first[i]);
 	}
@@ -80,10 +81,10 @@
 
 ```
 @def(change length)
-	key_length = std::stoi(arg + 2);
-	if (key_length < 1) {
+	prefix_length = std::stoi(arg + 2);
+	if (prefix_length < 1) {
 		std::cerr << "wrong length\n";
-		key_length = 2;
+		prefix_length = 2;
 	}
 @end(change length)
 ```

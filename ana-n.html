@@ -41,33 +41,34 @@ nach der Typ-Änderung werden die Fragmente neu gefüllt
 </div>
 <div><div>
 <code>
-<span class="macro">@inc(<span class="name"><a href="key.html">key.md</a></span>)</span><br/>
+<span class="macro">@inc(<span class="name"><a href="prefix.html">prefix.md</a></span>)</span><br/>
 </code></div>
 </div>
 <div><div>
 <code>
 <span class="macro">@Rep(<span class="name">def collection</span>)</span><br/>
-<span class="in1"></span><span class="macro">@Mul(<span class="name">key</span>)</span>;<br/>
+<span class="in1"></span><span class="macro">@Mul(<span class="name">prefix</span>)</span>;<br/>
 <span class="in1"></span><span class="keyword">using</span> <span class="type">Collection</span> =<br/>
-<span class="in2"></span><span class="type">std</span>::<span class="type">map</span>&lt;<span class="type">Key</span>, <span class="type">int</span>&gt;;<br/>
+<span class="in2"></span><span class="type">std</span>::<span class="type">map</span>&lt;<span class="type">Prefix</span>, <span class="type">int</span>&gt;;<br/>
 <span class="macro">@End(<span class="name">def collection</span>)</span><br/>
 </code></div>
 <ul><li>
-Collection zählt nun <code><span class="type">Key</span></code> Instanzen
+Collection zählt nun <code><span class="type">Prefix</span></code> Instanzen
 </li></ul>
 </div>
 <div><div>
 <code>
-<span class="macro">@Def(<span class="name">init key</span>)</span><br/>
-<span class="in1"></span><span class="fn">init</span>(<span class="var">key</span>);<br/>
-<span class="macro">@End(<span class="name">init key</span>)</span><br/>
+<span class="macro">@Def(<span class="name">init state</span>)</span><br/>
+<span class="in1"></span><span class="type">Prefix</span> <span class="var">state</span>;<br/>
+<span class="in1"></span><span class="fn">init</span>(<span class="var">state</span>);<br/>
+<span class="macro">@End(<span class="name">init state</span>)</span><br/>
 </code></div>
 </div>
 <div><div>
 <code>
 <span class="macro">@Rep(<span class="name">add to collection</span>)</span><br/>
-<span class="in1"></span><span class="fn">push</span>(<span class="var">key</span>, <span class="var">ch</span>);<br/>
-<span class="in1"></span>++<span class="var">collection</span>[<span class="var">key</span>];<br/>
+<span class="in1"></span><span class="fn">push</span>(<span class="var">state</span>, <span class="var">ch</span>);<br/>
+<span class="in1"></span>++<span class="var">collection</span>[<span class="var">state</span>];<br/>
 <span class="macro">@End(<span class="name">add to collection</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -80,7 +81,7 @@ und zählt neuen Schlüssel
 <code>
 <span class="macro">@Rep(<span class="name">write key</span>)</span><br/>
 <span class="in1"></span><span class="keyword">for</span> (<br/>
-<span class="in2"></span><span class="type">unsigned</span> <span class="var">i</span> = <span class="num">0</span>; <span class="var">i</span> &lt; <span class="var">key_length</span>; ++<span class="var">i</span><br/>
+<span class="in2"></span><span class="type">unsigned</span> <span class="var">i</span> = <span class="num">0</span>; <span class="var">i</span> &lt; <span class="var">prefix_length</span>; ++<span class="var">i</span><br/>
 <span class="in1"></span>) {<br/>
 <span class="in2"></span><span class="fn">write_byte</span>(<span class="var">e</span>.<span class="var">first</span>[<span class="var">i</span>]);<br/>
 <span class="in1"></span>}<br/>
@@ -126,10 +127,10 @@ bearbeite Option <code>-<span class="var">n</span></code>
 <div><div>
 <code>
 <span class="macro">@def(<span class="name">change length</span>)</span><br/>
-<span class="in1"></span><span class="var">key_length</span> = <span class="type">std</span>::<span class="fn">stoi</span>(<span class="var">arg</span> + <span class="num">2</span>);<br/>
-<span class="in1"></span><span class="keyword">if</span> (<span class="var">key_length</span> &lt; <span class="num">1</span>) {<br/>
+<span class="in1"></span><span class="var">prefix_length</span> = <span class="type">std</span>::<span class="fn">stoi</span>(<span class="var">arg</span> + <span class="num">2</span>);<br/>
+<span class="in1"></span><span class="keyword">if</span> (<span class="var">prefix_length</span> &lt; <span class="num">1</span>) {<br/>
 <span class="in2"></span><span class="type">std</span>::<span class="var">cerr</span> &lt;&lt; <span class="str">"wrong length\n"</span>;<br/>
-<span class="in2"></span><span class="var">key_length</span> = <span class="num">2</span>;<br/>
+<span class="in2"></span><span class="var">prefix_length</span> = <span class="num">2</span>;<br/>
 <span class="in1"></span>}<br/>
 <span class="macro">@end(<span class="name">change length</span>)</span><br/>
 </code></div>

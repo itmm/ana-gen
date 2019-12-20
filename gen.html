@@ -106,7 +106,7 @@
 </div>
 <div><div>
 <code>
-<span class="macro">@inc(<span class="name"><a href="key.html">key.md</a></span>)</span><br/>
+<span class="macro">@inc(<span class="name"><a href="prefix.html">prefix.md</a></span>)</span><br/>
 </code></div>
 </div>
 <div><div>
@@ -198,8 +198,8 @@
 <span class="in1"></span>};<br/>
 <br/>
 <span class="in1"></span><span class="keyword">#include</span> &lt;<span class="type">map</span>&gt;<br/>
-<span class="in1"></span><span class="macro">@Mul(<span class="name">key</span>)</span><br/>
-<span class="in1"></span><span class="keyword">using</span> <span class="type">Collection</span> = <span class="type">std</span>::<span class="type">map</span>&lt;<span class="type">Key</span>, <span class="type">List</span>&gt;;<br/>
+<span class="in1"></span><span class="macro">@Mul(<span class="name">prefix</span>)</span><br/>
+<span class="in1"></span><span class="keyword">using</span> <span class="type">Collection</span> = <span class="type">std</span>::<span class="type">map</span>&lt;<span class="type">Prefix</span>, <span class="type">List</span>&gt;;<br/>
 <span class="in1"></span><span class="type">Collection</span> <span class="var">collection</span>;<br/>
 <span class="macro">@end(<span class="name">static next prereqs</span>)</span><br/>
 </code></div>
@@ -208,7 +208,7 @@
 <code>
 <span class="macro">@def(<span class="name">read receipt</span>)</span><br/>
 <span class="in1"></span><span class="type">bool</span> <span class="var">first</span> { <span class="num">true</span> };<br/>
-<span class="in1"></span><span class="type">Key</span> <span class="var">k</span>;<br/>
+<span class="in1"></span><span class="type">Prefix</span> <span class="var">k</span>;<br/>
 <span class="in1"></span><span class="keyword">for</span> (;;) {<br/>
 <span class="in2"></span><span class="type">std</span>::<span class="type">string</span> <span class="var">key</span>;<br/>
 <span class="in2"></span><span class="type">std</span>::<span class="var">cin</span> &gt;&gt; <span class="var">key</span>;<br/>
@@ -218,7 +218,7 @@
 <span class="in2"></span><span class="keyword">if</span> (! <span class="type">std</span>::<span class="var">cin</span>) { <span class="keyword">break</span>; }<br/>
 <span class="in2"></span><span class="var">key</span> = <span class="fn">normalize</span>(<span class="var">key</span>);<br/>
 <span class="in2"></span><span class="keyword">if</span> (<span class="var">first</span>) {<br/>
-<span class="in3"></span><span class="var">key_length</span> = <span class="var">key</span>.<span class="fn">size</span>() - <span class="num">1</span>;<br/>
+<span class="in3"></span><span class="var">prefix_length</span> = <span class="var">key</span>.<span class="fn">size</span>() - <span class="num">1</span>;<br/>
 <span class="in3"></span><span class="var">first</span> = <span class="num">false</span>;<br/>
 <span class="in3"></span><span class="fn">init</span>(<span class="var">k</span>);<br/>
 <span class="in2"></span>}<br/>
@@ -252,7 +252,7 @@
 <div><div>
 <code>
 <span class="macro">@rep(<span class="name">next prereqs</span>)</span><br/>
-<span class="in1"></span><span class="type">Key</span> <span class="var">prev</span>;<br/>
+<span class="in1"></span><span class="type">Prefix</span> <span class="var">prev</span>;<br/>
 <span class="in1"></span><span class="keyword">#include</span> &lt;<span class="var">iostream</span>&gt;<br/>
 <span class="macro">@end(<span class="name">next prereqs</span>)</span><br/>
 </code></div>

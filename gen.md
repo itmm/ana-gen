@@ -84,7 +84,7 @@
 ```
 
 ```
-@inc(key.md)
+@inc(prefix.md)
 ```
 
 ```
@@ -174,8 +174,8 @@
 	};
 
 	#include <map>
-	@Mul(key)
-	using Collection = std::map<Key, List>;
+	@Mul(prefix)
+	using Collection = std::map<Prefix, List>;
 	Collection collection;
 @end(static next prereqs)
 ```
@@ -183,7 +183,7 @@
 ```
 @def(read receipt)
 	bool first { true };
-	Key k;
+	Prefix k;
 	for (;;) {
 		std::string key;
 		std::cin >> key;
@@ -193,7 +193,7 @@
 		if (! std::cin) { break; }
 		key = normalize(key);
 		if (first) {
-			key_length = key.size() - 1;
+			prefix_length = key.size() - 1;
 			first = false;
 			init(k);
 		}
@@ -223,7 +223,7 @@
 
 ```
 @rep(next prereqs)
-	Key prev;
+	Prefix prev;
 	#include <iostream>
 @end(next prereqs)
 ```
