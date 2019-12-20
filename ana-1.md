@@ -98,18 +98,27 @@
 		) {
 			std::cout << b;
 		} else {
-			static const char digits[] =
-				"0123456789abcdef";
-			std::cout << '%' <<
-				digits[(b >> 4) & 0xf] <<
-				digits[b & 0xf];
+			@put(write escaped);
 		}
 	}
 @end(main prereqs)
 ```
 * druckbare Zeichen werden direkt ausgegeben
-* andere Bytes werden mit dem Präfix `\x` als zwei hexadezimale Ziffern
+* andere Bytes werden escaped
+* so können Unix-Tools die Datei in Spalten aufteilen
+
+```
+@def(write escaped)
+	static const char digits[] =
+		"0123456789abcdef";
+	std::cout << '%' <<
+		digits[(b >> 4) & 0xf] <<
+		digits[b & 0xf];
+@end(write escaped)
+```
+* andere Bytes werden mit dem Präfix `%` als zwei hexadezimale Ziffern
   ausgegeben
+* auch das Zeichen `%` muss so kodiert werden
 
 ```
 @Def(write key)

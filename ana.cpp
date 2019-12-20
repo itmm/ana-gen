@@ -61,11 +61,17 @@
 		) {
 			std::cout << b;
 		} else {
-			static const char digits[] =
-				"0123456789abcdef";
-			std::cout << '%' <<
-				digits[(b >> 4) & 0xf] <<
-				digits[b & 0xf];
+			
+#line 111 "ana-1.md"
+
+	static const char digits[] =
+		"0123456789abcdef";
+	std::cout << '%' <<
+		digits[(b >> 4) & 0xf] <<
+		digits[b & 0xf];
+
+#line 101 "ana-1.md"
+;
 		}
 	}
 

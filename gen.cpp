@@ -5,64 +5,15 @@
 #line 14 "gen.md"
 
 	
-#line 120 "gen.md"
+#line 88 "gen.md"
 
-	#include <memory>
-	#include <random>
-	class Entry {
-		private:
-			std::unique_ptr<Entry> _next;
-			char _ch;
-			int _count;
-		public:
-			Entry(char ch, int count): _ch { ch }, _count { count} { }
-			char ch() const { return _ch; }
-			int count() const { return _count; }
-			bool last() const { return ! _next; }
-			Entry &next() const { return *_next; }
-			void add(std::unique_ptr<Entry> &&entry) {
-				if (last()) {
-					_next = std::move(entry);
-				} else {
-					_next->add(std::move(entry));
-				}
-			}
-	};
-
-	std::random_device _dev;
-	std::mt19937 _rng { _dev() };
-
-	class List {
-		private:
-			std::unique_ptr<Entry> _entries;
-			int _sum { 0 };
-		public:
-			void add(char ch, int count) {
-				auto entry { std::make_unique<Entry>(ch, count) };
-				if (_entries) {
-					_entries->add(std::move(entry));
-				} else {
-					_entries = std::move(entry);
-				}
-				_sum += count;
-			}
-			char next() {
-				if (_sum > 0) {
-					auto dist { std::uniform_int_distribution<std::mt19937::result_type>(0, _sum - 1) };
-					int result = dist(_rng);
-					for (Entry *e { &*_entries };; e = &e->next()) {
-						if (result < e->count()) {
-							return e->ch();
-						}
-						result -= e->count();
-						if (e->last()) { break; }
-					}
-				}
-				return '\0';
-			}
-	};
+	
+#line 45 "gen.md"
 
 	#include <map>
+
+#line 55 "gen.md"
+
 	
 #line 8 "prefix.md"
 
@@ -94,58 +45,150 @@
 		}
 	}
 
-#line 177 "gen.md"
+#line 56 "gen.md"
 
-	using Collection = std::map<Prefix, List>;
+
+#line 73 "gen.md"
+
+	
+#line 61 "gen.md"
+
+	struct Entry {
+		const char ch;
+		const int count;
+		Entry (char c, int v):
+			ch { c }, count { v }
+		{ }
+	};
+
+#line 119 "gen.md"
+
+	#include <random>
+	std::mt19937 _rng {
+		std::random_device{ }()
+	};
+
+
+#line 74 "gen.md"
+;
+	#include <vector>
+	class List {
+		private:
+			std::vector<Entry> _entries;
+			int _sum { 0 };
+		public:
+			
+#line 97 "gen.md"
+
+	void add(char ch, int count) {
+		_entries.emplace_back(
+			ch, count
+		);
+		_sum += count;
+	}
+
+#line 108 "gen.md"
+
+	char next() const {
+		if (_sum > 0) {
+			
+#line 129 "gen.md"
+
+	auto dist {
+		std::uniform_int_distribution<
+			std::mt19937::result_type
+		>(0, _sum - 1) };
+	int result = dist(_rng);
+
+#line 139 "gen.md"
+
+	for (const auto &i : _entries) {
+		if (result < i.count) {
+			return i.ch;
+		}
+		result -= i.count;
+	}
+
+#line 111 "gen.md"
+;
+		}
+		return '\0';
+	}
+
+#line 81 "gen.md"
+;
+	};
+
+
+#line 89 "gen.md"
+;
+	using Collection =
+		std::map<Prefix, List>;
 	Collection collection;
 
+#line 150 "gen.md"
+
+	Prefix state;
+
 #line 15 "gen.md"
-;
-	
-#line 225 "gen.md"
-
-	Prefix prev;
-	#include <iostream>
-
-#line 16 "gen.md"
 ;
 	inline bool next(char &ch) {
 		bool ok { false };
 		
-#line 238 "gen.md"
+#line 162 "gen.md"
 
-	ch = collection[prev].next();
+	ch = collection[state].next();
+	push(state, ch);
 	ok = ch != '\0';
-	push(prev, ch);
 
-#line 19 "gen.md"
+#line 18 "gen.md"
 ;
 		return ok;
 	}
 
-#line 26 "gen.md"
+#line 25 "gen.md"
 
 	#include <iostream>
 
-#line 91 "gen.md"
+#line 170 "gen.md"
+
+	
+#line 192 "gen.md"
 
 	int hex_digit(char ch) {
 		if (ch >= '0' && ch <= '9') {
 			return ch - '0';
-		} else if (ch >= 'a' && ch <= 'f') {
+		} else if (
+			ch >= 'a' && ch <= 'f'
+		) {
 			return ch - 'a' + 10;
 		} else {
-			std::cerr << "invalid digit\n";
+			std::cerr <<
+				"invalid digit\n";
 			return 0;
 		}
 	}
-	std::string normalize(const std::string &key) {
+
+#line 171 "gen.md"
+;
+	std::string normalize(
+		const std::string &key
+	) {
 		std::string result;
-		for (unsigned i { 0 }; i < key.size(); ++i) {
+		for (unsigned i { 0 };
+			i < key.size(); ++i
+		) {
 			if (key[i] == '%') {
-				result += static_cast<char>(
-					(hex_digit(key[i + 1]) << 4) + hex_digit(key[i + 2])
-				);
+				
+#line 210 "gen.md"
+
+	result += static_cast<char>(
+		(hex_digit(key[i + 1]) << 4) +
+			hex_digit(key[i + 2])
+	);
+
+#line 180 "gen.md"
+;
 				i += 2;
 			} else {
 				result += key[i];
@@ -158,7 +201,7 @@
 ;
 	int main() {
 		
-#line 184 "gen.md"
+#line 219 "gen.md"
 
 	bool first { true };
 	Prefix k;
@@ -170,34 +213,44 @@
 		std::cin >> count;
 		if (! std::cin) { break; }
 		key = normalize(key);
-		if (first) {
-			prefix_length = key.size() - 1;
-			first = false;
-			init(k);
-		}
 		
-#line 206 "gen.md"
+#line 237 "gen.md"
 
-	for (unsigned i { 0 }; i + 1 < key.size(); ++i) {
+	if (first) {
+		prefix_length = key.size() - 1;
+		first = false;
+		init(k);
+	}
+
+#line 230 "gen.md"
+;
+		
+#line 247 "gen.md"
+
+	for (unsigned i { 0 };
+		i + 1 < key.size(); ++i
+	) {
 		push(k, key[i]);
 	}
-	collection[k].add(key.back(), count);
+	collection[k].add(
+		key.back(), count
+	);
 
-#line 200 "gen.md"
+#line 231 "gen.md"
 ;
 	}
 
 #line 7 "gen.md"
 ;
 		
-#line 32 "gen.md"
+#line 31 "gen.md"
 
 	
-#line 232 "gen.md"
+#line 156 "gen.md"
 
-	init(prev);
+	init(state);
 
-#line 33 "gen.md"
+#line 32 "gen.md"
 ;
 	for (;;) {
 		char ch;
@@ -205,11 +258,11 @@
 			std::cout << ch;
 		} else {
 			
-#line 232 "gen.md"
+#line 156 "gen.md"
 
-	init(prev);
+	init(state);
 
-#line 39 "gen.md"
+#line 38 "gen.md"
 ;
 		}
 	}
