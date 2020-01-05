@@ -38,6 +38,8 @@
 	init(state);
 @End(init state)
 ```
+* Zustand ist nun eine `Prefix` Instanz
+* und die wird initialisiert
 
 ```
 @Rep(add to collection)

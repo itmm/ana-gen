@@ -81,7 +81,7 @@
 		int argc, const char *argv[]
 	) {
 		
-#line 68 "ana-n.md"
+#line 70 "ana-n.md"
 
 	if (argc == 2) {
 		const char *arg { argv[1] };
@@ -90,7 +90,7 @@
 				arg[1] == 'n'
 		) {
 			
-#line 83 "ana-n.md"
+#line 85 "ana-n.md"
 
 	prefix_length = std::stoi(arg + 2);
 	if (prefix_length < 1) {
@@ -98,7 +98,7 @@
 		prefix_length = 2;
 	}
 
-#line 75 "ana-n.md"
+#line 77 "ana-n.md"
 ;
 		}
 	}
@@ -119,7 +119,7 @@
 	char ch;
 	while (std::cin.get(ch)) {
 		
-#line 43 "ana-n.md"
+#line 45 "ana-n.md"
 
 	push(state, ch);
 	++collection[state];
@@ -135,7 +135,7 @@
 
 	for (const auto &e : collection) {
 		
-#line 52 "ana-n.md"
+#line 54 "ana-n.md"
 
 	unsigned i { 0 };
 	for (; i < prefix_length; ++i) {

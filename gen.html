@@ -48,17 +48,17 @@ generiert zufällige Zeichen
 <code>
 <span class="macro">@def(<span class="name">main prereqs</span>)</span><br/>
 <span class="in1"></span><span class="macro">@put(<span class="name">next prereqs</span>)</span>;<br/>
-<span class="in1"></span><span class="keyword">inline</span> <span class="type">bool</span> <span class="fn">next</span>(<span class="type">char</span> &amp;<span class="var">ch</span>) {<br/>
-<span class="in2"></span><span class="type">bool</span> <span class="var">ok</span> { <span class="num">false</span> };<br/>
+<span class="in1"></span><span class="type">struct</span> <span class="type">No_Next</span> { };<br/>
+<span class="in1"></span><span class="keyword">inline</span> <span class="type">char</span> <span class="fn">next</span>() {<br/>
 <span class="in2"></span><span class="macro">@put(<span class="name">next</span>)</span>;<br/>
-<span class="in2"></span><span class="keyword">return</span> <span class="var">ok</span>;<br/>
+<span class="in2"></span><span class="keyword">throw</span> <span class="type">No_Next</span> { };<br/>
 <span class="in1"></span>}<br/>
 <span class="macro">@end(<span class="name">main prereqs</span>)</span><br/>
 </code></div>
 <ul><li>
 <code><span class="fn">next</span></code> generiert das nächste Zeichen
 </li><li>
-Funktion liefert <code><span class="num">false</span></code>, wenn kein Zeichen generiert werden konnte
+wirft Exception, wenn kein Zeichen generiert werden konnte
 </li></ul>
 </div>
 <div><div>
@@ -76,10 +76,9 @@ benötigt <code><span class="type">std</span>::<span class="var">cin</span></cod
 <span class="macro">@def(<span class="name">loop</span>)</span><br/>
 <span class="in1"></span><span class="macro">@mul(<span class="name">initialise</span>)</span>;<br/>
 <span class="in1"></span><span class="keyword">for</span> (;;) {<br/>
-<span class="in2"></span><span class="type">char</span> <span class="var">ch</span>;<br/>
-<span class="in2"></span><span class="keyword">if</span> (<span class="fn">next</span>(<span class="var">ch</span>)) {<br/>
-<span class="in3"></span><span class="type">std</span>::<span class="var">cout</span> &lt;&lt; <span class="var">ch</span>;<br/>
-<span class="in2"></span>} <span class="keyword">else</span> {<br/>
+<span class="in2"></span><span class="keyword">try</span> {<br/>
+<span class="in3"></span><span class="type">std</span>::<span class="var">cout</span> &lt;&lt; <span class="fn">next</span>();<br/>
+<span class="in2"></span>} <span class="keyword">catch</span> (<span class="type">const</span> <span class="type">No_Next</span> &amp;) {<br/>
 <span class="in3"></span><span class="macro">@mul(<span class="name">initialise</span>)</span>;<br/>
 <span class="in2"></span>}<br/>
 <span class="in1"></span>}<br/>
@@ -278,11 +277,12 @@ initialsiert den Zustand auf Null-Bytes
 <code>
 <span class="macro">@def(<span class="name">next</span>)</span><br/>
 <span class="in1"></span><span class="keyword">try</span> {<br/>
-<span class="in2"></span><span class="var">ch</span> = <span class="var">collection</span>[<span class="var">state</span>].<span class="fn">next</span>();<br/>
+<span class="in2"></span><span class="type">char</span> <span class="var">ch</span> {<br/>
+<span class="in3"></span><span class="var">collection</span>[<span class="var">state</span>].<span class="fn">next</span>()<br/>
+<span class="in2"></span>};<br/>
 <span class="in2"></span><span class="fn">push</span>(<span class="var">state</span>, <span class="var">ch</span>);<br/>
-<span class="in2"></span><span class="var">ok</span> = <span class="num">true</span>;<br/>
+<span class="in2"></span><span class="keyword">return</span> <span class="var">ch</span>;<br/>
 <span class="in1"></span>} <span class="keyword">catch</span> (<span class="type">const</span> <span class="type">List</span>::<span class="type">No_Entries</span> &amp;) {<br/>
-<span class="in2"></span><span class="var">ok</span> = <span class="num">false</span>;<br/>
 <span class="in1"></span>}<br/>
 <span class="macro">@end(<span class="name">next</span>)</span><br/>
 </code></div>

@@ -5,10 +5,10 @@
 #line 21 "gen.md"
 
 	
-#line 109 "gen.md"
+#line 108 "gen.md"
 
 	
-#line 64 "gen.md"
+#line 63 "gen.md"
 
 	
 #line 8 "prefix.md"
@@ -41,17 +41,17 @@
 		}
 	}
 
-#line 65 "gen.md"
+#line 64 "gen.md"
 
 
-#line 72 "gen.md"
+#line 71 "gen.md"
 
 	#include <map>
 
-#line 92 "gen.md"
+#line 91 "gen.md"
 
 	
-#line 79 "gen.md"
+#line 78 "gen.md"
 
 	struct Entry {
 		const char ch;
@@ -61,14 +61,14 @@
 		{ }
 	};
 
-#line 146 "gen.md"
+#line 145 "gen.md"
 
 	#include <random>
 	std::mt19937 _rng {
 		std::random_device{ }()
 	};
 
-#line 93 "gen.md"
+#line 92 "gen.md"
 ;
 	#include <vector>
 	class List {
@@ -77,7 +77,7 @@
 			int _sum { 0 };
 		public:
 			
-#line 119 "gen.md"
+#line 118 "gen.md"
 
 	void add(char ch, int count) {
 		_entries.emplace_back(
@@ -86,13 +86,13 @@
 		_sum += count;
 	}
 
-#line 132 "gen.md"
+#line 131 "gen.md"
 
 	class No_Entries { };
 	char next() const {
 		if (_sum > 0) {
 			
-#line 156 "gen.md"
+#line 155 "gen.md"
 
 	auto dist {
 		std::uniform_int_distribution<
@@ -102,7 +102,7 @@
 		) };
 	int result = dist(_rng);
 
-#line 169 "gen.md"
+#line 168 "gen.md"
 
 	for (const auto &i : _entries) {
 		if (result < i.count) {
@@ -111,45 +111,46 @@
 		result -= i.count;
 	}
 
-#line 136 "gen.md"
+#line 135 "gen.md"
 ;
 		}
 		throw No_Entries { };
 	}
 
-#line 100 "gen.md"
+#line 99 "gen.md"
 ;
 	};
 
 
-#line 110 "gen.md"
+#line 109 "gen.md"
 ;
 	using Collection =
 		std::map<Prefix, List>;
 	Collection collection;
 
-#line 181 "gen.md"
+#line 180 "gen.md"
 
 	Prefix state;
 
 #line 22 "gen.md"
 ;
-	inline bool next(char &ch) {
-		bool ok { false };
+	struct No_Next { };
+	inline char next() {
 		
-#line 195 "gen.md"
+#line 194 "gen.md"
 
 	try {
-		ch = collection[state].next();
+		char ch {
+			collection[state].next()
+		};
 		push(state, ch);
-		ok = true;
+		return ch;
 	} catch (const List::No_Entries &) {
-		ok = false;
 	}
 
 #line 25 "gen.md"
 ;
-		return ok;
+		throw No_Next { };
 	}
 
 #line 34 "gen.md"
@@ -267,23 +268,22 @@
 #line 41 "gen.md"
 
 	
-#line 188 "gen.md"
+#line 187 "gen.md"
 
 	init(state);
 
 #line 42 "gen.md"
 ;
 	for (;;) {
-		char ch;
-		if (next(ch)) {
-			std::cout << ch;
-		} else {
+		try {
+			std::cout << next();
+		} catch (const No_Next &) {
 			
-#line 188 "gen.md"
+#line 187 "gen.md"
 
 	init(state);
 
-#line 48 "gen.md"
+#line 47 "gen.md"
 ;
 		}
 	}

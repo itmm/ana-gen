@@ -42,6 +42,19 @@
 * C-Compiler ist ein portabler C-Compiler in C
 * Ruckert beschreibt Bibliothek zum dekodieren von MP3
 
+## Strukturierung von Literate Programs
+### Fragmente = Super-Makros
+* können verwendet werden, bevor sie definiert werden
+* können erweitert werden
+
+```
+```
+* Beispiel Literate Fragment
+
+```
+```
+* Source Literate Fragment
+
 ## Vorteile Literate Programming
 ### Source-Code und Dokumentation bleiben in sync
 ### interessante Themen können vorgezogen werden
@@ -57,9 +70,10 @@
 * TODO
 
 ## Slide-Programming ⊇ Literate-Programming
-### Folien statt Bücher
+### Folien mit Notizen statt Bücher
 ### Inkrementell
 ### Progressiv
+### Markdown statt TeX
 * TODO
 
 ## Beispiel-Programm

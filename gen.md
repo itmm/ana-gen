@@ -20,15 +20,15 @@
 ```
 @def(main prereqs)
 	@put(next prereqs);
-	inline bool next(char &ch) {
-		bool ok { false };
+	struct No_Next { };
+	inline char next() {
 		@put(next);
-		return ok;
+		throw No_Next { };
 	}
 @end(main prereqs)
 ```
 * `@f(next)` generiert das nächste Zeichen
-* Funktion liefert `false`, wenn kein Zeichen generiert werden konnte
+* wirft Exception, wenn kein Zeichen generiert werden konnte
 
 ```
 @add(main prereqs)
@@ -41,10 +41,9 @@
 @def(loop)
 	@mul(initialise);
 	for (;;) {
-		char ch;
-		if (next(ch)) {
-			std::cout << ch;
-		} else {
+		try {
+			std::cout << next();
+		} catch (const No_Next &) {
 			@mul(initialise);
 		}
 	}
@@ -194,11 +193,12 @@
 ```
 @def(next)
 	try {
-		ch = collection[state].next();
+		char ch {
+			collection[state].next()
+		};
 		push(state, ch);
-		ok = true;
+		return ch;
 	} catch (const List::No_Entries &) {
-		ok = false;
 	}
 @end(next)
 ```
