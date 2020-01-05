@@ -43,6 +43,9 @@ nach der Typ-Änderung werden die Fragmente neu gefüllt
 <code>
 <span class="macro">@inc(<span class="name"><a href="prefix.html">prefix.md</a></span>)</span><br/>
 </code></div>
+<ul><li>
+definiert <code><span class="type">Prefix</span></code>
+</li></ul>
 </div>
 <div><div>
 <code>
@@ -80,9 +83,8 @@ und zählt neuen Schlüssel
 <div><div>
 <code>
 <span class="macro">@Rep(<span class="name">write key</span>)</span><br/>
-<span class="in1"></span><span class="keyword">for</span> (<br/>
-<span class="in2"></span><span class="type">unsigned</span> <span class="var">i</span> = <span class="num">0</span>; <span class="var">i</span> &lt; <span class="var">prefix_length</span>; ++<span class="var">i</span><br/>
-<span class="in1"></span>) {<br/>
+<span class="in1"></span><span class="type">unsigned</span> <span class="var">i</span> { <span class="num">0</span> };<br/>
+<span class="in1"></span><span class="keyword">for</span> (; <span class="var">i</span> &lt; <span class="var">prefix_length</span>; ++<span class="var">i</span>) {<br/>
 <span class="in2"></span><span class="fn">write_byte</span>(<span class="var">e</span>.<span class="var">first</span>[<span class="var">i</span>]);<br/>
 <span class="in1"></span>}<br/>
 <span class="macro">@End(<span class="name">write key</span>)</span><br/>
@@ -129,7 +131,7 @@ bearbeite Option <code>-<span class="var">n</span></code>
 <span class="macro">@def(<span class="name">change length</span>)</span><br/>
 <span class="in1"></span><span class="var">prefix_length</span> = <span class="type">std</span>::<span class="fn">stoi</span>(<span class="var">arg</span> + <span class="num">2</span>);<br/>
 <span class="in1"></span><span class="keyword">if</span> (<span class="var">prefix_length</span> &lt; <span class="num">1</span>) {<br/>
-<span class="in2"></span><span class="type">std</span>::<span class="var">cerr</span> &lt;&lt; <span class="str">"wrong length\n"</span>;<br/>
+<span class="in2"></span><span class="type">std</span>::<span class="var">cerr</span> &lt;&lt; <span class="str">"invalid length\n"</span>;<br/>
 <span class="in2"></span><span class="var">prefix_length</span> = <span class="num">2</span>;<br/>
 <span class="in1"></span>}<br/>
 <span class="macro">@end(<span class="name">change length</span>)</span><br/>

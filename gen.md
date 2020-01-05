@@ -1,4 +1,6 @@
 ## Dokumente generieren
+* erzeugt Dokumente mit vorgegebener Sequenz-Häufigkeit
+* liest die Häufigkeitsverteilung über Standard-Eingabe
 
 ```
 @Def(file: gen.cpp)
@@ -9,6 +11,11 @@
 	}
 @End(file: gen.cpp)
 ```
+* `@f(main)` Funktion liest Häufigkeit
+* und generiert passende Zeichen
+
+## Zufällige Zeichen generieren
+* generiert zufällige Zeichen
 
 ```
 @def(main prereqs)
@@ -20,12 +27,15 @@
 	}
 @end(main prereqs)
 ```
+* `@f(next)` generiert das nächste Zeichen
+* Funktion liefert `false`, wenn kein Zeichen generiert werden konnte
 
 ```
 @add(main prereqs)
 	#include <iostream>
 @end(main prereqs)
 ```
+* benötigt `std::cin`, `std::cout`, etc.
 
 ```
 @def(loop)
@@ -40,22 +50,30 @@
 	}
 @end(loop)
 ```
-
-```
-@def(collection prereqs)
-	#include <map>
-@end(collection prereqs)
-```
+* initialisiere den Zustand
+* und gib die generierten Zeichen aus
+* wenn kein Zeichen generiert werden kann, initialisiere den Zustand neu
 
 ```
 @inc(prefix.md)
 ```
+* definiert Klasse für Byte-Arrays einheitlicher Länge
+* die als Schlüssel von `std::map` verwendet werden
 
 ```
-@add(collection prereqs)
+@def(collection prereqs)
 	@Mul(prefix)
 @end(collection prereqs)
 ```
+* integriert die Definition von `Prefix` in das Programm
+* wird ebenfalls im erweiterten Analysator verwendet
+
+```
+@add(collection prereqs)
+	#include <map>
+@end(collection prereqs)
+```
+* benötigt `std::map`
 
 ```
 @def(list prereqs)
@@ -68,6 +86,7 @@
 	};
 @end(list prereqs)
 ```
+* `Entry` zählt wie häufig ein Zeichen `ch` nach einem Präfix vorkommt
 
 ```
 @add(collection prereqs)
@@ -83,6 +102,8 @@
 
 @end(collection prereqs)
 ```
+* Liste von `Entry`s
+* zusätzlich wird die Gesamtsumme vorgehalten
 
 ```
 @def(next prereqs)
@@ -92,6 +113,7 @@
 	Collection collection;
 @end(next prereqs)
 ```
+* der Generator verwendet eine Abbildung von Präfixen auf Listen
 
 ```
 @def(list publics)
@@ -103,17 +125,22 @@
 	}
 @end(list publics)
 ```
+* fügt ein neues Zeichen zur Liste hinzu
+* und passt die Gesamtsumme an
 
 ```
 @add(list publics)
+	class No_Entries { };
 	char next() const {
 		if (_sum > 0) {
 			@put(next ch);
 		}
-		return '\0';
+		throw No_Entries { };
 	}
 @end(list publics)
 ```
+* liefert ein zufälliges Zeichen
+* wenn keine Einträge hinterlegt sind, wird eine Exception generiert
 
 ```
 @add(list prereqs)
@@ -121,19 +148,22 @@
 	std::mt19937 _rng {
 		std::random_device{ }()
 	};
-
 @end(list prereqs)
 ```
+* initialisiert einen Zufallsgenerator (Mystery-Twister)
 
 ```
 @def(next ch)
 	auto dist {
 		std::uniform_int_distribution<
 			std::mt19937::result_type
-		>(0, _sum - 1) };
+		>(
+			0, _sum - 1
+		) };
 	int result = dist(_rng);
 @end(next ch)
 ```
+* ermittelt eine Zufallszahl zwischen `0` und `_sum - 1`
 
 ```
 @add(next ch)
@@ -145,26 +175,37 @@
 	}
 @end(next ch)
 ```
+* wählt Zeichen anhand der Zufallszahl
 
 ```
 @add(next prereqs)
 	Prefix state;
 @end(next prereqs)
 ```
+* der Zustand ist ein Präfix mit den letzten ausgegebenen Zeichen
 
 ```
 @def(initialise)
 	init(state);
 @end(initialise)
 ```
+* initialsiert den Zustand auf Null-Bytes
 
 ```
 @def(next)
-	ch = collection[state].next();
-	push(state, ch);
-	ok = ch != '\0';
+	try {
+		ch = collection[state].next();
+		push(state, ch);
+		ok = true;
+	} catch (const List::No_Entries &) {
+		ok = false;
+	}
 @end(next)
 ```
+* ermittelt das nächste zufällige Zeichen
+
+## Rezept einlesen
+* liest Häufigkeitsverteilung von Standard-Eingabe
 
 ```
 @add(main prereqs)
@@ -173,20 +214,28 @@
 		const std::string &key
 	) {
 		std::string result;
-		for (unsigned i { 0 };
-			i < key.size(); ++i
-		) {
-			if (key[i] == '%') {
-				@put(unescape);
-				i += 2;
-			} else {
-				result += key[i];
-			}
+		unsigned i { 0 };
+		for (; i < key.size(); ++i) {
+			@put(normalize char);
 		}
 		return result;
 	}
 @end(main prereqs)
 ```
+* wandelt Escape-Sequenzen in Schlüsseln in die passenden Bytes um
+
+```
+@def(normalize char)
+	if (key[i] == '%') {
+		@put(unescape);
+		i += 2;
+	} else {
+		result += key[i];
+	}
+@end(normalize char)
+```
+* Escape-Sequenzen beginnen mit `%`
+* alles andere wird direkt kopiert
 
 ```
 @def(normalize prereqs)
@@ -197,14 +246,13 @@
 			ch >= 'a' && ch <= 'f'
 		) {
 			return ch - 'a' + 10;
-		} else {
-			std::cerr <<
-				"invalid digit\n";
-			return 0;
 		}
+		std::cerr << "invalid digit\n";
+		return 0;
 	}
 @end(normalize prereqs)
 ```
+* wandelt hexadezimale Ziffer in numerischen Wert um
 
 ```
 @def(unescape)
@@ -214,34 +262,53 @@
 	);
 @end(unescape)
 ```
+* Escape-Sequenzen bestehen aus zwei hexadezimalen Ziffern
 
 ```
 @def(read receipt)
 	bool first { true };
 	Prefix k;
 	for (;;) {
-		std::string key;
-		std::cin >> key;
-		if (! std::cin) { break; }
-		int count;
-		std::cin >> count;
-		if (! std::cin) { break; }
-		key = normalize(key);
-		@put(setup length);
+		@put(read key);
+		@put(read count);
+		if (first) {
+			@put(setup length);
+			first = false;
+		}
 		@put(add entry);
 	}
 @end(read receipt)
 ```
+* Rezepte bestehen aus einer Liste von Schlüssel/Anzahl Paaren
+* der erste Schlüssel bestimmt wie lang die Präfixe sind
+
+```
+@def(read key)
+	std::string key;
+	std::cin >> key;
+	if (! std::cin) { break; }
+	key = normalize(key);
+@end(read key)
+```
+* liest Schlüssel
+* und expandiert Escape-Sequenzen
+
+```
+@def(read count)
+	int count;
+	std::cin >> count;
+	if (! std::cin) { break; }
+@end(read count)
+```
+* liest die Anzahl
 
 ```
 @def(setup length)
-	if (first) {
-		prefix_length = key.size() - 1;
-		first = false;
-		init(k);
-	}
+	prefix_length = key.size() - 1;
+	init(k);
 @end(setup length)
 ```
+* Länge ist eins weniger als die Schlüssel-Länge
 
 ```
 @def(add entry)
@@ -255,4 +322,6 @@
 	);
 @end(add entry)
 ```
+* initialisiert `k` mit dem Schlüssel ohne dem letzten Byte
+* fügt Anzahl für das letzte Byte in die Abbildung ein
 

@@ -21,6 +21,7 @@
 ```
 @inc(prefix.md)
 ```
+* definiert `Prefix`
 
 ```
 @Rep(def collection)
@@ -49,9 +50,8 @@
 
 ```
 @Rep(write key)
-	for (
-		unsigned i = 0; i < prefix_length; ++i
-	) {
+	unsigned i { 0 };
+	for (; i < prefix_length; ++i) {
 		write_byte(e.first[i]);
 	}
 @End(write key)
@@ -83,7 +83,7 @@
 @def(change length)
 	prefix_length = std::stoi(arg + 2);
 	if (prefix_length < 1) {
-		std::cerr << "wrong length\n";
+		std::cerr << "invalid length\n";
 		prefix_length = 2;
 	}
 @end(change length)

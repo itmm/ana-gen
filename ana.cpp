@@ -6,7 +6,7 @@
 
 	#include <map>
 	
-#line 26 "ana-n.md"
+#line 27 "ana-n.md"
 
 	
 #line 8 "prefix.md"
@@ -39,7 +39,7 @@
 		}
 	}
 
-#line 27 "ana-n.md"
+#line 28 "ana-n.md"
 ;
 	using Collection =
 		std::map<Prefix, int>;
@@ -94,7 +94,7 @@
 
 	prefix_length = std::stoi(arg + 2);
 	if (prefix_length < 1) {
-		std::cerr << "wrong length\n";
+		std::cerr << "invalid length\n";
 		prefix_length = 2;
 	}
 
@@ -109,7 +109,7 @@
 #line 58 "ana-1.md"
 
 	
-#line 35 "ana-n.md"
+#line 36 "ana-n.md"
 
 	Prefix state;
 	init(state);
@@ -119,7 +119,7 @@
 	char ch;
 	while (std::cin.get(ch)) {
 		
-#line 42 "ana-n.md"
+#line 43 "ana-n.md"
 
 	push(state, ch);
 	++collection[state];
@@ -135,11 +135,10 @@
 
 	for (const auto &e : collection) {
 		
-#line 51 "ana-n.md"
+#line 52 "ana-n.md"
 
-	for (
-		unsigned i = 0; i < prefix_length; ++i
-	) {
+	unsigned i { 0 };
+	for (; i < prefix_length; ++i) {
 		write_byte(e.first[i]);
 	}
 
