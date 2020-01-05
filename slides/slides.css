@@ -57,16 +57,16 @@ h1, h2, h3 {
 	color: #a8a8a2;
 }
 
-div.xslides > div > div h1 {
-	font-size: x-large;
-}
-div.slides > div > div h1,
-div.slides > div > div h2,
-div.slides > div > div h3 {
+div.slides > div > div > div.headers {
 	padding: 32px;
 	text-align: center;
 }
 
+div.headers > h2,
+div.headers > h3,
+div.headers > h4 {
+	margin: 4px;
+}
 div.slides > div > div > code .in1 {
 	display: inline-block;
 	width: 4ch;

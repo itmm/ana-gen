@@ -8,24 +8,176 @@
 <h1>Literate Programming</h1>
 <div class="slides">
 <div>
-<div>
+<div><div class="headers">
 <h1>Literate Programming</h1>
+<h2>von Büchern zu Präsentationen</h2>
+</div></div>
+<ul><li>
+Einführung in Literate Programming
+</li><li>
+Vorteile gegenüber getrennter Dokumentation
+</li><li>
+Schwächen bei klassischem Ansatz
+</li><li>
+Vorstellung einer Verbesserung
+</li></ul>
 </div>
+</div>
+<h2>Sicht des illiteraten Programmierers</h2>
+<div class="slides">
+<div>
+<div><div class="headers">
+<h2>Sicht des illiteraten Programmierers</h2>
+<h3>Source-Code ⊇ Dokumentation</h3>
+</div></div>
+<ul><li>
+Source-Code und dessen Dokumentation hängen zusammen
+</li><li>
+müssen zusammen gepflegt und versioniert werden
+</li><li>
+aber Source-Code ist für die Ausführung am wichtigsten
+</li><li>
+Source-Code ist selbsterklärend
+</li><li>
+Beispiele: javadoc, doxygen
+</li></ul>
+</div>
+</div>
+<h2>Sicht von Literate Programming</h2>
+<div class="slides">
+<div>
+<div><div class="headers">
+<h2>Sicht von Literate Programming</h2>
+<h3>Source-Code ⊆ Dokumentation</h3>
+</div></div>
+<ul><li>
+Dokumentation beschreibt, was ein Programm macht
+</li><li>
+und wie das Programm etwas macht
+</li><li>
+und warum das Programm etwas macht
+</li><li>
+der Source-Code ist ein Teil dieser Dokumentation
+</li></ul>
+</div>
+</div>
+<h2>Illiterate Programme</h2>
+<div class="slides">
+<div>
+<div><div class="headers">
+<h2>Illiterate Programme</h2>
+<h3>Linux, Apache, GCC, LLVM</h3>
+<h3>Operating Systems (Tanenbaum)</h3>
+<h3>System Oberon (Wirth)</h3>
+<h3>Software Tools (Kernighan)</h3>
+<h3>Sargon (Spacklen)</h3>
+</div></div>
+<ul><li>
+viele Open Source Projekte sind auf den Code konzentriert
+</li><li>
+Tanenbaum beschreibt Minix-System in seinem Buch
+</li><li>
+Wirth beschreibt ein Betriebssystem mit Compiler in seinem Buch
+</li><li>
+Kernighan beschreibt eine Sammlung von Kommandozeilen-Tools in Fortran
+</li><li>
+Sargon Chess ist in Z80-Assembler geschrieben
+</li></ul>
+</div>
+</div>
+<h2>Literate Programs</h2>
+<div class="slides">
+<div>
+<div><div class="headers">
+<h2>Literate Programs</h2>
+<h3>TeX: the Program (Knuth)</h3>
+<h3>Raytracer</h3>
+<h3>C-compiler</h3>
+<h3>Understanding MP3 (Ruckert)</h3>
+</div></div>
+<ul><li>
+erster Kontakt mit TeX
+</li><li>
+Raytracer beschreibt Grundlagen des Raytracings neben deme Code
+</li><li>
+C-Compiler ist ein portabler C-Compiler in C
+</li><li>
+Ruckert beschreibt Bibliothek zum dekodieren von MP3
+</li></ul>
+</div>
+</div>
+<h2>Vorteile Literate Programming</h2>
+<div class="slides">
+<div>
+<div><div class="headers">
+<h2>Vorteile Literate Programming</h2>
+<h3>Source-Code und Dokumentation bleiben in sync</h3>
+<h3>interessante Themen können vorgezogen werden</h3>
+<h3>uninteressante Themen können in den Anhang verbannt werden</h3>
+<h3>Programm kann wie ein Buch gelesen werden</h3>
+<h3>komplizierte Stellen können erklärt werden</h3>
+</div></div>
+<ul><li>
+TODO
+</li></ul>
+</div>
+</div>
+<h2>Nachteile Literate Programming</h2>
+<div class="slides">
+<div>
+<div><div class="headers">
+<h2>Nachteile Literate Programming</h2>
+<h3>keine Zwischenstopps möglich</h3>
+<h3>Granularität nicht klar</h3>
+<h3>Vollständigkeit nicht erzwungen</h3>
+</div></div>
+<ul><li>
+TODO
+</li></ul>
+</div>
+</div>
+<h2>Slide-Programming ⊇ Literate-Programming</h2>
+<div class="slides">
+<div>
+<div><div class="headers">
+<h2>Slide-Programming ⊇ Literate-Programming</h2>
+<h3>Folien statt Bücher</h3>
+<h3>Inkrementell</h3>
+<h3>Progressiv</h3>
+</div></div>
+<ul><li>
+TODO
+</li></ul>
+</div>
+</div>
+<h2>Beispiel-Programm</h2>
+<div class="slides">
+<div>
+<div><div class="headers">
+<h2>Beispiel-Programm</h2>
+<h3>kleines Beispiel aus den Anfängen der künstlichen Intelligenz</h3>
+</div></div>
+<ul><li>
+Slide-Programming an konkretem Beispiel erfahren
+</li><li>
+Texte im bestimmten Stil generieren
+</li><li>
+Referenz: Computer-Kurzweil
+</li></ul>
 </div>
 <div><div>
 <code>
 <span class="macro">@inc(<span class="name"><a href="ana-1.html">ana-1.md</a></span>)</span><br/>
-</code></div>
-</div>
-<div><div>
-<code>
 <span class="macro">@inc(<span class="name"><a href="gen.html">gen.md</a></span>)</span><br/>
-</code></div>
-</div>
-<div><div>
-<code>
 <span class="macro">@inc(<span class="name"><a href="ana-n.html">ana-n.md</a></span>)</span><br/>
 </code></div>
+<ul><li>
+erst einfache Häufigkeits-Analyse
+</li><li>
+dann daraus Text generieren
+</li><li>
+dann auf feste Sequenz-Längen erweitern
+</li></ul>
 </div>
 </body>
 </html>
