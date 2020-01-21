@@ -93,8 +93,8 @@
 	#include <vector>
 	class List {
 		private:
-			std::vector<Entry> _entries;
-			int _sum { 0 };
+			std::vector<Entry> entries_;
+			int sum_ { 0 };
 		public:
 			@put(list publics);
 	};
@@ -117,10 +117,10 @@
 ```
 @def(list publics)
 	void add(char ch, int count) {
-		_entries.emplace_back(
+		entries_.emplace_back(
 			ch, count
 		);
-		_sum += count;
+		sum_ += count;
 	}
 @end(list publics)
 ```
@@ -131,7 +131,7 @@
 @add(list publics)
 	class No_Entries { };
 	char next() const {
-		if (_sum > 0) {
+		if (sum_ > 0) {
 			@put(next ch);
 		}
 		throw No_Entries { };
@@ -157,16 +157,16 @@
 		std::uniform_int_distribution<
 			std::mt19937::result_type
 		>(
-			0, _sum - 1
+			0, sum_ - 1
 		) };
 	int result = dist(_rng);
 @end(next ch)
 ```
-* ermittelt eine Zufallszahl zwischen `0` und `_sum - 1`
+* ermittelt eine Zufallszahl zwischen `0` und `sum_ - 1`
 
 ```
 @add(next ch)
-	for (const auto &i : _entries) {
+	for (const auto &i : entries_) {
 		if (result < i.count) {
 			return i.ch;
 		}
