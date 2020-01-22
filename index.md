@@ -49,11 +49,11 @@
 
 ```
 ```
-* Beispiel Literate Fragment
+* TODO: Beispiel Literate Fragment
 
 ```
 ```
-* Source Literate Fragment
+* TODO: Source Literate Fragment
 
 ## Vorteile Literate Programming
 ### Source-Code und Dokumentation bleiben in sync
@@ -61,20 +61,17 @@
 ### uninteressante Themen können in den Anhang verbannt werden
 ### Programm kann wie ein Buch gelesen werden
 ### komplizierte Stellen können erklärt werden
-* TODO
 
 ## Nachteile Literate Programming
 ### keine Zwischenstopps möglich
 ### Granularität nicht klar
 ### Vollständigkeit nicht erzwungen
-* TODO
 
 ## Slide-Programming ⊇ Literate-Programming
 ### Folien mit Notizen statt Bücher
 ### Inkrementell
 ### Progressiv
 ### Markdown statt TeX
-* TODO
 
 ## Beispiel-Programm
 ### kleines Beispiel aus den Anfängen der künstlichen Intelligenz
@@ -90,4 +87,11 @@
 * erst einfache Häufigkeits-Analyse
 * dann daraus Text generieren
 * dann auf feste Sequenz-Längen erweitern
+
+## Nächste Schritte
+### integrierter Zeilen-Editor
+### Meta-Fragmente
+### integrierter visueller Editor
+### Integration `make` und `git`
+* TODO
 
