@@ -20,6 +20,9 @@
 * und warum das Programm etwas macht
 * der Source-Code ist ein Teil dieser Dokumentation
 
+!(imgs/avatar.jpg)
+* Test für Bild
+
 ## Illiterate Programme
 ### Linux, Apache, GCC, LLVM
 ### Operating Systems (Tanenbaum)
