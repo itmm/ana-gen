@@ -20,29 +20,49 @@
 * und warum das Programm etwas macht
 * der Source-Code ist ein Teil dieser Dokumentation
 
-!(imgs/avatar.jpg)
-* Test für Bild
-
 ## Illiterate Programme
-### Linux, Apache, GCC, LLVM
-### Operating Systems (Tanenbaum)
-### System Oberon (Wirth)
-### Software Tools (Kernighan)
-### Sargon (Spacklen)
+* Beispiele für Programme, die nicht nach den Prinzipien des Literate
+  Programming dokumentiert werden
+
+## Open Source
+### Linux
+### Apache
+### GCC
+### LLVM
 * viele Open Source Projekte sind auf den Code konzentriert
+
+!(imgs/operating-systems.jpg)
 * Tanenbaum beschreibt Minix-System in seinem Buch
+
+!(imgs/project-oberon.jpg)
 * Wirth beschreibt ein Betriebssystem mit Compiler in seinem Buch
+
+!(imgs/software-tools.jpg)
 * Kernighan beschreibt eine Sammlung von Kommandozeilen-Tools in Fortran
+
+!(imgs/sargon.jpg)
 * Sargon Chess ist in Z80-Assembler geschrieben
 
+!(imgs/mazes.jpg)
+* von Jamis Buck
+* Labyrinthe bauen in Ruby
+
+!(imgs/building-git.jpg)
+* ein Buch, in dem `git` in Ruby nachgebaut wird
+
 ## Literate Programs
-### TeX: the Program (Knuth)
-### Raytracer
-### C-compiler
-### Understanding MP3 (Ruckert)
+* Beispiele für Literate Programs
+
+!(imgs/tex-book.jpg)
 * erster Kontakt mit TeX
+
+!(imgs/physically-based-rendering.jpg)
 * Raytracer beschreibt Grundlagen des Raytracings neben deme Code
+
+!(imgs/a-retargetable-c-compiler.jpg)
 * C-Compiler ist ein portabler C-Compiler in C
+
+!(imgs/understanding-mp3.jpg)
 * Ruckert beschreibt Bibliothek zum dekodieren von MP3
 
 ## Strukturierung von Literate Programs
@@ -97,4 +117,7 @@
 ### integrierter visueller Editor
 ### Integration `make` und `git`
 * TODO
+
+
+# Testing
 
