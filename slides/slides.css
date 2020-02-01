@@ -126,6 +126,15 @@ h1, h2, h3, h4 {
 .page ul {
 	display: none;
 }
+.page .headers ul {
+	display: block;
+}
+li h2, li h2, li h3, li h4 {
+	margin: 0;
+	padding: 0;
+	text-align: left;
+}
+
 html, body {
 	float: none;
 }
