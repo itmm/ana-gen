@@ -67,34 +67,96 @@
 
 ## Strukturierung von Literate Programs
 ### Fragmente = Super-Makros
+### Vorwärts-Deklaration
+### Erweiterbarkeit
 * können verwendet werden, bevor sie definiert werden
 * können erweitert werden
 
-```
-```
-* TODO: Beispiel Literate Fragment
+!(imgs/tex-book_inside_orig.jpg)
+* Beispiel Literate Fragment
 
 ```
 ```
 * TODO: Source Literate Fragment
 
+
 ## Vorteile Literate Programming
-### Source-Code und Dokumentation bleiben in sync
-### interessante Themen können vorgezogen werden
-### uninteressante Themen können in den Anhang verbannt werden
-### Programm kann wie ein Buch gelesen werden
-### komplizierte Stellen können erklärt werden
+### Zusammenhang
+### Intelligente Ordnung
+### Ausdrucksstärke
+### Querverweise
+
+### Zusammenhang
+#### Source-Code und Dokumentation leichter synchron
+
+### Intelligente Ordnung
+#### interessante Themen vorziehen
+#### uninteressante Themen in den Anhang (oder ausgelassen)
+#### Programm kann wie ein Buch gelesen werden
+
+### Ausdrucksstärke
+#### komplizierte Stellen können erklärt werden
+
+### Querverweise
+#### Vorwärts: Verweise auf benutzte Fragmente
+#### Rückwärts: Verweise auf Aufrufe
+#### mächtiger Index
 
 ## Nachteile Literate Programming
-### keine Zwischenstopps möglich
-### Granularität nicht klar
-### Vollständigkeit nicht erzwungen
+### Nicht aufbauend
+### Granularität
+### Vollständigkeit
+### Syntax
+
+### Nicht aufbauend
+#### Verständnis erst nach vollständigem Durcharbeiten
+#### Springen oft notwendig
+#### Keine Zwischenstände des Codes möglich
+
+### Granularität
+#### Blöcke oft zu lang und zu kompliziert
+#### Seitenweise Codes möglich
+
+### Vollständigkeit
+#### Vollständigkeit nicht erzwungen
+#### oft gekürzt, um Buch-Rahmen nicht zu sprengen
+
+## Syntax
+### Dokumentation in LaTeX
+### Source-Code wird mathematisiert
+
 
 ## Slide-Programming ⊇ Literate-Programming
-### Folien mit Notizen statt Bücher
-### Inkrementell
-### Progressiv
-### Markdown statt TeX
+### Folien
+### aufbauend
+### modular
+### sprach-neutral
+### Markdown
+### HTML
+
+### Folien
+#### Folien mit Notizen statt seitenlanger Fragmente
+#### klare Grenze für Umfang
+#### erklärende Folien möglich
+
+### aufbauend
+#### nach jeder Folie kann ein ausführbares Programm erstellt werden
+#### Fragmente können später umdefiniert werden
+
+### modular
+#### große Projekte können aufgeteilt werden
+
+### sprach-neutral
+#### alles was mit einem Text-Editor bearbeitet werden kann
+#### nicht auf bestimmte Programmiersprache beschränkt
+
+### Markdown
+#### einfacher als LaTeX
+#### schneller zu Parsen
+
+### HTML
+#### Folien werden als Webseite generiert
+#### diese Präsentation ist in `hex` erstellt
 
 ## Beispiel-Programm
 ### kleines Beispiel aus den Anfängen der künstlichen Intelligenz
@@ -112,10 +174,13 @@
 * dann auf feste Sequenz-Längen erweitern
 
 ## Nächste Schritte
+### weitere Ausgabe-Formate
 ### integrierter Zeilen-Editor
 ### Meta-Fragmente
 ### integrierter visueller Editor
 ### Integration `make` und `git`
+### Tabulator-Kaskadierung
+### Verweise
 * TODO
 
 
