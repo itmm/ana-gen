@@ -72,12 +72,40 @@
 * können verwendet werden, bevor sie definiert werden
 * können erweitert werden
 
-!(imgs/tex-book_inside_orig.jpg)
-* Beispiel Literate Fragment
+!(imgs/hello-1.jpg)
+* Beispiel Literate Programming
+
+!(imgs/hello-2.jpg)
+* zweite Seite
 
 ```
+@k(@*) Hello World@k(.)
+A small C++ program @v(in) |CWEB|. @v(The)
+general layout of a C++ program is
+
+@k(@c)
+@k(@<includes@>)
+int main() {
+	@k(@<print msg@>);
+}
 ```
-* TODO: Source Literate Fragment
+* Source Literate Programming
+
+```
+@k(@ )@v(Now) the fragments are following.
+@v(To) print something the program first
+includes the declarations.
+
+@k(@<includes@>=)
+#include <iostream>
+
+@k(@ )@v(And) the message is send to standard
+output.
+
+@k(@<print msg@>=)
+std::cout << "Hello World.\n";
+```
+* Source Literate Programming
 
 
 ## Vorteile Literate Programming
