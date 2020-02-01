@@ -131,8 +131,7 @@
 ### aufbauend
 ### modular
 ### sprach-neutral
-### Markdown
-### HTML
+### Markdown, HTML
 
 ### Folien
 #### Folien mit Notizen statt seitenlanger Fragmente
@@ -141,6 +140,7 @@
 
 ### aufbauend
 #### nach jeder Folie kann ein ausführbares Programm erstellt werden
+#### undefinierte Fragmente sind kein Fehler
 #### Fragmente können später umdefiniert werden
 
 ### modular
@@ -174,15 +174,32 @@
 * dann auf feste Sequenz-Längen erweitern
 
 ## Nächste Schritte
-### weitere Ausgabe-Formate
-### integrierter Zeilen-Editor
 ### Meta-Fragmente
-### integrierter visueller Editor
-### Integration `make` und `git`
+### integrierte Editoren
+### weitere Ausgabe-Formate
 ### Tabulator-Kaskadierung
 ### Verweise
-* TODO
+### Grafik-Formate
 
+### Meta-Fragmente
+#### don't repeat yourself
 
-# Testing
+### integrierte Editoren
+#### Zeilen-Editor
+#### visueller Editor
+#### Integration `make` und `git`
+
+### weitere Ausgabe-Formate
+#### direkt PDF erzeugen
+#### Buchsatz
+
+### Tabulator-Kaskadierung
+#### besserer Python-Support
+
+### Verweise
+#### Hyperlinks wie bei CWEB
+
+### Grafik-Formate
+#### SVG
+#### DOT
 
