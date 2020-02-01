@@ -1,20 +1,17 @@
 body {
-	max-width: 960px;
-	padding: 20px;
+	padding: 0;
+	margin: 0;
 	font-size: large;
-	margin: 0 auto;
-	color: #bababa;
-	background-color: #45494a;
-	background-image: url(bg.svg);
+	color: #120800;
 	background-attachment: fixed;
 	background-size: cover;
 }
 b {
-	color: #a8a8a2;
+	color: #141000;
 }
 div.slides > div {
 	display: flex;
-	padding: 20px 0;
+	padding: 0;
 	flex-direction: row;
 }
 div.slides > div > div {
@@ -26,7 +23,7 @@ div.slides > div > div {
 	height: 17em;
 	border: solid 1px black;
 	padding: 0;
-	background-color: #3c3f41;
+	background-color: #fff8f0;
 	background-image: url(bg.svg);
 	background-size: cover;
 	flex-shrink: 0;
@@ -35,26 +32,9 @@ div.slides > div > div {
 div.slides h1, div.slides h2, div.slides h3, div.slides h4 {
 	font-family: initial;
 }
-div.slides > div > ul {
-	display: inline-block;
-	flex-grow: 1;
-	order: 2;
-}
-
-div.slides > div > ul > li {
-	padding: 8px;
-}
-
-div.slides > div:nth-child(even) > ul {
-	order: 1;
-}
-
-div.slides > div:nth-child(even) > div {
-	order: 2;
-}
 
 h1, h2, h3 {
-	color: #a8a8a2;
+	color: #141000;
 }
 
 div.xslides > div > div h1 {
@@ -133,4 +113,29 @@ div.slide img {
 	object-fit: cover;
 	width: 100%;
 	height: 100%;
+}
+
+
+
+h1, h2, h3, h4 {
+	display: none;
+}
+.slide h1, .slide h2, .slide h3, .slide h4 {
+	display: block;
+}
+.page ul {
+	display: none;
+}
+html, body {
+	float: none;
+}
+.slides {
+	position: relative;
+}
+.page {
+	display: block;
+	position: relative;
+	page-break-before: always;
+	page-break-after: always;
+	page-break-inside: avoid;
 }
