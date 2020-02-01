@@ -27,8 +27,7 @@
 ## Open Source
 ### Linux
 ### Apache
-### GCC
-### LLVM
+### GCC, LLVM
 * viele Open Source Projekte sind auf den Code konzentriert
 
 !(imgs/operating-systems.jpg)

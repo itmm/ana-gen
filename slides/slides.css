@@ -2,12 +2,12 @@ body {
 	padding: 0;
 	margin: 0;
 	font-size: large;
-	color: #120800;
+	color: #000;
 	background-attachment: fixed;
 	background-size: cover;
 }
 b {
-	color: #141000;
+	color: #000;
 }
 div.slides > div {
 	display: flex;
@@ -23,7 +23,7 @@ div.slides > div > div {
 	height: 17em;
 	border: solid 1px black;
 	padding: 0;
-	background-color: #fff8f0;
+	background-color: #fff;
 	background-image: url(bg.svg);
 	background-size: cover;
 	flex-shrink: 0;
@@ -34,7 +34,7 @@ div.slides h1, div.slides h2, div.slides h3, div.slides h4 {
 }
 
 h1, h2, h3 {
-	color: #141000;
+	color: #000;
 }
 
 div.xslides > div > div h1 {
@@ -76,33 +76,33 @@ div.slides > div > div > code .in6 {
 }
 
 code .macro {
-	color: #cb7832;
+	color: #9b4802;
 }
 
 code .macro .name, code .macro .name a, code .macro .name a:visited {
-	color: #eb9842;
+	color: #bb6812;
 }
 
 code .type {
-	color: #96ba68;
+	color: #365a08;
 }
 
 code .var {
 }
 code .fn {
-	color: #e0c46c;
+	color: #80640c;
 }
 
 code .str {
-	color: #6a8759;
+	color: #3a5729;
 }
 
 code .num {
-	color: #6896ba;
+	color: #38668a;
 }
 
 code .keyword {
-	color: #cb7832;
+	color: #9b4802;
 	font-weight: bold;
 }
 span.virt:after {
