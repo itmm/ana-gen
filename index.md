@@ -230,3 +230,5 @@ std::cout << "Hello World.\n";
 #### SVG
 #### DOT
 
+!(imgs/qr-code.png)
+
