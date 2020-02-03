@@ -5,6 +5,20 @@
 * Schwächen bei klassischem Ansatz
 * Vorstellung einer Verbesserung
 
+## Programme sind schwer
+### lang
+### komplex
+### unübersichtlich
+
+## Nachteile
+### schwer zu verstehen
+### schwer zu erweitern
+### schwer zu korrigieren
+
+## Wie kann man Programme besser verstehen?
+
+## Dokumentation
+
 ## Sicht des illiteraten Programmierers
 ### Source-Code ⊇ Dokumentation
 * Source-Code und dessen Dokumentation hängen zusammen
