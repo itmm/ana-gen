@@ -19,7 +19,7 @@ set errorbars front 1.000000
 set border 31 front lt black linewidth 1.000 dashtype solid
 set zdata 
 set ydata 
-set xdata 
+set xdata time
 set y2data 
 set x2data 
 set boxwidth
@@ -28,15 +28,15 @@ set style rectangle back fc  bgnd fillstyle   solid 1.00 border lt -1
 set style circle radius graph 0.02 
 set style ellipse size graph 0.05, 0.03 angle 0 units xy
 set dummy x, y
-set format x "% h" 
-set format y "% h" 
+set format x "%Y" timedate
+set format y "%.0f" 
 set format x2 "% h" 
 set format y2 "% h" 
 set format z "% h" 
 set format cb "% h" 
 set format r "% h" 
 set ttics format "% h"
-set timefmt "%d/%m/%y,%H:%M"
+set timefmt "%s"
 set angles radians
 set tics back
 unset grid
@@ -121,18 +121,18 @@ set timestamp  font "" norotate
 set trange [ * : * ] noreverse nowriteback
 set urange [ * : * ] noreverse nowriteback
 set vrange [ * : * ] noreverse nowriteback
-set xlabel "" 
+set xlabel "Jahr" 
 set xlabel  font "" textcolor lt -1 norotate
 set x2label "" 
 set x2label  font "" textcolor lt -1 norotate
-set xrange [ * : * ] noreverse writeback
-set x2range [ * : * ] noreverse writeback
-set ylabel "" 
+set xrange [ "1072958400" : "1640995200" ] noreverse writeback
+set x2range [ 1.11291e+09 : 1.58042e+09 ] noreverse writeback
+set ylabel "Zeilen Code" 
 set ylabel  font "" textcolor lt -1 rotate
 set y2label "" 
 set y2label  font "" textcolor lt -1 rotate
-set yrange [ * : * ] noreverse writeback
-set y2range [ * : * ] noreverse writeback
+set yrange [ 240000. : 1.44000e+06 ] noreverse writeback
+set y2range [ 239169. : 1.43440e+06 ] noreverse writeback
 set zlabel "" 
 set zlabel  font "" textcolor lt -1 norotate
 set zrange [ * : * ] noreverse writeback
@@ -164,6 +164,6 @@ set fontpath
 set psdir
 set fit brief errorvariables nocovariancevariables errorscaling prescale nowrap v5
 GNUTERM = "qt"
-## Last datafile plotted: "git.locs"
+## Last datafile plotted: "< zcat git.locs.gz"
 plot "< zcat git.locs.gz" u 2:3 title "git"
 #    EOF

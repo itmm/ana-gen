@@ -15,6 +15,10 @@
 ### schwer zu erweitern
 ### schwer zu korrigieren
 
+## Warum verstehen Programmierer Programme?
+
+!(imgs/git-locs.jpg)
+
 ## Wie kann man Programme besser verstehen?
 
 ## Dokumentation
