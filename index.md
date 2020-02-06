@@ -10,7 +10,7 @@
 ### komplex
 ### unübersichtlich
 
-## Nachteile
+## Programme sind daher
 ### schwer zu verstehen
 ### schwer zu erweitern
 ### schwer zu korrigieren
@@ -18,6 +18,9 @@
 ## Warum verstehen Programmierer Programme?
 
 !(imgs/git-locs.jpg)
+* erster Commit: 1.284 Zeilen
+* neuster Commit: 1.195.350 Zeilen
+* Faktor: 930,96
 
 ## Wie kann man Programme besser verstehen?
 
@@ -218,55 +221,60 @@ std::cout << "Hello World.\n";
 * dann daraus Text generieren
 * dann auf feste Sequenz-Längen erweitern
 
+## Beispiele Karl May
+
 ```
 rhrlsnuekeefeeeftdoehga sdawenensm!ee�erz
-at�ibtrik eI Senint grbreeibrtsIraiinrn�e
-sklt Bh un.dte�a r,�eetlgr egeg ke  reG
+at�ibtrik eI @v(Senint) grbreeibrtsIraiinrn�e
+sklt @v(Bh) un.dte�a r,�eetlgr egeg ke  reG
 ne
 z,� rarh.nu i  te ntrrhbh�� tH ebo�lme�
 c.n cetdsinnhedle isldmdrrs ane�aseghub
-cH dsnnce�Nss ecin,riibsrP  nn netachibkn
-nae�st aee ee�rewf Ptsslusrinso stedh�
-swsg ia Jh  sm1 vluse s��eih,endcnes,n
-�ilciiGnkn d wie en,es�ercl rddt Dnee 
+cH dsnnce�@v(Nss) ecin,riibsrP  nn netachibkn
+nae�st aee ee�rewf @v(Ptsslusrinso) stedh�
+swsg ia @v(Jh)  sm1 vluse s��eih,endcnes,n
+�ilciiGnkn d wie en,es�ercl rddt @v(Dnee)
 eeoe�nd pnegutennie lc D�ceh rd ngfo
 ofass�riteiedNhu g
-�,iRalldleali�AlA  nNmlueii m,n iee�ta
+�,iRalldleali�@v(AlA)  nNmlueii m,n iee�ta
 ```
+* 0 Zeichen Lookbehind
 
 ```
-[Erzer Wind st schr Marsagalt ate zusaser
-vounenzu Panir olch? waset saha, d stz m
+[@v(Erzer) @v(Wind) st schr @v(Marsagalt) ate zusaser
+vounenzu @v(Panir) olch? waset saha, d stz m
 h ammases dies wa.
-»Ardinndunn u as h gewe, in? bs asohäuh m
-d wieich sau ar urt ichrde Per hlat
-Nelenn.«
+»@v(Ardinndunn) u as h gewe, @v(in)? bs asohäuh m
+d wieich sau ar urt ichrde @v(Per) hlat
+@v(Nelenn).«
 -
 
-« wäh Ichoch nneh t uchrame s str an
-delieichtzund ichtt diend Geierspas
+« wäh @v(Ichoch) nneh t uchrame s str an
+delieichtzund ichtt diend @v(Geierspas)
 baurast, z kr ich wes halemaschenit so
-Dalle Od s h In vendasigendaueschonfabes,
-ze wor, jeife berhe int Stichen schausts
-wen ben, eid Waun hau ien sten mieneichr
+@v(Dalle) @v(Od) s h @v(In) vendasigendaueschonfabes,
+ze wor, jeife berhe @v(int) @v(Stichen) schausts
+wen ben, eid @v(Waun) hau ien sten mieneichr
 ```
+* 1 Zeichen Lookbehind
 
 ```
-[Chann, den sich einneten nich dier Wir
-Worpraut!«
-Das wie Bäuppit dem Beener Arm Wingeber
-Ges die wisser Stige dan ken fresrüt
+[@v(Chann), den sich einneten nich dier @v(Wir)
+@v(Worpraut)!«
+@v(Das) wie Bäuppit dem @v(Beener) @v(Arm) @v(Wingeber)
+@v(Ges) die wisser @v(Stige) dan ken fresrüt
 andes glanger vonnetzen odend sa so begen
-Bruden um Aug eierlen, die Das-eamich
+@v(Bruden) um @v(Aug) eierlen, die @v(Das)-eamich
 kannengs kan hatten; der, auft, wir
 weinen derkt zu enn delfert um ihretroß
-hen Stragter Stichen eigenz nund fähr
+hen @v(Stragter) @v(Stichen) eigenz nund fähr
 lich zu.
-	»Wen.
-	»Negenken Tanie mehts den Commer er
+	»@v(Wen).
+	»@v(Negenken) @v(Tanie) mehts den @v(Commer) er
 hob st sagt, den mige läummenes verie
-führ Hürden er Grach muß.
+führ @v(Hürden) er @v(Grach) muß.
 ```
+* 2 Zeichen Lookbehind
 
 ```
 [Chrieder war.
@@ -284,6 +292,7 @@ sehen Pfern, unwegen Wort, in Wir nahmen
 graden und als death.
 »Capt'n! Winnen konntersetzt von icht
 ```
+* 3 Zeichen Lookbehind
 
 ```
 [Chromontor heutigams Pferd wohl
@@ -301,6 +310,9 @@ klettern genommen, also nahm meiner wir
 zu fangen, was zu berückkehrung empfigen,
 Mr. Roten bindem Gewaltigkeit von anden
 ```
+* 4 Zeichen Lookbehind
+
+## Beispiele heise Newsticker
 
 ```
 ahacfs
@@ -318,6 +330,7 @@ a A bi- ne JtrCrtaeEe  iee-SeSeT  ScoHMe
 o�a
 g.nt g figmk-�essoeecmlmoggEonetg
 ```
+* 0 Zeichen Lookbehind
 
 ```
 Aun feppigürte Aut
@@ -335,6 +348,7 @@ Ma Miten b
 Wobrr watr SGringolillamm Vo iO-Reiterte
 ichter: tuschuling Ge Mabent igr ntsle
 ```
+* 1 Zeichen Lookbehind
 
 ```
 Ausgeps Systen ei
@@ -352,6 +366,7 @@ Yahrlion in Frade Pho-Medep Fing-ten
 Der: And Proffiksbalcoma: Verbier
 Strissläft Üben ungenstailft dakePHEV ung
 ```
+* 2 Zeichen Lookbehind
 
 ```
 Auton2 großen bei Netfline bessor
@@ -369,6 +384,7 @@ Tödliche Micross-Platter Klimaketen
 Behirn": Weg im Adventrauch desäusen
 GPS-Überkzeugt Gesignert Raden unterne
 ```
+* 3 Zeichen Lookbehind
 
 ```
 Auto-Bränität
@@ -386,6 +402,7 @@ Do'Urden
 Bunden Orbit entgegen für Nerds:
 Last-Minute
 ```
+* 4 Zeichen Lookbehind
 
 ## Nächste Schritte
 ### Meta-Fragmente
