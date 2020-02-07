@@ -221,7 +221,7 @@ std::cout << "Hello World.\n";
 * dann daraus Text generieren
 * dann auf feste Sequenz-Längen erweitern
 
-## Beispiele Karl May
+## Zwei Beispiele
 
 ```
 rhrlsnuekeefeeeftdoehga sdawenensm!ee�erz
@@ -238,6 +238,26 @@ eeoe�nd pnegutennie lc D�ceh rd ngfo
 ofass�riteiedNhu g
 �,iRalldleali�@v(AlA)  nNmlueii m,n iee�ta
 ```
+* Karl May
+* 0 Zeichen Lookbehind
+
+```
+ahacfs
+akek es 
+n L a suRpetnmoehtRaWnhhtgtaoa
+tyleAdmerh1-piuhwtiOeniaicerrurWurenua vt
+daee eMe hcmrct onrhlnu,esareDunienegBitW
+�ema dfoOtSi g euDrorenv�libcmlgcimes 
+nPktrmer sSa nKs� ndgFMettMes epodd
+ewa,draratsgeoAt a tV rhttrs @v(Frmgsk) C 
+tWebeyiU�@v(Dem) w- noseDoctniegtrtn
+ osMnumfae -awzrnc g B h
+sonGehedilgKcoki-vta @v(Dr) iur.r
+a A bi- ne @v(JtrCrtaeEe)  iee-@v(SeSeT)  @v(ScoHMe)
+o�a
+g.nt g figmk-�essoeecmlmoggEonetg
+```
+* Heise Newsticker
 * 0 Zeichen Lookbehind
 
 ```
@@ -256,6 +276,26 @@ baurast, z kr ich wes halemaschenit so
 ze wor, jeife berhe @v(int) @v(Stichen) schausts
 wen ben, eid @v(Waun) hau ien sten mieneichr
 ```
+* Karl May
+* 1 Zeichen Lookbehind
+
+```
+@v(Aun) feppigürte @v(Aut)
+@v(Reneng)-DRegscrdissllubowet:
+migafähenbengeprkves allemmder er
+ITwsikageluges @v(Pen) @v(Aun) s, ziarierion
+DSowe
+mungeegen G-@v(Cll) @v(Tondit)
+@v(Wer) @v(Dale) @v(Vechn) @v(Sten) @v(Fle)
+@v(Terineltürn) mu soder
+@v(Cojaglgditonden)-@v(Balalach) wenge d ürwen
+@v(Brn) @v(Plei) von
+@v(Witschllste) @v(Quthtooneridwiche) @v(Ex)
+@v(Ma) @v(Miten) b
+@v(Wobrr) watr SGringolillamm @v(Vo) iO-@v(Reiterte)
+ichter: tuschuling @v(Ge) @v(Mabent) igr ntsle
+```
+* Heise Newsticker
 * 1 Zeichen Lookbehind
 
 ```
@@ -274,134 +314,102 @@ lich zu.
 hob st sagt, den mige läummenes verie
 führ @v(Hürden) er @v(Grach) muß.
 ```
+* Karl May
 * 2 Zeichen Lookbehind
 
 ```
-[Chrieder war.
-»Welches Gebracht nich eine Das nahm icht
-von hatten. Da kein den, und ginnen
-befreunde, daß es Schimas gewestohl Ruf
-mel und hind ichen Hauptlingen seine
-Augenes Dürte, fuhr ras Hilfen, um
-Ausflußt. Mien. Aus wie solle zu sei.
-»Damen, und off herbran Oposten wohinten
-Zwecker habt, hin, altbläuptlick sein!«
-Jetzt forten ein, soll die mir,« rief:
-	»Vierley Nur beit, ich, zu seidig
-sehen Pfern, unwegen Wort, in Wir nahmen
-graden und als death.
-»Capt'n! Winnen konntersetzt von icht
+@v(Ausgeps) @v(Systen) ei
+@v(Amalks) @v(Nac) @v(Pay): @v(Alung) marnensichutsford
+len aue abeistreschenterung
+@v(Cyber) ahr für @v(Gma): SPR-@v(Vericht) @v(Sichn)
+vonce-@v(Lickens) @v(Web)
+@v(Stromp) @v(Lef) @v(Applef) ang: @v(Jahrle)-@v(Fixca):
+@v(Amation) ine: EU-@v(Aussishbaus)
+@v(Wassolohnmasteisto): @v(Adracht):
+@v(Dowdowohlektrit)/s kür @v(Whadereuzuglechun)
+deakt
+@v(Cybere) @v(Part) @v(7): @v(Ex)-@v(Chaos) un plen vone für
+@v(Yahrlion) @v(in) @v(Frade) @v(Pho)-@v(Medep) @v(Fing)-ten
+@v(Der): @v(And) @v(Proffiksbalcoma): @v(Verbier)
+@v(Strissläft) Üben ungenstailft dakePHEV ung
 ```
+* Heise Newsticker
+* 2 Zeichen Lookbehind
+
+```
+[@v(Chrieder) war.
+»@v(Welches) @v(Gebracht) nich eine @v(Das) nahm icht
+von hatten. @v(Da) kein den, und ginnen
+befreunde, daß es @v(Schimas) gewestohl @v(Ruf)
+mel und hind ichen @v(Hauptlingen) seine
+@v(Augenes) Dürte, fuhr ras @v(Hilfen), um
+@v(Ausflußt). @v(Mien). @v(Aus) wie solle zu sei.
+»@v(Damen), und off herbran @v(Oposten) wohinten
+@v(Zwecker) habt, hin, altbläuptlick sein!«
+@v(Jetzt) forten ein, soll die mir,« rief:
+	»@v(Vierley) @v(Nur) beit, ich, zu seidig
+sehen @v(Pfern), unwegen @v(Wort), @v(in) @v(Wir) nahmen
+graden und als death.
+»@v(Capt)'n! @v(Winnen) konntersetzt von icht
+```
+* Karl May
 * 3 Zeichen Lookbehind
 
 ```
-[Chromontor heutigams Pferd wohl
+@v(Auton2) großen bei @v(Netfline) bessor
+@v(Geschlendensiche) @v(Euro)-@v(Mode) @v(Rechnet)
+iCloud
+@v(#heit)"
+@v(Auschland) @v(Kollt) @v(Millighlimasswork): @v(Tale)
+einlangelsetze hohe @v(Inter) @v(AprivacyIDEA)
+@v(3.1)
+@v(Die) @v(Guthe) @v(Streamissistung): @v(Exoplang)
+bessore gegen
+@v(Biogrammenwenieren)
+@v(News) bau
+Tödliche @v(Micross)-@v(Platter) @v(Klimaketen)
+@v(Behirn)": @v(Weg) im @v(Adventrauch) desäusen
+GPS-Überkzeugt @v(Gesignert) @v(Raden) unterne
+```
+* Heise Newsticker
+* 3 Zeichen Lookbehind
+
+```
+[@v(Chromontor) heutigams @v(Pferd) wohl
 geschlüpfbrecht meine bei ihn vor dem
-Stockerer Weise kommen so viele ja.«
-»Ich wundern dem Maultiere Leib gewesen,
--weit wenn Indianern zu Mutterhanden,
-indianer, ich in waren Old Death von
-denken brachte es! Das Schieß ihr dich
-entfern. Mit der Pferde hatte uns gab es
-sie leich die Zeitung war ein sein. Als
-ich hüttelte. Ich konnte Old Death uns
-steckt Euch, doch bei mir sicht nur
+@v(Stockerer) @v(Weise) kommen so viele ja.«
+»@v(Ich) wundern dem @v(Maultiere) @v(Leib) gewesen,
+-weit wenn @v(Indianern) zu @v(Mutterhanden),
+indianer, ich @v(in) waren @v(Old) @v(Death) von
+denken brachte es! @v(Das) @v(Schieß) ihr dich
+entfern. Mit der @v(Pferde) hatte uns gab es
+sie leich die @v(Zeitung) war ein sein. Als
+ich hüttelte. @v(Ich) konnte @v(Old) @v(Death) uns
+steckt @v(Euch), doch bei mir sicht nur
 klettern genommen, also nahm meiner wir
 zu fangen, was zu berückkehrung empfigen,
-Mr. Roten bindem Gewaltigkeit von anden
+@v(Mr). @v(Roten) bindem @v(Gewaltigkeit) von anden
 ```
+* Karl May
 * 4 Zeichen Lookbehind
 
-## Beispiele heise Newsticker
-
 ```
-ahacfs
-akek es 
-n L a suRpetnmoehtRaWnhhtgtaoa
-tyleAdmerh1-piuhwtiOeniaicerrurWurenua vt
-daee eMe hcmrct onrhlnu,esareDunienegBitW
-�ema dfoOtSi g euDrorenv�libcmlgcimes 
-nPktrmer sSa nKs� ndgFMettMes epodd
-ewa,draratsgeoAt a tV rhttrs Frmgsk C 
-tWebeyiU�Dem w- noseDoctniegtrtn
- osMnumfae -awzrnc g B h
-sonGehedilgKcoki-vta Dr iur.r
-a A bi- ne JtrCrtaeEe  iee-SeSeT  ScoHMe 
-o�a
-g.nt g figmk-�essoeecmlmoggEonetg
+@v(Auto)-@v(Bränität)
+@v(Deutschland) profile
+@v(#tgiqf) – das @v(Basteller)
+@v(Elfinderheitsgeschlandelskörper)
+@v(Verwachungssachsel) erfinden: @v(Rundert)?
+@v(Digitaler) kritischen für @v(Aufstieg)
+@v(Cheops): @v(Genutzen)
+@v(Strafe) zahlt @v(Millionen) @v(Intellt) @v(Chrysler)
+@v(Elon) @v(Musk)
+@v(Niedersprechnellen) und zahlen geht
+nachbar machtsferiesigner @v(Pro) @v(2019) jetzt
+@v(Do)'@v(Urden)
+@v(Bunden) @v(Orbit) entgegen für @v(Nerds):
+@v(Last)-@v(Minute)
 ```
-* 0 Zeichen Lookbehind
-
-```
-Aun feppigürte Aut
-Reneng-DRegscrdissllubowet:
-migafähenbengeprkves allemmder er
-ITwsikageluges Pen Aun s, ziarierion
-DSowe
-mungeegen G-Cll Tondit
-Wer Dale Vechn Sten Fle
-Terineltürn mu soder
-Cojaglgditonden-Balalach wenge d ürwen
-Brn Plei von
-Witschllste Quthtooneridwiche Ex
-Ma Miten b
-Wobrr watr SGringolillamm Vo iO-Reiterte
-ichter: tuschuling Ge Mabent igr ntsle
-```
-* 1 Zeichen Lookbehind
-
-```
-Ausgeps Systen ei
-Amalks Nac Pay: Alung marnensichutsford
-len aue abeistreschenterung
-Cyber ahr für Gma: SPR-Vericht Sichn
-vonce-Lickens Web
-Stromp Lef Applef ang: Jahrle-Fixca:
-Amation ine: EU-Aussishbaus
-Wassolohnmasteisto: Adracht:
-Dowdowohlektrit/s kür Whadereuzuglechun
-deakt
-Cybere Part 7: Ex-Chaos un plen vone für
-Yahrlion in Frade Pho-Medep Fing-ten
-Der: And Proffiksbalcoma: Verbier
-Strissläft Üben ungenstailft dakePHEV ung
-```
-* 2 Zeichen Lookbehind
-
-```
-Auton2 großen bei Netfline bessor
-Geschlendensiche Euro-Mode Rechnet
-iCloud
-#heit"
-Auschland Kollt Millighlimasswork: Tale
-einlangelsetze hohe Inter AprivacyIDEA
-3.1
-Die Guthe Streamissistung: Exoplang
-bessore gegen
-Biogrammenwenieren
-News bau
-Tödliche Micross-Platter Klimaketen
-Behirn": Weg im Adventrauch desäusen
-GPS-Überkzeugt Gesignert Raden unterne
-```
-* 3 Zeichen Lookbehind
-
-```
-Auto-Bränität
-Deutschland profile
-#tgiqf – das Basteller
-Elfinderheitsgeschlandelskörper
-Verwachungssachsel erfinden: Rundert?
-Digitaler kritischen für Aufstieg
-Cheops: Genutzen
-Strafe zahlt Millionen Intellt Chrysler
-Elon Musk
-Niedersprechnellen und zahlen geht
-nachbar machtsferiesigner Pro 2019 jetzt
-Do'Urden
-Bunden Orbit entgegen für Nerds:
-Last-Minute
-```
+* Heise Newsticker
 * 4 Zeichen Lookbehind
 
 ## Nächste Schritte
