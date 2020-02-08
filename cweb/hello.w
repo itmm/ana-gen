@@ -2,7 +2,7 @@
 A small C++ program in |CWEB|. The general layout of a C++ program is
 
 @c
-@<includes@>
+@<includes@>@/
 int main() {
 	@<print msg@>;
 }

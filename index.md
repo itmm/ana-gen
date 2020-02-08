@@ -105,7 +105,7 @@ A small C++ program @v(in) |CWEB|. @v(The)
 general layout of a C++ program is
 
 @k(@c)
-@k(@<includes@>)
+@k(@<includes@>)@k(@/)
 int main() {
 	@k(@<print msg@>);
 }
