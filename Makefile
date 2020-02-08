@@ -5,7 +5,7 @@ CXXFLAGS += -Wall -std=c++17
 
 .PHONY: clean all
 
-all: hx-run hx-run-combined
+all: hx-run-combined hx-run
 
 index-combined.md: $(MDs)
 	$(error "update $@!")
