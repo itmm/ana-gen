@@ -104,7 +104,8 @@ set xtics border in scale 1,0.5 mirror norotate  autojustify
 set xtics  norangelimit 
 set xtics   ()
 set ytics border in scale 1,0.5 mirror norotate  autojustify
-set ytics  norangelimit autofreq 
+set ytics  norangelimit 
+set ytics   ("300.000" 300000., "600.000" 600000., "900.000" 900000., "1.200.000" 1.20000e+06)
 set ztics border in scale 1,0.5 nomirror norotate  autojustify
 set ztics  norangelimit autofreq 
 unset x2tics

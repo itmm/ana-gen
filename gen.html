@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Dokumente generieren</title>
-<link rel="stylesheet" type="text/css" href="slides/slides.css"></head>
+<link rel="stylesheet" type="text/css" href="./slides-combined/slides.css"></head>
 <body>
 <h2>Dokumente generieren</h2>
 <div class="slides">
@@ -48,7 +48,7 @@ generiert zufällige Zeichen
 <code>
 <span class="macro">@def(<span class="name">main prereqs</span>)</span><br/>
 <span class="in1"></span><span class="macro">@put(<span class="name">next prereqs</span>)</span>;<br/>
-<span class="in1"></span><span class="type">struct</span> <span class="type">No_Next</span> { };<br/>
+<span class="in1"></span><span class="keyword">class</span> <span class="type">No_Next</span> { };<br/>
 <span class="in1"></span><span class="keyword">inline</span> <span class="type">char</span> <span class="fn">next</span>() {<br/>
 <span class="in2"></span><span class="macro">@put(<span class="name">next</span>)</span>;<br/>
 <span class="in2"></span><span class="keyword">throw</span> <span class="type">No_Next</span> { };<br/>
@@ -152,7 +152,6 @@ benötigt <code><span class="type">std</span>::<span class="type">map</span></co
 <span class="in2"></span><span class="keyword">public</span>:<br/>
 <span class="in3"></span><span class="macro">@put(<span class="name">list publics</span>)</span>;<br/>
 <span class="in1"></span>};<br/>
-<br/>
 <span class="macro">@end(<span class="name">collection prereqs</span>)</span><br/>
 </code></div>
 <ul><li>
@@ -213,7 +212,7 @@ wenn keine Einträge hinterlegt sind, wird eine Exception generiert
 <code>
 <span class="macro">@add(<span class="name">list prereqs</span>)</span><br/>
 <span class="in1"></span><span class="keyword">#include</span> &lt;<span class="var">random</span>&gt;<br/>
-<span class="in1"></span><span class="type">std</span>::<span class="var">mt19937</span> <span class="var">_rng</span> {<br/>
+<span class="in1"></span><span class="type">std</span>::<span class="var">mt19937</span> <span class="var">rng_</span> {<br/>
 <span class="in2"></span><span class="type">std</span>::<span class="var">random_device</span>{ }()<br/>
 <span class="in1"></span>};<br/>
 <span class="macro">@end(<span class="name">list prereqs</span>)</span><br/>
@@ -231,7 +230,7 @@ initialisiert einen Zufallsgenerator (Mystery-Twister)
 <span class="in2"></span>&gt;(<br/>
 <span class="in3"></span><span class="num">0</span>, <span class="var">sum_</span> - <span class="num">1</span><br/>
 <span class="in2"></span>) };<br/>
-<span class="in1"></span><span class="type">int</span> <span class="var">result</span> = <span class="fn">dist</span>(<span class="var">_rng</span>);<br/>
+<span class="in1"></span><span class="type">int</span> <span class="var">result</span> = <span class="fn">dist</span>(<span class="var">rng_</span>);<br/>
 <span class="macro">@end(<span class="name">next ch</span>)</span><br/>
 </code></div>
 <ul><li>

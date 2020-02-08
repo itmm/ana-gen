@@ -20,7 +20,7 @@
 ```
 @def(main prereqs)
 	@put(next prereqs);
-	struct No_Next { };
+	class No_Next { };
 	inline char next() {
 		@put(next);
 		throw No_Next { };
@@ -98,7 +98,6 @@
 		public:
 			@put(list publics);
 	};
-
 @end(collection prereqs)
 ```
 * Liste von `Entry`s
@@ -144,7 +143,7 @@
 ```
 @add(list prereqs)
 	#include <random>
-	std::mt19937 _rng {
+	std::mt19937 rng_ {
 		std::random_device{ }()
 	};
 @end(list prereqs)
@@ -159,7 +158,7 @@
 		>(
 			0, sum_ - 1
 		) };
-	int result = dist(_rng);
+	int result = dist(rng_);
 @end(next ch)
 ```
 * ermittelt eine Zufallszahl zwischen `0` und `sum_ - 1`

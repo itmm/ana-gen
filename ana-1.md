@@ -109,8 +109,9 @@
 
 ```
 @def(write escaped)
-	static const char digits[] =
-		"0123456789abcdef";
+	static const char digits[] {
+		"0123456789abcdef"
+	};
 	std::cout << '%' <<
 		digits[(b >> 4) & 0xf] <<
 		digits[b & 0xf];

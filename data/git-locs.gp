@@ -103,7 +103,8 @@ set nomttics
 set xtics border in scale 1,0.5 mirror norotate  autojustify
 set xtics  norangelimit autofreq 
 set ytics border in scale 1,0.5 mirror norotate  autojustify
-set ytics  norangelimit autofreq 
+set ytics  norangelimit 
+set ytics   ("300.000" 300000., "600.000" 600000., "900.000" 900000., "1.200.000" 1.20000e+06)
 set ztics border in scale 1,0.5 nomirror norotate  autojustify
 set ztics  norangelimit autofreq 
 unset x2tics
@@ -131,8 +132,8 @@ set ylabel "Zeilen Code"
 set ylabel  font "" textcolor lt -1 rotate
 set y2label "" 
 set y2label  font "" textcolor lt -1 rotate
-set yrange [ 240000. : 1.44000e+06 ] noreverse writeback
-set y2range [ 239169. : 1.43440e+06 ] noreverse writeback
+set yrange [ 0.00000 : 1.30000e+06 ] noreverse writeback
+set y2range [ 358692. : 1.55392e+06 ] noreverse writeback
 set zlabel "" 
 set zlabel  font "" textcolor lt -1 norotate
 set zrange [ * : * ] noreverse writeback

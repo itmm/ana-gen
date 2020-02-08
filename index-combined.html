@@ -1,0 +1,1787 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Literate Programming</title>
+<link rel="stylesheet" type="text/css" href="./slides-combined/slides.css"></head>
+<body>
+<h1>Literate Programming</h1>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h1>Literate Programming</h1>
+<ul>
+<li><h2>von Büchern zu Präsentationen</h2></li>
+</ul>
+</div></div>
+<ul><li>
+Einführung in Literate Programming
+</li><li>
+Vorteile gegenüber getrennter Dokumentation
+</li><li>
+Schwächen bei klassischem Ansatz
+</li><li>
+Vorstellung einer Verbesserung
+</li></ul>
+</div>
+</div>
+<h2>Programme sind schwer</h2>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h2>Programme sind schwer</h2>
+<ul>
+<li><h3>lang</h3></li>
+<li><h3>komplex</h3></li>
+<li><h3>unübersichtlich</h3></li>
+</ul>
+</div></div>
+</div>
+</div>
+<h2>Programme sind daher</h2>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h2>Programme sind daher</h2>
+<ul>
+<li><h3>schwer zu verstehen</h3></li>
+<li><h3>schwer zu erweitern</h3></li>
+<li><h3>schwer zu korrigieren</h3></li>
+</ul>
+</div></div>
+</div>
+</div>
+<h2>Warum verstehen Programmierer Programme?</h2>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h2>Warum verstehen Programmierer Programme?</h2>
+</div></div>
+</div>
+<div class="page"><div class="slide">
+<img src="imgs/git-locs.jpg">
+</div>
+<ul><li>
+erster Commit: 1.284 Zeilen
+</li><li>
+neuster Commit: 1.195.350 Zeilen
+</li><li>
+Faktor: 930,96
+</li></ul>
+</div>
+</div>
+<h2>Wie kann man Programme besser verstehen?</h2>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h2>Wie kann man Programme besser verstehen?</h2>
+</div></div>
+</div>
+</div>
+<h2>Dokumentation</h2>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h2>Dokumentation</h2>
+</div></div>
+</div>
+</div>
+<h2>Sicht des illiteraten Programmierers</h2>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h2>Sicht des illiteraten Programmierers</h2>
+<ul>
+<li><h3>Source-Code ⊇ Dokumentation</h3></li>
+</ul>
+</div></div>
+<ul><li>
+Source-Code und dessen Dokumentation hängen zusammen
+</li><li>
+müssen zusammen gepflegt und versioniert werden
+</li><li>
+aber Source-Code ist für die Ausführung am wichtigsten
+</li><li>
+Source-Code ist selbsterklärend
+</li><li>
+Beispiele: javadoc, doxygen
+</li></ul>
+</div>
+</div>
+<h2>Sicht von Literate Programming</h2>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h2>Sicht von Literate Programming</h2>
+<ul>
+<li><h3>Source-Code ⊆ Dokumentation</h3></li>
+</ul>
+</div></div>
+<ul><li>
+Dokumentation beschreibt, was ein Programm macht
+</li><li>
+und wie das Programm etwas macht
+</li><li>
+und warum das Programm etwas macht
+</li><li>
+der Source-Code ist ein Teil dieser Dokumentation
+</li></ul>
+</div>
+</div>
+<h2>Illiterate Programme</h2>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h2>Illiterate Programme</h2>
+</div></div>
+<ul><li>
+Beispiele für Programme, die nicht nach den Prinzipien des Literate  Programming dokumentiert werden
+</li></ul>
+</div>
+</div>
+<h2>Open Source</h2>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h2>Open Source</h2>
+<ul>
+<li><h3>Linux</h3></li>
+<li><h3>Apache</h3></li>
+<li><h3>GCC, LLVM</h3></li>
+</ul>
+</div></div>
+<ul><li>
+viele Open Source Projekte sind auf den Code konzentriert
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<img src="imgs/operating-systems.jpg">
+</div>
+<ul><li>
+Tanenbaum beschreibt Minix-System in seinem Buch
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<img src="imgs/project-oberon.jpg">
+</div>
+<ul><li>
+Wirth beschreibt ein Betriebssystem mit Compiler in seinem Buch
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<img src="imgs/software-tools.jpg">
+</div>
+<ul><li>
+Kernighan beschreibt eine Sammlung von Kommandozeilen-Tools in Fortran
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<img src="imgs/sargon.jpg">
+</div>
+<ul><li>
+Sargon Chess ist in Z80-Assembler geschrieben
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<img src="imgs/mazes.jpg">
+</div>
+<ul><li>
+von Jamis Buck
+</li><li>
+Labyrinthe bauen in Ruby
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<img src="imgs/building-git.jpg">
+</div>
+<ul><li>
+ein Buch, in dem <code><span class="var">git</span></code> in Ruby nachgebaut wird
+</li></ul>
+</div>
+</div>
+<h2>Literate Programs</h2>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h2>Literate Programs</h2>
+</div></div>
+<ul><li>
+Beispiele für Literate Programs
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<img src="imgs/tex-book.jpg">
+</div>
+<ul><li>
+erster Kontakt mit TeX
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<img src="imgs/physically-based-rendering.jpg">
+</div>
+<ul><li>
+Raytracer beschreibt Grundlagen des Raytracings neben deme Code
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<img src="imgs/a-retargetable-c-compiler.jpg">
+</div>
+<ul><li>
+C-Compiler ist ein portabler C-Compiler in C
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<img src="imgs/understanding-mp3.jpg">
+</div>
+<ul><li>
+Ruckert beschreibt Bibliothek zum dekodieren von MP3
+</li></ul>
+</div>
+</div>
+<h2>Strukturierung von Literate Programs</h2>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h2>Strukturierung von Literate Programs</h2>
+<ul>
+<li><h3>Fragmente = Super-Makros</h3></li>
+<li><h3>Vorwärts-Deklaration</h3></li>
+<li><h3>Erweiterbarkeit</h3></li>
+</ul>
+</div></div>
+<ul><li>
+können verwendet werden, bevor sie definiert werden
+</li><li>
+können erweitert werden
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<img src="imgs/hello-1.jpg">
+</div>
+<ul><li>
+Beispiel Literate Programming
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<img src="imgs/hello-2.jpg">
+</div>
+<ul><li>
+zweite Seite
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="keyword">@*</span> <span class="type">Hello</span> <span class="type">World</span><span class="keyword">.</span><br/>
+<span class="var">A</span> <span class="var">small</span> <span class="var">C</span>++ <span class="var">program</span> <span class="var">in</span> |<span class="var">CWEB</span>|. <span class="var">The</span><br/>
+<span class="var">general</span> <span class="var">layout</span> <span class="var">of</span> <span class="var">a</span> <span class="var">C</span>++ <span class="var">program</span> <span class="var">is</span><br/>
+<br/>
+<span class="keyword">@c</span><br/>
+<span class="keyword">@&lt;includes@&gt;</span><br/>
+<span class="type">int</span> <span class="fn">main</span>() {<br/>
+<span class="in1"></span><span class="keyword">@&lt;print msg@&gt;</span>;<br/>
+}<br/>
+</code></div>
+<ul><li>
+Source Literate Programming
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="keyword">@ </span><span class="var">Now</span> <span class="var">the</span> <span class="var">fragments</span> <span class="var">are</span> <span class="var">following</span>.<br/>
+<span class="var">To</span> <span class="var">print</span> <span class="var">something</span> <span class="var">the</span> <span class="var">program</span> <span class="var">first</span><br/>
+<span class="var">includes</span> <span class="var">the</span> <span class="var">declarations</span>.<br/>
+<br/>
+<span class="keyword">@&lt;includes@&gt;=</span><br/>
+<span class="keyword">#include</span> &lt;<span class="var">iostream</span>&gt;<br/>
+<br/>
+<span class="keyword">@ </span><span class="var">And</span> <span class="var">the</span> <span class="var">message</span> <span class="var">is</span> <span class="var">send</span> <span class="var">to</span> <span class="var">standard</span><br/>
+<span class="var">output</span>.<br/>
+<br/>
+<span class="keyword">@&lt;print msg@&gt;=</span><br/>
+<span class="type">std</span>::<span class="var">cout</span> &lt;&lt; <span class="str">"Hello World.\n"</span>;<br/>
+</code></div>
+<ul><li>
+Source Literate Programming
+</li></ul>
+</div>
+</div>
+<h2>Vorteile Literate Programming</h2>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h2>Vorteile Literate Programming</h2>
+<ul>
+<li><h3>Zusammenhang</h3></li>
+<li><h3>Intelligente Ordnung</h3></li>
+<li><h3>Ausdrucksstärke</h3></li>
+<li><h3>Querverweise</h3></li>
+</ul>
+</div></div>
+</div>
+</div>
+<h3>Zusammenhang</h3>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h3>Zusammenhang</h3>
+<ul>
+<li><h4>Source-Code und Dokumentation leichter synchron</h4></li>
+</ul>
+</div></div>
+</div>
+</div>
+<h3>Intelligente Ordnung</h3>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h3>Intelligente Ordnung</h3>
+<ul>
+<li><h4>interessante Themen vorziehen</h4></li>
+<li><h4>uninteressante Themen in den Anhang (oder ausgelassen)</h4></li>
+<li><h4>Programm kann wie ein Buch gelesen werden</h4></li>
+</ul>
+</div></div>
+</div>
+</div>
+<h3>Ausdrucksstärke</h3>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h3>Ausdrucksstärke</h3>
+<ul>
+<li><h4>komplizierte Stellen können erklärt werden</h4></li>
+</ul>
+</div></div>
+</div>
+</div>
+<h3>Querverweise</h3>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h3>Querverweise</h3>
+<ul>
+<li><h4>Vorwärts: Verweise auf benutzte Fragmente</h4></li>
+<li><h4>Rückwärts: Verweise auf Aufrufe</h4></li>
+<li><h4>mächtiger Index</h4></li>
+</ul>
+</div></div>
+</div>
+</div>
+<h2>Nachteile Literate Programming</h2>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h2>Nachteile Literate Programming</h2>
+<ul>
+<li><h3>Nicht aufbauend</h3></li>
+<li><h3>Granularität</h3></li>
+<li><h3>Vollständigkeit</h3></li>
+<li><h3>Syntax</h3></li>
+</ul>
+</div></div>
+</div>
+</div>
+<h3>Nicht aufbauend</h3>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h3>Nicht aufbauend</h3>
+<ul>
+<li><h4>Verständnis erst nach vollständigem Durcharbeiten</h4></li>
+<li><h4>Springen oft notwendig</h4></li>
+<li><h4>Keine Zwischenstände des Codes möglich</h4></li>
+</ul>
+</div></div>
+</div>
+</div>
+<h3>Granularität</h3>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h3>Granularität</h3>
+<ul>
+<li><h4>Blöcke oft zu lang und zu kompliziert</h4></li>
+<li><h4>Seitenweise Codes möglich</h4></li>
+</ul>
+</div></div>
+</div>
+</div>
+<h3>Vollständigkeit</h3>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h3>Vollständigkeit</h3>
+<ul>
+<li><h4>Vollständigkeit nicht erzwungen</h4></li>
+<li><h4>oft gekürzt, um Buch-Rahmen nicht zu sprengen</h4></li>
+</ul>
+</div></div>
+</div>
+</div>
+<h2>Syntax</h2>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h2>Syntax</h2>
+<ul>
+<li><h3>Dokumentation in LaTeX</h3></li>
+<li><h3>Source-Code wird mathematisiert</h3></li>
+</ul>
+</div></div>
+</div>
+</div>
+<h2>Slide-Programming ⊇ Literate-Programming</h2>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h2>Slide-Programming ⊇ Literate-Programming</h2>
+<ul>
+<li><h3>Folien</h3></li>
+<li><h3>aufbauend</h3></li>
+<li><h3>modular</h3></li>
+<li><h3>sprach-neutral</h3></li>
+<li><h3>Markdown, HTML</h3></li>
+</ul>
+</div></div>
+</div>
+</div>
+<h3>Folien</h3>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h3>Folien</h3>
+<ul>
+<li><h4>Folien mit Notizen statt seitenlanger Fragmente</h4></li>
+<li><h4>klare Grenze für Umfang</h4></li>
+<li><h4>erklärende Folien möglich</h4></li>
+</ul>
+</div></div>
+</div>
+</div>
+<h3>aufbauend</h3>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h3>aufbauend</h3>
+<ul>
+<li><h4>nach jeder Folie kann ein ausführbares Programm erstellt werden</h4></li>
+<li><h4>undefinierte Fragmente sind kein Fehler</h4></li>
+<li><h4>Fragmente können später umdefiniert werden</h4></li>
+</ul>
+</div></div>
+</div>
+</div>
+<h3>modular</h3>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h3>modular</h3>
+<ul>
+<li><h4>große Projekte können aufgeteilt werden</h4></li>
+</ul>
+</div></div>
+</div>
+</div>
+<h3>sprach-neutral</h3>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h3>sprach-neutral</h3>
+<ul>
+<li><h4>alles was mit einem Text-Editor bearbeitet werden kann</h4></li>
+<li><h4>nicht auf bestimmte Programmiersprache beschränkt</h4></li>
+</ul>
+</div></div>
+</div>
+</div>
+<h3>Markdown</h3>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h3>Markdown</h3>
+<ul>
+<li><h4>einfacher als LaTeX</h4></li>
+<li><h4>schneller zu Parsen</h4></li>
+</ul>
+</div></div>
+</div>
+</div>
+<h3>HTML</h3>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h3>HTML</h3>
+<ul>
+<li><h4>Folien werden als Webseite generiert</h4></li>
+<li><h4>diese Präsentation ist in <code><span class="var">hex</span></code> erstellt</h4></li>
+</ul>
+</div></div>
+</div>
+</div>
+<h2>Beispiel-Programm</h2>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h2>Beispiel-Programm</h2>
+<ul>
+<li><h3>kleines Beispiel aus den Anfängen der künstlichen Intelligenz</h3></li>
+</ul>
+</div></div>
+<ul><li>
+Slide-Programming an konkretem Beispiel erfahren
+</li><li>
+Texte im bestimmten Stil generieren
+</li><li>
+Referenz: Computer-Kurzweil
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@inc(<span class="name"><a href="ana-1.html">ana-1.md</a></span>)</span><br/>
+<span class="macro">@inc(<span class="name"><a href="gen.html">gen.md</a></span>)</span><br/>
+<span class="macro">@inc(<span class="name"><a href="ana-n.html">ana-n.md</a></span>)</span><br/>
+</code></div>
+<ul><li>
+erst einfache Häufigkeits-Analyse
+</li><li>
+dann daraus Text generieren
+</li><li>
+dann auf feste Sequenz-Längen erweitern
+</li></ul>
+</div>
+</div>
+<h1>Dateien analysieren</h1>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h1>Dateien analysieren</h1>
+</div></div>
+<ul><li>
+<code><span class="var">ana</span></code> erstellt Statistiken der Verteilungen von Byte-Folgen in  Dateien
+</li><li>
+die erste Version des Programms analysiert nur Byte-Folgen der Länge  eins
+</li><li>
+also die die Häufigkeiten der einzelnen Bytes
+</li><li>
+das Programm wird später für beliebige Byte-Folgen fester Länge  erweitert
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@Def(<span class="name">file: ana.cpp</span>)</span><br/>
+<span class="in1"></span><span class="macro">@put(<span class="name">main prereqs</span>)</span>;<br/>
+<span class="in1"></span><span class="type">int</span> <span class="fn">main</span>(<br/>
+<span class="in2"></span><span class="type">int</span> <span class="var">argc</span>, <span class="type">const</span> <span class="type">char</span> *<span class="var">argv</span>[]<br/>
+<span class="in1"></span>) {<br/>
+<span class="in2"></span><span class="macro">@Put(<span class="name">parse args</span>)</span>;<br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">read input</span>)</span>;<br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">write table</span>)</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@End(<span class="name">file: ana.cpp</span>)</span><br/>
+</code></div>
+<ul><li>
+die Funktion <code><span class="fn">main</span></code> wertet Argumente der Kommandozeile aus
+</li><li>
+dann liest <code><span class="fn">main</span></code> die Standard-Eingabe komplett und wertet sie aus
+</li><li>
+zum Schluss schreibt <code><span class="fn">main</span></code> die resultierende Statistik in die  Standard-Ausgabe
+</li></ul>
+</div>
+</div>
+<h2>Datenstruktur für Statistik</h2>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h2>Datenstruktur für Statistik</h2>
+</div></div>
+<ul><li>
+für jedes gelesene Byte wird gezählt, wie häufig der Byte-Wert in der  gelesenen Eingabe vorkommt
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@Def(<span class="name">def collection</span>)</span><br/>
+<span class="in1"></span><span class="keyword">using</span> <span class="type">Collection</span> =<br/>
+<span class="in2"></span><span class="type">std</span>::<span class="type">map</span>&lt;<span class="type">char</span>, <span class="type">int</span>&gt;;<br/>
+<span class="macro">@End(<span class="name">def collection</span>)</span><br/>
+</code></div>
+<ul><li>
+für jedes Byte wird ein eigener Zähler benutzt
+</li><li>
+später wird die <code><span class="type">Collection</span></code> umdefinieren
+</li><li>
+daher ist die Definition in einem eigenen globalen Fragment gekapselt
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@def(<span class="name">main prereqs</span>)</span><br/>
+<span class="in1"></span><span class="keyword">#include</span> &lt;<span class="type">map</span>&gt;<br/>
+<span class="in1"></span><span class="macro">@Put(<span class="name">def collection</span>)</span>;<br/>
+<span class="in1"></span><span class="type">Collection</span> <span class="var">collection</span>;<br/>
+<span class="macro">@end(<span class="name">main prereqs</span>)</span><br/>
+</code></div>
+<ul><li>
+es gibt eine globale Variable, welche die Häufigkeiten enthält
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@add(<span class="name">main prereqs</span>)</span><br/>
+<span class="in1"></span><span class="keyword">#include</span> &lt;<span class="var">iostream</span>&gt;<br/>
+<span class="macro">@end(<span class="name">main prereqs</span>)</span><br/>
+</code></div>
+<ul><li>
+benötigt Standard Ein- und Ausgabe
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@def(<span class="name">read input</span>)</span><br/>
+<span class="in1"></span><span class="macro">@Put(<span class="name">init state</span>)</span>;<br/>
+<span class="in1"></span><span class="type">char</span> <span class="var">ch</span>;<br/>
+<span class="in1"></span><span class="keyword">while</span> (<span class="type">std</span>::<span class="var">cin</span>.<span class="fn">get</span>(<span class="var">ch</span>)) {<br/>
+<span class="in2"></span><span class="macro">@Put(<span class="name">add to collection</span>)</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">read input</span>)</span><br/>
+</code></div>
+<ul><li>
+jedes gelesene Zeichen wird in die Statistik integriert
+</li><li>
+später benötigt das Programm einen Ort, um den aktuellen Schlüssel zu  initialisieren
+</li><li>
+das passende Fragment wird schon vorab definiert
+</li><li>
+aber nicht gefüllt
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@Def(<span class="name">add to collection</span>)</span><br/>
+<span class="in1"></span>++<span class="var">collection</span>[<span class="var">ch</span>];<br/>
+<span class="macro">@End(<span class="name">add to collection</span>)</span><br/>
+</code></div>
+<ul><li>
+fügt Zeichen in die Statistik ein
+</li><li>
+eigenes globales Fragment, um es später zu ersetzen
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@def(<span class="name">write table</span>)</span><br/>
+<span class="in1"></span><span class="keyword">for</span> (<span class="type">const</span> <span class="type">auto</span> &amp;<span class="var">e</span> : <span class="var">collection</span>) {<br/>
+<span class="in2"></span><span class="macro">@Put(<span class="name">write key</span>)</span>;<br/>
+<span class="in2"></span><span class="type">std</span>::<span class="var">cout</span> &lt;&lt; <span class="str">"\t"</span> &lt;&lt;<br/>
+<span class="in3"></span><span class="var">e</span>.<span class="var">second</span> &lt;&lt; <span class="str">"\n"</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">write table</span>)</span><br/>
+</code></div>
+<ul><li>
+jeder Eintrag der Statistik wird ausgegeben
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@add(<span class="name">main prereqs</span>)</span><br/>
+<span class="in1"></span><span class="keyword">#include</span> &lt;<span class="var">cctype</span>&gt;<br/>
+<span class="in1"></span><span class="type">void</span> <span class="fn">write_byte</span>(<span class="type">char</span> <span class="var">b</span>) {<br/>
+<span class="in2"></span><span class="keyword">if</span> (<span class="fn">isprint</span>(<span class="var">b</span>) &amp;&amp;<br/>
+<span class="in3"></span><span class="var">b</span> != <span class="str">'%'</span> &amp;&amp; <span class="var">b</span> &gt; <span class="str">' '</span><br/>
+<span class="in2"></span>) {<br/>
+<span class="in3"></span><span class="type">std</span>::<span class="var">cout</span> &lt;&lt; <span class="var">b</span>;<br/>
+<span class="in2"></span>} <span class="keyword">else</span> {<br/>
+<span class="in3"></span><span class="macro">@put(<span class="name">write escaped</span>)</span>;<br/>
+<span class="in2"></span>}<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">main prereqs</span>)</span><br/>
+</code></div>
+<ul><li>
+druckbare Zeichen werden direkt ausgegeben
+</li><li>
+andere Bytes werden escaped
+</li><li>
+so können Unix-Tools die Datei in Spalten aufteilen
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@def(<span class="name">write escaped</span>)</span><br/>
+<span class="in1"></span><span class="keyword">static</span> <span class="type">const</span> <span class="type">char</span> <span class="var">digits</span>[] {<br/>
+<span class="in2"></span><span class="str">"0123456789abcdef"</span><br/>
+<span class="in1"></span>};<br/>
+<span class="in1"></span><span class="type">std</span>::<span class="var">cout</span> &lt;&lt; <span class="str">'%'</span> &lt;&lt;<br/>
+<span class="in2"></span><span class="var">digits</span>[(<span class="var">b</span> &gt;&gt; <span class="num">4</span>) &amp; <span class="num">0xf</span>] &lt;&lt;<br/>
+<span class="in2"></span><span class="var">digits</span>[<span class="var">b</span> &amp; <span class="num">0xf</span>];<br/>
+<span class="macro">@end(<span class="name">write escaped</span>)</span><br/>
+</code></div>
+<ul><li>
+andere Bytes werden mit dem Präfix <code>%</code> als zwei hexadezimale Ziffern  ausgegeben
+</li><li>
+auch das Zeichen <code>%</code> muss so kodiert werden
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@Def(<span class="name">write key</span>)</span><br/>
+<span class="in1"></span><span class="fn">write_byte</span>(<span class="var">e</span>.<span class="var">first</span>);<br/>
+<span class="macro">@End(<span class="name">write key</span>)</span><br/>
+</code></div>
+<ul><li>
+gibt den Schlüssel aus
+</li><li>
+eigenes Fragment, da sich der Typ des Schlüssels später ändert
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@inc(<span class="name"><a href="ana-1.html">ana-1.md</a></span>)</span><br/>
+<span class="macro">@inc(<span class="name"><a href="gen.html">gen.md</a></span>)</span><br/>
+<span class="macro">@inc(<span class="name"><a href="ana-n.html">ana-n.md</a></span>)</span><br/>
+</code></div>
+<ul><li>
+erst einfache Häufigkeits-Analyse
+</li><li>
+dann daraus Text generieren
+</li><li>
+dann auf feste Sequenz-Längen erweitern
+</li></ul>
+</div>
+</div>
+<h2>Dokumente generieren</h2>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h2>Dokumente generieren</h2>
+</div></div>
+<ul><li>
+erzeugt Dokumente mit vorgegebener Sequenz-Häufigkeit
+</li><li>
+liest die Häufigkeitsverteilung über Standard-Eingabe
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@Def(<span class="name">file: gen.cpp</span>)</span><br/>
+<span class="in1"></span><span class="macro">@put(<span class="name">main prereqs</span>)</span>;<br/>
+<span class="in1"></span><span class="type">int</span> <span class="fn">main</span>() {<br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">read receipt</span>)</span>;<br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">loop</span>)</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@End(<span class="name">file: gen.cpp</span>)</span><br/>
+</code></div>
+<ul><li>
+<code><span class="fn">main</span></code> Funktion liest Häufigkeit
+</li><li>
+und generiert passende Zeichen
+</li></ul>
+</div>
+</div>
+<h2>Zufällige Zeichen generieren</h2>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h2>Zufällige Zeichen generieren</h2>
+</div></div>
+<ul><li>
+generiert zufällige Zeichen
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@def(<span class="name">main prereqs</span>)</span><br/>
+<span class="in1"></span><span class="macro">@put(<span class="name">next prereqs</span>)</span>;<br/>
+<span class="in1"></span><span class="keyword">class</span> <span class="type">No_Next</span> { };<br/>
+<span class="in1"></span><span class="keyword">inline</span> <span class="type">char</span> <span class="fn">next</span>() {<br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">next</span>)</span>;<br/>
+<span class="in2"></span><span class="keyword">throw</span> <span class="type">No_Next</span> { };<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">main prereqs</span>)</span><br/>
+</code></div>
+<ul><li>
+<code><span class="fn">next</span></code> generiert das nächste Zeichen
+</li><li>
+wirft Exception, wenn kein Zeichen generiert werden konnte
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@add(<span class="name">main prereqs</span>)</span><br/>
+<span class="in1"></span><span class="keyword">#include</span> &lt;<span class="var">iostream</span>&gt;<br/>
+<span class="macro">@end(<span class="name">main prereqs</span>)</span><br/>
+</code></div>
+<ul><li>
+benötigt <code><span class="type">std</span>::<span class="var">cin</span></code>, <code><span class="type">std</span>::<span class="var">cout</span></code>, etc.
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@def(<span class="name">loop</span>)</span><br/>
+<span class="in1"></span><span class="macro">@mul(<span class="name">initialise</span>)</span>;<br/>
+<span class="in1"></span><span class="keyword">for</span> (;;) {<br/>
+<span class="in2"></span><span class="keyword">try</span> {<br/>
+<span class="in3"></span><span class="type">std</span>::<span class="var">cout</span> &lt;&lt; <span class="fn">next</span>();<br/>
+<span class="in2"></span>} <span class="keyword">catch</span> (<span class="type">const</span> <span class="type">No_Next</span> &amp;) {<br/>
+<span class="in3"></span><span class="macro">@mul(<span class="name">initialise</span>)</span>;<br/>
+<span class="in2"></span>}<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">loop</span>)</span><br/>
+</code></div>
+<ul><li>
+initialisiere den Zustand
+</li><li>
+und gib die generierten Zeichen aus
+</li><li>
+wenn kein Zeichen generiert werden kann, initialisiere den Zustand neu
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@inc(<span class="name"><a href="prefix.html">prefix.md</a></span>)</span><br/>
+</code></div>
+<ul><li>
+definiert Klasse für Byte-Arrays einheitlicher Länge
+</li><li>
+die als Schlüssel von <code><span class="type">std</span>::<span class="type">map</span></code> verwendet werden
+</li></ul>
+</div>
+</div>
+<h1>Pseudo-Dynamisches Array</h1>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h1>Pseudo-Dynamisches Array</h1>
+</div></div>
+<ul><li>
+Klasse zur Verwaltung von Byte-Präfixen
+</li><li>
+alle Instanzen haben die gleiche Länge
+</li><li>
+diese wird aber erst zur Laufzeit bestimmt
+</li><li>
+<code><span class="type">Prefix</span></code>es sind Schlüssel von <code><span class="type">std</span>::<span class="type">map</span></code>
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@Def(<span class="name">prefix</span>)</span><br/>
+<span class="in1"></span><span class="keyword">#include</span> &lt;<span class="type">string</span>&gt;<br/>
+<span class="in1"></span><span class="keyword">using</span> <span class="type">Prefix</span> = <span class="type">std</span>::<span class="type">string</span>;<br/>
+<span class="in1"></span><span class="type">unsigned</span> <span class="var">prefix_length</span> { <span class="num">2</span> };<br/>
+<span class="macro">@End(<span class="name">prefix</span>)</span><br/>
+</code></div>
+<ul><li>
+einfache Implementierung verwendet <code><span class="type">std</span>::<span class="type">string</span></code> als <code><span class="type">Prefix</span></code>
+</li><li>
+Länge wird in einer globalen Variable gespeichert
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@Add(<span class="name">prefix</span>)</span><br/>
+<span class="in1"></span><span class="type">void</span> <span class="fn">init</span>(<span class="type">Prefix</span> &amp;<span class="var">p</span>) {<br/>
+<span class="in2"></span><span class="var">p</span> = <span class="type">std</span>::<span class="type">string</span> { };<br/>
+<span class="in2"></span><span class="keyword">for</span> (<span class="type">unsigned</span> <span class="var">i</span> { <span class="num">0</span> };<br/>
+<span class="in3"></span><span class="var">i</span> &lt; <span class="var">prefix_length</span>; ++<span class="var">i</span><br/>
+<span class="in2"></span>) {<br/>
+<span class="in3"></span><span class="var">p</span> += <span class="str">'\0'</span>;<br/>
+<span class="in2"></span>}<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@End(<span class="name">prefix</span>)</span><br/>
+</code></div>
+<ul><li>
+initialisiert <code><span class="type">Prefix</span></code> auf eine feste Länge von Null-Bytes
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@Add(<span class="name">prefix</span>)</span><br/>
+<span class="in1"></span><span class="type">void</span> <span class="fn">push</span>(<span class="type">Prefix</span> &amp;<span class="var">p</span>, <span class="type">char</span> <span class="var">ch</span>) {<br/>
+<span class="in2"></span><span class="keyword">for</span> (<span class="type">unsigned</span> <span class="var">i</span> { <span class="num">1</span> };<br/>
+<span class="in3"></span><span class="var">i</span> &lt; <span class="var">p</span>.<span class="fn">size</span>(); ++<span class="var">i</span><br/>
+<span class="in2"></span>) {<br/>
+<span class="in3"></span><span class="var">p</span>[<span class="var">i</span> - <span class="num">1</span>] = <span class="var">p</span>[<span class="var">i</span>];<br/>
+<span class="in2"></span>}<br/>
+<span class="in2"></span><span class="keyword">if</span> (<span class="var">p</span>.<span class="fn">size</span>() &gt; <span class="num">0</span>) {<br/>
+<span class="in3"></span><span class="var">p</span>[<span class="var">p</span>.<span class="fn">size</span>() - <span class="num">1</span>] = <span class="var">ch</span>;<br/>
+<span class="in2"></span>}<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@End(<span class="name">prefix</span>)</span><br/>
+</code></div>
+<ul><li>
+verschiebt alle Bytes und fügt das neue Byte an
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@inc(<span class="name"><a href="prefix.html">prefix.md</a></span>)</span><br/>
+</code></div>
+<ul><li>
+definiert Klasse für Byte-Arrays einheitlicher Länge
+</li><li>
+die als Schlüssel von <code><span class="type">std</span>::<span class="type">map</span></code> verwendet werden
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@def(<span class="name">collection prereqs</span>)</span><br/>
+<span class="in1"></span><span class="macro">@Mul(<span class="name">prefix</span>)</span><br/>
+<span class="macro">@end(<span class="name">collection prereqs</span>)</span><br/>
+</code></div>
+<ul><li>
+integriert die Definition von <code><span class="type">Prefix</span></code> in das Programm
+</li><li>
+wird ebenfalls im erweiterten Analysator verwendet
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@add(<span class="name">collection prereqs</span>)</span><br/>
+<span class="in1"></span><span class="keyword">#include</span> &lt;<span class="type">map</span>&gt;<br/>
+<span class="macro">@end(<span class="name">collection prereqs</span>)</span><br/>
+</code></div>
+<ul><li>
+benötigt <code><span class="type">std</span>::<span class="type">map</span></code>
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@def(<span class="name">list prereqs</span>)</span><br/>
+<span class="in1"></span><span class="type">struct</span> <span class="type">Entry</span> {<br/>
+<span class="in2"></span><span class="type">const</span> <span class="type">char</span> <span class="var">ch</span>;<br/>
+<span class="in2"></span><span class="type">const</span> <span class="type">int</span> <span class="var">count</span>;<br/>
+<span class="in2"></span><span class="type">Entry</span> (<span class="type">char</span> <span class="var">c</span>, <span class="type">int</span> <span class="var">v</span>):<br/>
+<span class="in3"></span><span class="var">ch</span> { <span class="var">c</span> }, <span class="var">count</span> { <span class="var">v</span> }<br/>
+<span class="in2"></span>{ }<br/>
+<span class="in1"></span>};<br/>
+<span class="macro">@end(<span class="name">list prereqs</span>)</span><br/>
+</code></div>
+<ul><li>
+<code><span class="type">Entry</span></code> zählt wie häufig ein Zeichen <code><span class="var">ch</span></code> nach einem Präfix vorkommt
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@add(<span class="name">collection prereqs</span>)</span><br/>
+<span class="in1"></span><span class="macro">@put(<span class="name">list prereqs</span>)</span>;<br/>
+<span class="in1"></span><span class="keyword">#include</span> &lt;<span class="type">vector</span>&gt;<br/>
+<span class="in1"></span><span class="keyword">class</span> <span class="type">List</span> {<br/>
+<span class="in2"></span><span class="keyword">private</span>:<br/>
+<span class="in3"></span><span class="type">std</span>::<span class="type">vector</span>&lt;<span class="type">Entry</span>&gt; <span class="var">entries_</span>;<br/>
+<span class="in3"></span><span class="type">int</span> <span class="var">sum_</span> { <span class="num">0</span> };<br/>
+<span class="in2"></span><span class="keyword">public</span>:<br/>
+<span class="in3"></span><span class="macro">@put(<span class="name">list publics</span>)</span>;<br/>
+<span class="in1"></span>};<br/>
+<span class="macro">@end(<span class="name">collection prereqs</span>)</span><br/>
+</code></div>
+<ul><li>
+Liste von <code><span class="type">Entry</span></code>s
+</li><li>
+zusätzlich wird die Gesamtsumme vorgehalten
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@def(<span class="name">next prereqs</span>)</span><br/>
+<span class="in1"></span><span class="macro">@put(<span class="name">collection prereqs</span>)</span>;<br/>
+<span class="in1"></span><span class="keyword">using</span> <span class="type">Collection</span> =<br/>
+<span class="in2"></span><span class="type">std</span>::<span class="type">map</span>&lt;<span class="type">Prefix</span>, <span class="type">List</span>&gt;;<br/>
+<span class="in1"></span><span class="type">Collection</span> <span class="var">collection</span>;<br/>
+<span class="macro">@end(<span class="name">next prereqs</span>)</span><br/>
+</code></div>
+<ul><li>
+der Generator verwendet eine Abbildung von Präfixen auf Listen
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@def(<span class="name">list publics</span>)</span><br/>
+<span class="in1"></span><span class="type">void</span> <span class="fn">add</span>(<span class="type">char</span> <span class="var">ch</span>, <span class="type">int</span> <span class="var">count</span>) {<br/>
+<span class="in2"></span><span class="var">entries_</span>.<span class="fn">emplace_back</span>(<br/>
+<span class="in3"></span><span class="var">ch</span>, <span class="var">count</span><br/>
+<span class="in2"></span>);<br/>
+<span class="in2"></span><span class="var">sum_</span> += <span class="var">count</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">list publics</span>)</span><br/>
+</code></div>
+<ul><li>
+fügt ein neues Zeichen zur Liste hinzu
+</li><li>
+und passt die Gesamtsumme an
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@add(<span class="name">list publics</span>)</span><br/>
+<span class="in1"></span><span class="keyword">class</span> <span class="type">No_Entries</span> { };<br/>
+<span class="in1"></span><span class="type">char</span> <span class="fn">next</span>() <span class="type">const</span> {<br/>
+<span class="in2"></span><span class="keyword">if</span> (<span class="var">sum_</span> &gt; <span class="num">0</span>) {<br/>
+<span class="in3"></span><span class="macro">@put(<span class="name">next ch</span>)</span>;<br/>
+<span class="in2"></span>}<br/>
+<span class="in2"></span><span class="keyword">throw</span> <span class="type">No_Entries</span> { };<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">list publics</span>)</span><br/>
+</code></div>
+<ul><li>
+liefert ein zufälliges Zeichen
+</li><li>
+wenn keine Einträge hinterlegt sind, wird eine Exception generiert
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@add(<span class="name">list prereqs</span>)</span><br/>
+<span class="in1"></span><span class="keyword">#include</span> &lt;<span class="var">random</span>&gt;<br/>
+<span class="in1"></span><span class="type">std</span>::<span class="var">mt19937</span> <span class="var">rng_</span> {<br/>
+<span class="in2"></span><span class="type">std</span>::<span class="var">random_device</span>{ }()<br/>
+<span class="in1"></span>};<br/>
+<span class="macro">@end(<span class="name">list prereqs</span>)</span><br/>
+</code></div>
+<ul><li>
+initialisiert einen Zufallsgenerator (Mystery-Twister)
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@def(<span class="name">next ch</span>)</span><br/>
+<span class="in1"></span><span class="type">auto</span> <span class="var">dist</span> {<br/>
+<span class="in2"></span><span class="type">std</span>::<span class="var">uniform_int_distribution</span>&lt;<br/>
+<span class="in3"></span><span class="type">std</span>::<span class="var">mt19937</span>::<span class="var">result_type</span><br/>
+<span class="in2"></span>&gt;(<br/>
+<span class="in3"></span><span class="num">0</span>, <span class="var">sum_</span> - <span class="num">1</span><br/>
+<span class="in2"></span>) };<br/>
+<span class="in1"></span><span class="type">int</span> <span class="var">result</span> = <span class="fn">dist</span>(<span class="var">rng_</span>);<br/>
+<span class="macro">@end(<span class="name">next ch</span>)</span><br/>
+</code></div>
+<ul><li>
+ermittelt eine Zufallszahl zwischen <code><span class="num">0</span></code> und <code><span class="var">sum_</span> - <span class="num">1</span></code>
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@add(<span class="name">next ch</span>)</span><br/>
+<span class="in1"></span><span class="keyword">for</span> (<span class="type">const</span> <span class="type">auto</span> &amp;<span class="var">i</span> : <span class="var">entries_</span>) {<br/>
+<span class="in2"></span><span class="keyword">if</span> (<span class="var">result</span> &lt; <span class="var">i</span>.<span class="var">count</span>) {<br/>
+<span class="in3"></span><span class="keyword">return</span> <span class="var">i</span>.<span class="var">ch</span>;<br/>
+<span class="in2"></span>}<br/>
+<span class="in2"></span><span class="var">result</span> -= <span class="var">i</span>.<span class="var">count</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">next ch</span>)</span><br/>
+</code></div>
+<ul><li>
+wählt Zeichen anhand der Zufallszahl
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@add(<span class="name">next prereqs</span>)</span><br/>
+<span class="in1"></span><span class="type">Prefix</span> <span class="var">state</span>;<br/>
+<span class="macro">@end(<span class="name">next prereqs</span>)</span><br/>
+</code></div>
+<ul><li>
+der Zustand ist ein Präfix mit den letzten ausgegebenen Zeichen
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@def(<span class="name">initialise</span>)</span><br/>
+<span class="in1"></span><span class="fn">init</span>(<span class="var">state</span>);<br/>
+<span class="macro">@end(<span class="name">initialise</span>)</span><br/>
+</code></div>
+<ul><li>
+initialsiert den Zustand auf Null-Bytes
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@def(<span class="name">next</span>)</span><br/>
+<span class="in1"></span><span class="keyword">try</span> {<br/>
+<span class="in2"></span><span class="type">char</span> <span class="var">ch</span> {<br/>
+<span class="in3"></span><span class="var">collection</span>[<span class="var">state</span>].<span class="fn">next</span>()<br/>
+<span class="in2"></span>};<br/>
+<span class="in2"></span><span class="fn">push</span>(<span class="var">state</span>, <span class="var">ch</span>);<br/>
+<span class="in2"></span><span class="keyword">return</span> <span class="var">ch</span>;<br/>
+<span class="in1"></span>} <span class="keyword">catch</span> (<span class="type">const</span> <span class="type">List</span>::<span class="type">No_Entries</span> &amp;) {<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">next</span>)</span><br/>
+</code></div>
+<ul><li>
+ermittelt das nächste zufällige Zeichen
+</li></ul>
+</div>
+</div>
+<h2>Rezept einlesen</h2>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h2>Rezept einlesen</h2>
+</div></div>
+<ul><li>
+liest Häufigkeitsverteilung von Standard-Eingabe
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@add(<span class="name">main prereqs</span>)</span><br/>
+<span class="in1"></span><span class="macro">@put(<span class="name">normalize prereqs</span>)</span>;<br/>
+<span class="in1"></span><span class="type">std</span>::<span class="type">string</span> <span class="fn">normalize</span>(<br/>
+<span class="in2"></span><span class="type">const</span> <span class="type">std</span>::<span class="type">string</span> &amp;<span class="var">key</span><br/>
+<span class="in1"></span>) {<br/>
+<span class="in2"></span><span class="type">std</span>::<span class="type">string</span> <span class="var">result</span>;<br/>
+<span class="in2"></span><span class="type">unsigned</span> <span class="var">i</span> { <span class="num">0</span> };<br/>
+<span class="in2"></span><span class="keyword">for</span> (; <span class="var">i</span> &lt; <span class="var">key</span>.<span class="fn">size</span>(); ++<span class="var">i</span>) {<br/>
+<span class="in3"></span><span class="macro">@put(<span class="name">normalize char</span>)</span>;<br/>
+<span class="in2"></span>}<br/>
+<span class="in2"></span><span class="keyword">return</span> <span class="var">result</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">main prereqs</span>)</span><br/>
+</code></div>
+<ul><li>
+wandelt Escape-Sequenzen in Schlüsseln in die passenden Bytes um
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@def(<span class="name">normalize char</span>)</span><br/>
+<span class="in1"></span><span class="keyword">if</span> (<span class="var">key</span>[<span class="var">i</span>] == <span class="str">'%'</span>) {<br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">unescape</span>)</span>;<br/>
+<span class="in2"></span><span class="var">i</span> += <span class="num">2</span>;<br/>
+<span class="in1"></span>} <span class="keyword">else</span> {<br/>
+<span class="in2"></span><span class="var">result</span> += <span class="var">key</span>[<span class="var">i</span>];<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">normalize char</span>)</span><br/>
+</code></div>
+<ul><li>
+Escape-Sequenzen beginnen mit <code>%</code>
+</li><li>
+alles andere wird direkt kopiert
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@def(<span class="name">normalize prereqs</span>)</span><br/>
+<span class="in1"></span><span class="type">int</span> <span class="fn">hex_digit</span>(<span class="type">char</span> <span class="var">ch</span>) {<br/>
+<span class="in2"></span><span class="keyword">if</span> (<span class="var">ch</span> &gt;= <span class="str">'0'</span> &amp;&amp; <span class="var">ch</span> &lt;= <span class="str">'9'</span>) {<br/>
+<span class="in3"></span><span class="keyword">return</span> <span class="var">ch</span> - <span class="str">'0'</span>;<br/>
+<span class="in2"></span>} <span class="keyword">else</span> <span class="keyword">if</span> (<br/>
+<span class="in3"></span><span class="var">ch</span> &gt;= <span class="str">'a'</span> &amp;&amp; <span class="var">ch</span> &lt;= <span class="str">'f'</span><br/>
+<span class="in2"></span>) {<br/>
+<span class="in3"></span><span class="keyword">return</span> <span class="var">ch</span> - <span class="str">'a'</span> + <span class="num">10</span>;<br/>
+<span class="in2"></span>}<br/>
+<span class="in2"></span><span class="type">std</span>::<span class="var">cerr</span> &lt;&lt; <span class="str">"invalid digit\n"</span>;<br/>
+<span class="in2"></span><span class="keyword">return</span> <span class="num">0</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">normalize prereqs</span>)</span><br/>
+</code></div>
+<ul><li>
+wandelt hexadezimale Ziffer in numerischen Wert um
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@def(<span class="name">unescape</span>)</span><br/>
+<span class="in1"></span><span class="var">result</span> += <span class="var">static_cast</span>&lt;<span class="type">char</span>&gt;(<br/>
+<span class="in2"></span>(<span class="fn">hex_digit</span>(<span class="var">key</span>[<span class="var">i</span> + <span class="num">1</span>]) &lt;&lt; <span class="num">4</span>) +<br/>
+<span class="in3"></span><span class="fn">hex_digit</span>(<span class="var">key</span>[<span class="var">i</span> + <span class="num">2</span>])<br/>
+<span class="in1"></span>);<br/>
+<span class="macro">@end(<span class="name">unescape</span>)</span><br/>
+</code></div>
+<ul><li>
+Escape-Sequenzen bestehen aus zwei hexadezimalen Ziffern
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@def(<span class="name">read receipt</span>)</span><br/>
+<span class="in1"></span><span class="type">bool</span> <span class="var">first</span> { <span class="num">true</span> };<br/>
+<span class="in1"></span><span class="type">Prefix</span> <span class="var">k</span>;<br/>
+<span class="in1"></span><span class="keyword">for</span> (;;) {<br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">read key</span>)</span>;<br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">read count</span>)</span>;<br/>
+<span class="in2"></span><span class="keyword">if</span> (<span class="var">first</span>) {<br/>
+<span class="in3"></span><span class="macro">@put(<span class="name">setup length</span>)</span>;<br/>
+<span class="in3"></span><span class="var">first</span> = <span class="num">false</span>;<br/>
+<span class="in2"></span>}<br/>
+<span class="in2"></span><span class="macro">@put(<span class="name">add entry</span>)</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">read receipt</span>)</span><br/>
+</code></div>
+<ul><li>
+Rezepte bestehen aus einer Liste von Schlüssel/Anzahl Paaren
+</li><li>
+der erste Schlüssel bestimmt wie lang die Präfixe sind
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@def(<span class="name">read key</span>)</span><br/>
+<span class="in1"></span><span class="type">std</span>::<span class="type">string</span> <span class="var">key</span>;<br/>
+<span class="in1"></span><span class="type">std</span>::<span class="var">cin</span> &gt;&gt; <span class="var">key</span>;<br/>
+<span class="in1"></span><span class="keyword">if</span> (! <span class="type">std</span>::<span class="var">cin</span>) { <span class="keyword">break</span>; }<br/>
+<span class="in1"></span><span class="var">key</span> = <span class="fn">normalize</span>(<span class="var">key</span>);<br/>
+<span class="macro">@end(<span class="name">read key</span>)</span><br/>
+</code></div>
+<ul><li>
+liest Schlüssel
+</li><li>
+und expandiert Escape-Sequenzen
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@def(<span class="name">read count</span>)</span><br/>
+<span class="in1"></span><span class="type">int</span> <span class="var">count</span>;<br/>
+<span class="in1"></span><span class="type">std</span>::<span class="var">cin</span> &gt;&gt; <span class="var">count</span>;<br/>
+<span class="in1"></span><span class="keyword">if</span> (! <span class="type">std</span>::<span class="var">cin</span>) { <span class="keyword">break</span>; }<br/>
+<span class="macro">@end(<span class="name">read count</span>)</span><br/>
+</code></div>
+<ul><li>
+liest die Anzahl
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@def(<span class="name">setup length</span>)</span><br/>
+<span class="in1"></span><span class="var">prefix_length</span> = <span class="var">key</span>.<span class="fn">size</span>() - <span class="num">1</span>;<br/>
+<span class="in1"></span><span class="fn">init</span>(<span class="var">k</span>);<br/>
+<span class="macro">@end(<span class="name">setup length</span>)</span><br/>
+</code></div>
+<ul><li>
+Länge ist eins weniger als die Schlüssel-Länge
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@def(<span class="name">add entry</span>)</span><br/>
+<span class="in1"></span><span class="keyword">for</span> (<span class="type">unsigned</span> <span class="var">i</span> { <span class="num">0</span> };<br/>
+<span class="in2"></span><span class="var">i</span> + <span class="num">1</span> &lt; <span class="var">key</span>.<span class="fn">size</span>(); ++<span class="var">i</span><br/>
+<span class="in1"></span>) {<br/>
+<span class="in2"></span><span class="fn">push</span>(<span class="var">k</span>, <span class="var">key</span>[<span class="var">i</span>]);<br/>
+<span class="in1"></span>}<br/>
+<span class="in1"></span><span class="var">collection</span>[<span class="var">k</span>].<span class="fn">add</span>(<br/>
+<span class="in2"></span><span class="var">key</span>.<span class="fn">back</span>(), <span class="var">count</span><br/>
+<span class="in1"></span>);<br/>
+<span class="macro">@end(<span class="name">add entry</span>)</span><br/>
+</code></div>
+<ul><li>
+initialisiert <code><span class="var">k</span></code> mit dem Schlüssel ohne dem letzten Byte
+</li><li>
+fügt Anzahl für das letzte Byte in die Abbildung ein
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@inc(<span class="name"><a href="ana-1.html">ana-1.md</a></span>)</span><br/>
+<span class="macro">@inc(<span class="name"><a href="gen.html">gen.md</a></span>)</span><br/>
+<span class="macro">@inc(<span class="name"><a href="ana-n.html">ana-n.md</a></span>)</span><br/>
+</code></div>
+<ul><li>
+erst einfache Häufigkeits-Analyse
+</li><li>
+dann daraus Text generieren
+</li><li>
+dann auf feste Sequenz-Längen erweitern
+</li></ul>
+</div>
+</div>
+<h1>Byte-Folgen analysieren</h1>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h1>Byte-Folgen analysieren</h1>
+</div></div>
+<ul><li>
+passt das Programm an, um ganze Byte-Folgen fester Länge zu analysieren
+</li><li>
+anstatt nur einzelner Bytes
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@Rep(<span class="name">write key</span>)</span><br/>
+<span class="macro">@End(<span class="name">write key</span>)</span><br/>
+</code></div>
+<ul><li>
+löscht das Fragment, da es sonst Zwischenstände gibt, die nicht  kompilieren
+</li><li>
+nach der Typ-Änderung werden die Fragmente neu gefüllt
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@Rep(<span class="name">add to collection</span>)</span><br/>
+<span class="macro">@End(<span class="name">add to collection</span>)</span><br/>
+</code></div>
+<ul><li>
+löscht das Fragment, da es sonst Zwischenstände gibt, die nicht  kompilieren
+</li><li>
+nach der Typ-Änderung werden die Fragmente neu gefüllt
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@inc(<span class="name"><a href="prefix.html">prefix.md</a></span>)</span><br/>
+</code></div>
+<ul><li>
+definiert <code><span class="type">Prefix</span></code>
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@Rep(<span class="name">def collection</span>)</span><br/>
+<span class="in1"></span><span class="macro">@Mul(<span class="name">prefix</span>)</span>;<br/>
+<span class="in1"></span><span class="keyword">using</span> <span class="type">Collection</span> =<br/>
+<span class="in2"></span><span class="type">std</span>::<span class="type">map</span>&lt;<span class="type">Prefix</span>, <span class="type">int</span>&gt;;<br/>
+<span class="macro">@End(<span class="name">def collection</span>)</span><br/>
+</code></div>
+<ul><li>
+Collection zählt nun <code><span class="type">Prefix</span></code> Instanzen
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@Def(<span class="name">init state</span>)</span><br/>
+<span class="in1"></span><span class="type">Prefix</span> <span class="var">state</span>;<br/>
+<span class="in1"></span><span class="fn">init</span>(<span class="var">state</span>);<br/>
+<span class="macro">@End(<span class="name">init state</span>)</span><br/>
+</code></div>
+<ul><li>
+Zustand ist nun eine <code><span class="type">Prefix</span></code> Instanz
+</li><li>
+und die wird initialisiert
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@Rep(<span class="name">add to collection</span>)</span><br/>
+<span class="in1"></span><span class="fn">push</span>(<span class="var">state</span>, <span class="var">ch</span>);<br/>
+<span class="in1"></span>++<span class="var">collection</span>[<span class="var">state</span>];<br/>
+<span class="macro">@End(<span class="name">add to collection</span>)</span><br/>
+</code></div>
+<ul><li>
+passt Schlüssel an
+</li><li>
+und zählt neuen Schlüssel 
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@Rep(<span class="name">write key</span>)</span><br/>
+<span class="in1"></span><span class="type">unsigned</span> <span class="var">i</span> { <span class="num">0</span> };<br/>
+<span class="in1"></span><span class="keyword">for</span> (; <span class="var">i</span> &lt; <span class="var">prefix_length</span>; ++<span class="var">i</span>) {<br/>
+<span class="in2"></span><span class="fn">write_byte</span>(<span class="var">e</span>.<span class="var">first</span>[<span class="var">i</span>]);<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@End(<span class="name">write key</span>)</span><br/>
+</code></div>
+<ul><li>
+gibt alle Bytes des Schlüssels aus
+</li></ul>
+</div>
+</div>
+<h3>Andere Längen der Byte-Folgen</h3>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h3>Andere Längen der Byte-Folgen</h3>
+</div></div>
+<ul><li>
+als Vorgabe werden Byte-Folgen der Länge 2 betrachtet
+</li><li>
+um andere Längen zu verwenden, kann die neue Länge mit der Option  <code>-<span class="var">n</span></code> auf der Kommandozeile angegeben werden
+</li><li>
+so betrachtet zum Beispiel <code>-<span class="var">n3</span></code> Byte-Folgen der Länge 3
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@Def(<span class="name">parse args</span>)</span><br/>
+<span class="in1"></span><span class="keyword">if</span> (<span class="var">argc</span> == <span class="num">2</span>) {<br/>
+<span class="in2"></span><span class="type">const</span> <span class="type">char</span> *<span class="var">arg</span> { <span class="var">argv</span>[<span class="num">1</span>] };<br/>
+<span class="in2"></span><span class="keyword">if</span> (<br/>
+<span class="in3"></span><span class="var">arg</span>[<span class="num">0</span>] == <span class="str">'-'</span> &amp;&amp;<br/>
+<span class="in4"></span><span class="var">arg</span>[<span class="num">1</span>] == <span class="str">'n'</span><br/>
+<span class="in2"></span>) {<br/>
+<span class="in3"></span><span class="macro">@put(<span class="name">change length</span>)</span>;<br/>
+<span class="in2"></span>}<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@End(<span class="name">parse args</span>)</span><br/>
+</code></div>
+<ul><li>
+bearbeite Option <code>-<span class="var">n</span></code>
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="macro">@def(<span class="name">change length</span>)</span><br/>
+<span class="in1"></span><span class="var">prefix_length</span> = <span class="type">std</span>::<span class="fn">stoi</span>(<span class="var">arg</span> + <span class="num">2</span>);<br/>
+<span class="in1"></span><span class="keyword">if</span> (<span class="var">prefix_length</span> &lt; <span class="num">1</span>) {<br/>
+<span class="in2"></span><span class="type">std</span>::<span class="var">cerr</span> &lt;&lt; <span class="str">"invalid length\n"</span>;<br/>
+<span class="in2"></span><span class="var">prefix_length</span> = <span class="num">2</span>;<br/>
+<span class="in1"></span>}<br/>
+<span class="macro">@end(<span class="name">change length</span>)</span><br/>
+</code></div>
+<ul><li>
+setze neue Länge
+</li><li>
+<code><span class="var">key</span></code> wird neu instantiiert
+</li><li>
+wenn die Länge zu kurz ist, wird statt dessen 2 verwendet
+</li></ul>
+</div>
+</div>
+<h2>Zwei Beispiele</h2>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h2>Zwei Beispiele</h2>
+</div></div>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="var">rhrlsnuekeefeeeftdoehga</span> <span class="var">sdawenensm</span>!<span class="var">ee</span>�<span class="var">erz</span><br/>
+<span class="var">at</span>�<span class="var">ibtrik</span> <span class="var">eI</span> <span class="var">Senint</span> <span class="var">grbreeibrtsIraiinrn</span>�<span class="var">e</span><br/>
+<span class="var">sklt</span> <span class="var">Bh</span> <span class="var">un</span>.<span class="var">dte</span>�<span class="var">a</span> <span class="var">r</span>,�<span class="var">eetlgr</span> <span class="var">egeg</span> <span class="var">ke</span>  <span class="var">reG</span><br/>
+<span class="var">ne</span><br/>
+<span class="var">z</span>,� <span class="var">rarh</span>.<span class="var">nu</span> <span class="var">i</span>  <span class="var">te</span> <span class="var">ntrrhbh</span>�� <span class="var">tH</span> <span class="var">ebo</span>�<span class="var">lme</span>�<br/>
+<span class="var">c</span>.<span class="var">n</span> <span class="var">cetdsinnhedle</span> <span class="var">isldmdrrs</span> <span class="var">ane</span>�<span class="var">aseghub</span><br/>
+<span class="var">cH</span> <span class="var">dsnnce</span>�<span class="var">Nss</span> <span class="var">ecin</span>,<span class="var">riibsrP</span>  <span class="var">nn</span> <span class="var">netachibkn</span><br/>
+<span class="var">nae</span>�<span class="var">st</span> <span class="var">aee</span> <span class="var">ee</span>�<span class="var">rewf</span> <span class="var">Ptsslusrinso</span> <span class="var">stedh</span>�<br/>
+<span class="var">swsg</span> <span class="var">ia</span> <span class="var">Jh</span>  <span class="var">sm1</span> <span class="var">vluse</span> <span class="var">s</span>��<span class="var">eih</span>,<span class="var">endcnes</span>,<span class="var">n</span><br/>
+�<span class="var">ilciiGnkn</span> <span class="var">d</span> <span class="var">wie</span> <span class="var">en</span>,<span class="var">es</span>�<span class="var">ercl</span> <span class="var">rddt</span> <span class="var">Dnee</span><br/>
+<span class="var">eeoe</span>�<span class="var">nd</span> <span class="var">pnegutennie</span> <span class="var">lc</span> <span class="var">D</span>�<span class="var">ceh</span> <span class="var">rd</span> <span class="var">ngfo</span><br/>
+<span class="var">ofass</span>�<span class="var">riteiedNhu</span> <span class="var">g</span><br/>
+�,<span class="var">iRalldleali</span>�<span class="var">AlA</span>  <span class="var">nNmlueii</span> <span class="var">m</span>,<span class="var">n</span> <span class="var">iee</span>�<span class="var">ta</span><br/>
+</code></div>
+<ul><li>
+Karl May
+</li><li>
+0 Zeichen Lookbehind
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="var">ahacfs</span><br/>
+<span class="var">akek</span> <span class="var">es</span> <br/>
+<span class="var">n</span> <span class="var">L</span> <span class="var">a</span> <span class="var">suRpetnmoehtRaWnhhtgtaoa</span><br/>
+<span class="var">tyleAdmerh1</span>-<span class="var">piuhwtiOeniaicerrurWurenua</span> <span class="var">vt</span><br/>
+<span class="var">daee</span> <span class="var">eMe</span> <span class="var">hcmrct</span> <span class="var">onrhlnu</span>,<span class="var">esareDunienegBitW</span><br/>
+�<span class="var">ema</span> <span class="var">dfoOtSi</span> <span class="var">g</span> <span class="var">euDrorenv</span>�<span class="var">libcmlgcimes</span> <br/>
+<span class="var">nPktrmer</span> <span class="var">sSa</span> <span class="var">nKs</span>� <span class="var">ndgFMettMes</span> <span class="var">epodd</span><br/>
+<span class="var">ewa</span>,<span class="var">draratsgeoAt</span> <span class="var">a</span> <span class="var">tV</span> <span class="var">rhttrs</span> <span class="var">Frmgsk</span> <span class="var">C</span> <br/>
+<span class="var">tWebeyiU</span>�<span class="var">Dem</span> <span class="var">w</span>- <span class="var">noseDoctniegtrtn</span><br/>
+ <span class="var">osMnumfae</span> -<span class="var">awzrnc</span> <span class="var">g</span> <span class="var">B</span> <span class="var">h</span><br/>
+<span class="var">sonGehedilgKcoki</span>-<span class="var">vta</span> <span class="var">Dr</span> <span class="var">iur</span>.<span class="var">r</span><br/>
+<span class="var">a</span> <span class="var">A</span> <span class="var">bi</span>- <span class="var">ne</span> <span class="var">JtrCrtaeEe</span>  <span class="var">iee</span>-<span class="var">SeSeT</span>  <span class="var">ScoHMe</span><br/>
+<span class="var">o</span>�<span class="var">a</span><br/>
+<span class="var">g</span>.<span class="var">nt</span> <span class="var">g</span> <span class="var">figmk</span>-�<span class="var">essoeecmlmoggEonetg</span><br/>
+</code></div>
+<ul><li>
+Heise Newsticker
+</li><li>
+0 Zeichen Lookbehind
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+[<span class="var">Erzer</span> <span class="var">Wind</span> <span class="var">st</span> <span class="var">schr</span> <span class="var">Marsagalt</span> <span class="var">ate</span> <span class="var">zusaser</span><br/>
+<span class="var">vounenzu</span> <span class="var">Panir</span> <span class="var">olch</span>? <span class="var">waset</span> <span class="var">saha</span>, <span class="var">d</span> <span class="var">stz</span> <span class="var">m</span><br/>
+<span class="var">h</span> <span class="var">ammases</span> <span class="var">dies</span> <span class="var">wa</span>.<br/>
+»<span class="var">Ardinndunn</span> <span class="var">u</span> <span class="var">as</span> <span class="var">h</span> <span class="var">gewe</span>, <span class="var">in</span>? <span class="var">bs</span> <span class="var">asoh</span>ä<span class="var">uh</span> <span class="var">m</span><br/>
+<span class="var">d</span> <span class="var">wieich</span> <span class="var">sau</span> <span class="var">ar</span> <span class="var">urt</span> <span class="var">ichrde</span> <span class="var">Per</span> <span class="var">hlat</span><br/>
+<span class="var">Nelenn</span>.«<br/>
+-<br/>
+<br/>
+« <span class="var">w</span>ä<span class="var">h</span> <span class="var">Ichoch</span> <span class="var">nneh</span> <span class="var">t</span> <span class="var">uchrame</span> <span class="var">s</span> <span class="var">str</span> <span class="var">an</span><br/>
+<span class="var">delieichtzund</span> <span class="var">ichtt</span> <span class="var">diend</span> <span class="var">Geierspas</span><br/>
+<span class="var">baurast</span>, <span class="var">z</span> <span class="var">kr</span> <span class="var">ich</span> <span class="var">wes</span> <span class="var">halemaschenit</span> <span class="var">so</span><br/>
+<span class="var">Dalle</span> <span class="var">Od</span> <span class="var">s</span> <span class="var">h</span> <span class="var">In</span> <span class="var">vendasigendaueschonfabes</span>,<br/>
+<span class="var">ze</span> <span class="var">wor</span>, <span class="var">jeife</span> <span class="var">berhe</span> <span class="var">int</span> <span class="var">Stichen</span> <span class="var">schausts</span><br/>
+<span class="var">wen</span> <span class="var">ben</span>, <span class="var">eid</span> <span class="var">Waun</span> <span class="var">hau</span> <span class="var">ien</span> <span class="var">sten</span> <span class="var">mieneichr</span><br/>
+</code></div>
+<ul><li>
+Karl May
+</li><li>
+1 Zeichen Lookbehind
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="var">Aun</span> <span class="var">feppig</span>ü<span class="var">rte</span> <span class="var">Aut</span><br/>
+<span class="var">Reneng</span>-<span class="var">DRegscrdissllubowet</span>:<br/>
+<span class="var">migaf</span>ä<span class="var">henbengeprkves</span> <span class="var">allemmder</span> <span class="var">er</span><br/>
+<span class="var">ITwsikageluges</span> <span class="var">Pen</span> <span class="var">Aun</span> <span class="var">s</span>, <span class="var">ziarierion</span><br/>
+<span class="var">DSowe</span><br/>
+<span class="var">mungeegen</span> <span class="var">G</span>-<span class="var">Cll</span> <span class="var">Tondit</span><br/>
+<span class="var">Wer</span> <span class="var">Dale</span> <span class="var">Vechn</span> <span class="var">Sten</span> <span class="var">Fle</span><br/>
+<span class="var">Terineltürn</span> <span class="var">mu</span> <span class="var">soder</span><br/>
+<span class="var">Cojaglgditonden</span>-<span class="var">Balalach</span> <span class="var">wenge</span> <span class="var">d</span> ü<span class="var">rwen</span><br/>
+<span class="var">Brn</span> <span class="var">Plei</span> <span class="var">von</span><br/>
+<span class="var">Witschllste</span> <span class="var">Quthtooneridwiche</span> <span class="var">Ex</span><br/>
+<span class="var">Ma</span> <span class="var">Miten</span> <span class="var">b</span><br/>
+<span class="var">Wobrr</span> <span class="var">watr</span> <span class="var">SGringolillamm</span> <span class="var">Vo</span> <span class="var">iO</span>-<span class="var">Reiterte</span><br/>
+<span class="var">ichter</span>: <span class="var">tuschuling</span> <span class="var">Ge</span> <span class="var">Mabent</span> <span class="var">igr</span> <span class="var">ntsle</span><br/>
+</code></div>
+<ul><li>
+Heise Newsticker
+</li><li>
+1 Zeichen Lookbehind
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+[<span class="var">Chann</span>, <span class="var">den</span> <span class="var">sich</span> <span class="var">einneten</span> <span class="var">nich</span> <span class="var">dier</span> <span class="var">Wir</span><br/>
+<span class="var">Worpraut</span>!«<br/>
+<span class="var">Das</span> <span class="var">wie</span> <span class="var">B</span>ä<span class="var">uppit</span> <span class="var">dem</span> <span class="var">Beener</span> <span class="var">Arm</span> <span class="var">Wingeber</span><br/>
+<span class="var">Ges</span> <span class="var">die</span> <span class="var">wisser</span> <span class="var">Stige</span> <span class="var">dan</span> <span class="var">ken</span> <span class="var">fresr</span>ü<span class="var">t</span><br/>
+<span class="var">andes</span> <span class="var">glanger</span> <span class="var">vonnetzen</span> <span class="var">odend</span> <span class="var">sa</span> <span class="var">so</span> <span class="var">begen</span><br/>
+<span class="var">Bruden</span> <span class="var">um</span> <span class="var">Aug</span> <span class="var">eierlen</span>, <span class="var">die</span> <span class="var">Das</span>-<span class="var">eamich</span><br/>
+<span class="var">kannengs</span> <span class="var">kan</span> <span class="var">hatten</span>; <span class="var">der</span>, <span class="var">auft</span>, <span class="var">wir</span><br/>
+<span class="var">weinen</span> <span class="var">derkt</span> <span class="var">zu</span> <span class="var">enn</span> <span class="var">delfert</span> <span class="var">um</span> <span class="var">ihretro</span>ß<br/>
+<span class="var">hen</span> <span class="var">Stragter</span> <span class="var">Stichen</span> <span class="var">eigenz</span> <span class="var">nund</span> <span class="var">f</span>ä<span class="var">hr</span><br/>
+<span class="var">lich</span> <span class="var">zu</span>.<br/>
+<span class="in1"></span>»<span class="var">Wen</span>.<br/>
+<span class="in1"></span>»<span class="var">Negenken</span> <span class="var">Tanie</span> <span class="var">mehts</span> <span class="var">den</span> <span class="var">Commer</span> <span class="var">er</span><br/>
+<span class="var">hob</span> <span class="var">st</span> <span class="var">sagt</span>, <span class="var">den</span> <span class="var">mige</span> <span class="var">l</span>ä<span class="var">ummenes</span> <span class="var">verie</span><br/>
+<span class="var">f</span>ü<span class="var">hr</span> <span class="var">Hürden</span> <span class="var">er</span> <span class="var">Grach</span> <span class="var">mu</span>ß.<br/>
+</code></div>
+<ul><li>
+Karl May
+</li><li>
+2 Zeichen Lookbehind
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="var">Ausgeps</span> <span class="var">Systen</span> <span class="var">ei</span><br/>
+<span class="var">Amalks</span> <span class="var">Nac</span> <span class="var">Pay</span>: <span class="var">Alung</span> <span class="var">marnensichutsford</span><br/>
+<span class="var">len</span> <span class="var">aue</span> <span class="var">abeistreschenterung</span><br/>
+<span class="var">Cyber</span> <span class="var">ahr</span> <span class="var">f</span>ü<span class="var">r</span> <span class="var">Gma</span>: <span class="var">SPR</span>-<span class="var">Vericht</span> <span class="var">Sichn</span><br/>
+<span class="var">vonce</span>-<span class="var">Lickens</span> <span class="var">Web</span><br/>
+<span class="var">Stromp</span> <span class="var">Lef</span> <span class="var">Applef</span> <span class="var">ang</span>: <span class="var">Jahrle</span>-<span class="var">Fixca</span>:<br/>
+<span class="var">Amation</span> <span class="var">ine</span>: <span class="var">EU</span>-<span class="var">Aussishbaus</span><br/>
+<span class="var">Wassolohnmasteisto</span>: <span class="var">Adracht</span>:<br/>
+<span class="var">Dowdowohlektrit</span>/<span class="var">s</span> <span class="var">k</span>ü<span class="var">r</span> <span class="var">Whadereuzuglechun</span><br/>
+<span class="var">deakt</span><br/>
+<span class="var">Cybere</span> <span class="var">Part</span> <span class="var">7</span>: <span class="var">Ex</span>-<span class="var">Chaos</span> <span class="var">un</span> <span class="var">plen</span> <span class="var">vone</span> <span class="var">f</span>ü<span class="var">r</span><br/>
+<span class="var">Yahrlion</span> <span class="var">in</span> <span class="var">Frade</span> <span class="var">Pho</span>-<span class="var">Medep</span> <span class="var">Fing</span>-<span class="var">ten</span><br/>
+<span class="var">Der</span>: <span class="var">And</span> <span class="var">Proffiksbalcoma</span>: <span class="var">Verbier</span><br/>
+<span class="var">Strissläft</span> Ü<span class="var">ben</span> <span class="var">ungenstailft</span> <span class="var">dakePHEV</span> <span class="var">ung</span><br/>
+</code></div>
+<ul><li>
+Heise Newsticker
+</li><li>
+2 Zeichen Lookbehind
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+[<span class="var">Chrieder</span> <span class="var">war</span>.<br/>
+»<span class="var">Welches</span> <span class="var">Gebracht</span> <span class="var">nich</span> <span class="var">eine</span> <span class="var">Das</span> <span class="var">nahm</span> <span class="var">icht</span><br/>
+<span class="var">von</span> <span class="var">hatten</span>. <span class="var">Da</span> <span class="var">kein</span> <span class="var">den</span>, <span class="var">und</span> <span class="var">ginnen</span><br/>
+<span class="var">befreunde</span>, <span class="var">da</span>ß <span class="var">es</span> <span class="var">Schimas</span> <span class="var">gewestohl</span> <span class="var">Ruf</span><br/>
+<span class="var">mel</span> <span class="var">und</span> <span class="var">hind</span> <span class="var">ichen</span> <span class="var">Hauptlingen</span> <span class="var">seine</span><br/>
+<span class="var">Augenes</span> <span class="var">D</span>ü<span class="var">rte</span>, <span class="var">fuhr</span> <span class="var">ras</span> <span class="var">Hilfen</span>, <span class="var">um</span><br/>
+<span class="var">Ausflußt</span>. <span class="var">Mien</span>. <span class="var">Aus</span> <span class="var">wie</span> <span class="var">solle</span> <span class="var">zu</span> <span class="var">sei</span>.<br/>
+»<span class="var">Damen</span>, <span class="var">und</span> <span class="var">off</span> <span class="var">herbran</span> <span class="var">Oposten</span> <span class="var">wohinten</span><br/>
+<span class="var">Zwecker</span> <span class="var">habt</span>, <span class="var">hin</span>, <span class="var">altbl</span>ä<span class="var">uptlick</span> <span class="var">sein</span>!«<br/>
+<span class="var">Jetzt</span> <span class="var">forten</span> <span class="var">ein</span>, <span class="var">soll</span> <span class="var">die</span> <span class="var">mir</span>,« <span class="var">rief</span>:<br/>
+<span class="in1"></span>»<span class="var">Vierley</span> <span class="var">Nur</span> <span class="var">beit</span>, <span class="var">ich</span>, <span class="var">zu</span> <span class="var">seidig</span><br/>
+<span class="var">sehen</span> <span class="var">Pfern</span>, <span class="var">unwegen</span> <span class="var">Wort</span>, <span class="var">in</span> <span class="var">Wir</span> <span class="var">nahmen</span><br/>
+<span class="var">graden</span> <span class="var">und</span> <span class="var">als</span> <span class="var">death</span>.<br/>
+»<span class="var">Capt</span>'<span class="var">n</span>! <span class="var">Winnen</span> <span class="var">konntersetzt</span> <span class="var">von</span> <span class="var">icht</span><br/>
+</code></div>
+<ul><li>
+Karl May
+</li><li>
+3 Zeichen Lookbehind
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="var">Auton2</span> <span class="var">gro</span>ß<span class="var">en</span> <span class="var">bei</span> <span class="var">Netfline</span> <span class="var">bessor</span><br/>
+<span class="var">Geschlendensiche</span> <span class="var">Euro</span>-<span class="var">Mode</span> <span class="var">Rechnet</span><br/>
+<span class="var">iCloud</span><br/>
+<span class="var">#heit</span>"<br/>
+<span class="var">Auschland</span> <span class="var">Kollt</span> <span class="var">Millighlimasswork</span>: <span class="var">Tale</span><br/>
+<span class="var">einlangelsetze</span> <span class="var">hohe</span> <span class="var">Inter</span> <span class="var">AprivacyIDEA</span><br/>
+<span class="var">3.1</span><br/>
+<span class="var">Die</span> <span class="var">Guthe</span> <span class="var">Streamissistung</span>: <span class="var">Exoplang</span><br/>
+<span class="var">bessore</span> <span class="var">gegen</span><br/>
+<span class="var">Biogrammenwenieren</span><br/>
+<span class="var">News</span> <span class="var">bau</span><br/>
+<span class="var">T</span>ö<span class="var">dliche</span> <span class="var">Micross</span>-<span class="var">Platter</span> <span class="var">Klimaketen</span><br/>
+<span class="var">Behirn</span>": <span class="var">Weg</span> <span class="var">im</span> <span class="var">Adventrauch</span> <span class="var">des</span>ä<span class="var">usen</span><br/>
+<span class="var">GPS</span>-Ü<span class="var">berkzeugt</span> <span class="var">Gesignert</span> <span class="var">Raden</span> <span class="var">unterne</span><br/>
+</code></div>
+<ul><li>
+Heise Newsticker
+</li><li>
+3 Zeichen Lookbehind
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+[<span class="var">Chromontor</span> <span class="var">heutigams</span> <span class="var">Pferd</span> <span class="var">wohl</span><br/>
+<span class="var">geschl</span>ü<span class="var">pfbrecht</span> <span class="var">meine</span> <span class="var">bei</span> <span class="var">ihn</span> <span class="var">vor</span> <span class="var">dem</span><br/>
+<span class="var">Stockerer</span> <span class="var">Weise</span> <span class="var">kommen</span> <span class="var">so</span> <span class="var">viele</span> <span class="var">ja</span>.«<br/>
+»<span class="var">Ich</span> <span class="var">wundern</span> <span class="var">dem</span> <span class="var">Maultiere</span> <span class="var">Leib</span> <span class="var">gewesen</span>,<br/>
+-<span class="var">weit</span> <span class="var">wenn</span> <span class="var">Indianern</span> <span class="var">zu</span> <span class="var">Mutterhanden</span>,<br/>
+<span class="var">indianer</span>, <span class="var">ich</span> <span class="var">in</span> <span class="var">waren</span> <span class="var">Old</span> <span class="var">Death</span> <span class="var">von</span><br/>
+<span class="var">denken</span> <span class="var">brachte</span> <span class="var">es</span>! <span class="var">Das</span> <span class="var">Schieß</span> <span class="var">ihr</span> <span class="var">dich</span><br/>
+<span class="var">entfern</span>. <span class="var">Mit</span> <span class="var">der</span> <span class="var">Pferde</span> <span class="var">hatte</span> <span class="var">uns</span> <span class="var">gab</span> <span class="var">es</span><br/>
+<span class="var">sie</span> <span class="var">leich</span> <span class="var">die</span> <span class="var">Zeitung</span> <span class="var">war</span> <span class="var">ein</span> <span class="var">sein</span>. <span class="var">Als</span><br/>
+<span class="var">ich</span> <span class="var">h</span>ü<span class="var">ttelte</span>. <span class="var">Ich</span> <span class="var">konnte</span> <span class="var">Old</span> <span class="var">Death</span> <span class="var">uns</span><br/>
+<span class="var">steckt</span> <span class="var">Euch</span>, <span class="var">doch</span> <span class="var">bei</span> <span class="var">mir</span> <span class="var">sicht</span> <span class="var">nur</span><br/>
+<span class="var">klettern</span> <span class="var">genommen</span>, <span class="var">also</span> <span class="var">nahm</span> <span class="var">meiner</span> <span class="var">wir</span><br/>
+<span class="var">zu</span> <span class="var">fangen</span>, <span class="var">was</span> <span class="var">zu</span> <span class="var">ber</span>ü<span class="var">ckkehrung</span> <span class="var">empfigen</span>,<br/>
+<span class="var">Mr</span>. <span class="var">Roten</span> <span class="var">bindem</span> <span class="var">Gewaltigkeit</span> <span class="var">von</span> <span class="var">anden</span><br/>
+</code></div>
+<ul><li>
+Karl May
+</li><li>
+4 Zeichen Lookbehind
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<code>
+<span class="var">Auto</span>-<span class="var">Bränität</span><br/>
+<span class="var">Deutschland</span> <span class="var">profile</span><br/>
+<span class="var">#tgiqf</span> – <span class="var">das</span> <span class="var">Basteller</span><br/>
+<span class="var">Elfinderheitsgeschlandelskörper</span><br/>
+<span class="var">Verwachungssachsel</span> <span class="var">erfinden</span>: <span class="var">Rundert</span>?<br/>
+<span class="var">Digitaler</span> <span class="var">kritischen</span> <span class="var">f</span>ü<span class="var">r</span> <span class="var">Aufstieg</span><br/>
+<span class="var">Cheops</span>: <span class="var">Genutzen</span><br/>
+<span class="var">Strafe</span> <span class="var">zahlt</span> <span class="var">Millionen</span> <span class="var">Intellt</span> <span class="var">Chrysler</span><br/>
+<span class="var">Elon</span> <span class="var">Musk</span><br/>
+<span class="var">Niedersprechnellen</span> <span class="var">und</span> <span class="var">zahlen</span> <span class="var">geht</span><br/>
+<span class="var">nachbar</span> <span class="var">machtsferiesigner</span> <span class="var">Pro</span> <span class="var">2019</span> <span class="var">jetzt</span><br/>
+<span class="var">Do</span>'<span class="var">Urden</span><br/>
+<span class="var">Bunden</span> <span class="var">Orbit</span> <span class="var">entgegen</span> <span class="var">f</span>ü<span class="var">r</span> <span class="var">Nerds</span>:<br/>
+<span class="var">Last</span>-<span class="var">Minute</span><br/>
+</code></div>
+<ul><li>
+Heise Newsticker
+</li><li>
+4 Zeichen Lookbehind
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<img src="imgs/win.jpg">
+</div>
+<ul><li>
+effiziente Speicherung der Daten
+</li></ul>
+</div>
+<div class="page"><div class="slide">
+<img src="imgs/heise.jpg">
+</div>
+<ul><li>
+größer als ursprüngliche Datei
+</li></ul>
+</div>
+</div>
+<h2>Nächste Schritte</h2>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h2>Nächste Schritte</h2>
+<ul>
+<li><h3>Meta-Fragmente</h3></li>
+<li><h3>integrierte Editoren</h3></li>
+<li><h3>weitere Ausgabe-Formate</h3></li>
+<li><h3>Tabulator-Kaskadierung</h3></li>
+<li><h3>Verweise</h3></li>
+<li><h3>Grafik-Formate</h3></li>
+</ul>
+</div></div>
+</div>
+</div>
+<h3>Meta-Fragmente</h3>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h3>Meta-Fragmente</h3>
+<ul>
+<li><h4>don't repeat yourself</h4></li>
+</ul>
+</div></div>
+</div>
+</div>
+<h3>integrierte Editoren</h3>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h3>integrierte Editoren</h3>
+<ul>
+<li><h4>Zeilen-Editor</h4></li>
+<li><h4>visueller Editor</h4></li>
+<li><h4>Integration <code><span class="var">make</span></code> und <code><span class="var">git</span></code></h4></li>
+</ul>
+</div></div>
+</div>
+</div>
+<h3>weitere Ausgabe-Formate</h3>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h3>weitere Ausgabe-Formate</h3>
+<ul>
+<li><h4>direkt PDF erzeugen</h4></li>
+<li><h4>Buchsatz</h4></li>
+</ul>
+</div></div>
+</div>
+</div>
+<h3>Tabulator-Kaskadierung</h3>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h3>Tabulator-Kaskadierung</h3>
+<ul>
+<li><h4>besserer Python-Support</h4></li>
+</ul>
+</div></div>
+</div>
+</div>
+<h3>Verweise</h3>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h3>Verweise</h3>
+<ul>
+<li><h4>Hyperlinks wie bei CWEB</h4></li>
+</ul>
+</div></div>
+</div>
+</div>
+<h3>Grafik-Formate</h3>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h3>Grafik-Formate</h3>
+<ul>
+<li><h4>SVG</h4></li>
+<li><h4>DOT</h4></li>
+</ul>
+</div></div>
+</div>
+</div>
+<h2>Links</h2>
+<div class="slides">
+<div class="page">
+<div class="slide"><div class="headers">
+<h2>Links</h2>
+<ul>
+<li><h3><code><span class="var">https</span>://<span class="var">github</span>.<span class="var">com</span>/<span class="var">itmm</span>/</code> <code><span class="var">entwicklertag</span>-<span class="var">2020</span>-<span class="var">ffm</span></code></h3></li>
+<li><h3><code><span class="var">https</span>://<span class="var">github</span>.<span class="var">com</span>/<span class="var">itmm</span>/<span class="var">hex</span></code></h3></li>
+<li><h3><code><span class="var">www</span>.<span class="var">literateprogramming</span>.<span class="var">com</span></code></h3></li>
+<li><h3><code><span class="var">timm</span>@<span class="var">knp</span>.<span class="var">de</span></code></h3></li>
+</ul>
+</div></div>
+</div>
+<div class="page"><div class="slide">
+<img src="imgs/qr-code.png">
+</div>
+</div>
+</body>
+</html>

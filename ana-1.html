@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Dateien analysieren</title>
-<link rel="stylesheet" type="text/css" href="slides/slides.css"></head>
+<link rel="stylesheet" type="text/css" href="./slides-combined/slides.css"></head>
 <body>
 <h1>Dateien analysieren</h1>
 <div class="slides">
@@ -162,8 +162,9 @@ so können Unix-Tools die Datei in Spalten aufteilen
 <div class="page"><div class="slide">
 <code>
 <span class="macro">@def(<span class="name">write escaped</span>)</span><br/>
-<span class="in1"></span><span class="keyword">static</span> <span class="type">const</span> <span class="type">char</span> <span class="var">digits</span>[] =<br/>
-<span class="in2"></span><span class="str">"0123456789abcdef"</span>;<br/>
+<span class="in1"></span><span class="keyword">static</span> <span class="type">const</span> <span class="type">char</span> <span class="var">digits</span>[] {<br/>
+<span class="in2"></span><span class="str">"0123456789abcdef"</span><br/>
+<span class="in1"></span>};<br/>
 <span class="in1"></span><span class="type">std</span>::<span class="var">cout</span> &lt;&lt; <span class="str">'%'</span> &lt;&lt;<br/>
 <span class="in2"></span><span class="var">digits</span>[(<span class="var">b</span> &gt;&gt; <span class="num">4</span>) &amp; <span class="num">0xf</span>] &lt;&lt;<br/>
 <span class="in2"></span><span class="var">digits</span>[<span class="var">b</span> &amp; <span class="num">0xf</span>];<br/>

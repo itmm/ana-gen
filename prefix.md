@@ -31,12 +31,12 @@
 ```
 @Add(prefix)
 	void push(Prefix &p, char ch) {
+		for (unsigned i { 1 };
+			i < p.size(); ++i
+		) {
+			p[i - 1] = p[i];
+		}
 		if (p.size() > 0) {
-			for (unsigned i = 1;
-				i < p.size(); ++i
-			) {
-				p[i - 1] = p[i];
-			}
 			p[p.size() - 1] = ch;
 		}
 	}
