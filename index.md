@@ -5,18 +5,22 @@
 * Schwächen bei klassischem Ansatz
 * Vorstellung einer Verbesserung
 
-
 ## Programme sind schwer
 ### lang
 ### komplex
 ### unübersichtlich
+* Eigenschaften von großen Programmen
 
 ## Programme sind daher
 ### schwer zu verstehen
 ### schwer zu erweitern
 ### schwer zu korrigieren
+* Folgen für den Entwickler
 
 ## Warum verstehen Programmierer Programme?
+* es gibt Programmierer, die verstehen große Programme
+* sind das nur Genies?
+* oder steckt etwas anderes dahinter?
 
 !(imgs/git-locs.png)
 * erster Commit: 1.284 Zeilen
@@ -24,8 +28,11 @@
 * Faktor: 930,96
 
 ## Wie kann man Programme besser verstehen?
+* Cracks haben mit kleinerer Code-Base angefangen
 
 ## Dokumentation
+* nicht nur den aktuellen Stand dokumentieren
+* sondern auch den Weg dahin
 
 ## Sicht des illiteraten Programmierers
 ### Source-Code ⊇ Dokumentation
@@ -111,6 +118,7 @@ int main() {
 }
 ```
 * Source Literate Programming
+* Teil 1
 
 ```
 @k(@ )@v(Now) the fragments are following.
@@ -127,53 +135,68 @@ output.
 std::cout << "Hello World.\n";
 ```
 * Source Literate Programming
-
+* Teil 2
+* zwei unterschiedliche Programme, um Code oder Dokumentation zu erzeugen
 
 ## Vorteile Literate Programming
 ### Zusammenhang
 ### Intelligente Ordnung
 ### Ausdrucksstärke
 ### Querverweise
+* Vorteile gebenüber der klassischen Dokumentation
 
 ### Zusammenhang
 #### Source-Code und Dokumentation leichter synchron
+* besonders wenn Dokumentation sonst in anderem Programm gepflegt wird
 
 ### Intelligente Ordnung
 #### interessante Themen vorziehen
 #### uninteressante Themen in den Anhang (oder ausgelassen)
 #### Programm kann wie ein Buch gelesen werden
+* Ordnung wird nicht von der Programmiersprache vorgegeben
 
 ### Ausdrucksstärke
 #### komplizierte Stellen können erklärt werden
+* volle Ausdrucksmöglichkeit von TeX
+* inklusive Grafiken und Tabellen
 
 ### Querverweise
 #### Vorwärts: Verweise auf benutzte Fragmente
 #### Rückwärts: Verweise auf Aufrufe
 #### mächtiger Index
+* aber leider auch notwendig
+* da sich Programme oft nicht linear lesen lassen
 
 ## Nachteile Literate Programming
 ### Nicht aufbauend
 ### Granularität
 ### Vollständigkeit
 ### Syntax
+* nicht gegenüber der illiteraten Programmierung
+* aber noch Makel, die verbessert werden können
 
 ### Nicht aufbauend
 #### Verständnis erst nach vollständigem Durcharbeiten
 #### Springen oft notwendig
 #### Keine Zwischenstände des Codes möglich
+* Programm kann oft nicht linear gelesen werden
 
 ### Granularität
 #### Blöcke oft zu lang und zu kompliziert
 #### Seitenweise Codes möglich
+* selbst die natürliche Größe (eine Seite) ist oft zu viel
 
 ### Vollständigkeit
 #### Vollständigkeit nicht erzwungen
 #### oft gekürzt, um Buch-Rahmen nicht zu sprengen
+* aus Buch kann kein Source Code extrahiert werden
+* Quellcode oft nicht öffentlich
 
 ## Syntax
 ### Dokumentation in LaTeX
 ### Source-Code wird mathematisiert
-
+* kompliziert zu schreiben
+* schwierig vom Programm zu übersetzen
 
 ## Slide-Programming ⊇ Literate-Programming
 ### Folien
@@ -181,31 +204,45 @@ std::cout << "Hello World.\n";
 ### modular
 ### sprach-neutral
 ### Markdown, HTML
+* Freiheiten einschränken
+* um besser verständliche Programme zu erstellen
 
 ### Folien
 #### Folien mit Notizen statt seitenlanger Fragmente
 #### klare Grenze für Umfang
 #### erklärende Folien möglich
+* kleinere, digitale Seiten
+* Kommentare als Aufzählungs-Listen
 
 ### aufbauend
 #### nach jeder Folie kann ein ausführbares Programm erstellt werden
 #### undefinierte Fragmente sind kein Fehler
 #### Fragmente können später umdefiniert werden
+* linear lesbar
+* Programm kann direkt mitverfolgt werden
 
 ### modular
 #### große Projekte können aufgeteilt werden
+* Inkludierungs-Mechanismus
+* wie von Programmier-Sprachen bekannt
 
 ### sprach-neutral
 #### alles was mit einem Text-Editor bearbeitet werden kann
 #### nicht auf bestimmte Programmiersprache beschränkt
+* momentan noch Einschränkungen bei Python
 
 ### Markdown
 #### einfacher als LaTeX
 #### schneller zu Parsen
+* zuerst dachte ich, mein Programm läuft nicht
+* aber es war einfach so schnell fertig, dass ich es nicht bemerkt habe
 
 ### HTML
 #### Folien werden als Webseite generiert
 #### diese Präsentation ist in `hex` erstellt
+* HTML ist die Lingua Franka des Internet
+* Folien können ansprechend dargestellt werden
+* interaktive Bedienmöglichkeit
 
 ## Beispiel-Programm
 ### kleines Beispiel aus den Anfängen der künstlichen Intelligenz
@@ -223,6 +260,8 @@ std::cout << "Hello World.\n";
 * dann auf feste Sequenz-Längen erweitern
 
 ## Zwei Beispiele
+* aufbauen immer längere Zeichenketten betrachten
+* wer erkennt als erster die Quelle?
 
 ```
 rhrlsnuekeefeeeftdoehga sdawenensm!ee�erz
@@ -239,8 +278,8 @@ eeoe�nd pnegutennie lc D�ceh rd ngfo
 ofass�riteiedNhu g
 �,iRalldleali�@v(AlA)  nNmlueii m,n iee�ta
 ```
-* Karl May
-* 0 Zeichen Lookbehind
+* völlig wirr
+* UTF-8 Zeichen werden nicht korrekt kodiert
 
 ```
 ahacfs
@@ -258,8 +297,8 @@ a A bi- ne @v(JtrCrtaeEe)  iee-@v(SeSeT)  @v(ScoHMe)
 o�a
 g.nt g figmk-�essoeecmlmoggEonetg
 ```
-* Heise Newsticker
-* 0 Zeichen Lookbehind
+* auch völlig wirr
+* aber tendenziell mehr Satzzeichen
 
 ```
 [@v(Erzer) @v(Wind) st schr @v(Marsagalt) ate zusaser
@@ -277,8 +316,9 @@ baurast, z kr ich wes halemaschenit so
 ze wor, jeife berhe @v(int) @v(Stichen) schausts
 wen ben, eid @v(Waun) hau ien sten mieneichr
 ```
-* Karl May
-* 1 Zeichen Lookbehind
+* lange Absätze
+* wörtliche Rede
+* Roman?
 
 ```
 @v(Aun) feppigürte @v(Aut)
@@ -296,8 +336,8 @@ mungeegen G-@v(Cll) @v(Tondit)
 @v(Wobrr) watr SGringolillamm @v(Vo) iO-@v(Reiterte)
 ichter: tuschuling @v(Ge) @v(Mabent) igr ntsle
 ```
-* Heise Newsticker
-* 1 Zeichen Lookbehind
+* kurze Absätze
+* Liste von Schlagzeilen?
 
 ```
 [@v(Chann), den sich einneten nich dier @v(Wir)
@@ -315,8 +355,8 @@ lich zu.
 hob st sagt, den mige läummenes verie
 führ @v(Hürden) er @v(Grach) muß.
 ```
-* Karl May
-* 2 Zeichen Lookbehind
+* Roman!
+* ältere Formulierungen
 
 ```
 @v(Ausgeps) @v(Systen) ei
@@ -334,8 +374,9 @@ deakt
 @v(Der): @v(And) @v(Proffiksbalcoma): @v(Verbier)
 @v(Strissläft) Üben ungenstailft dakePHEV ung
 ```
-* Heise Newsticker
-* 2 Zeichen Lookbehind
+* Cyber mehrfach vor
+* und Chaos
+* IT-lastig?
 
 ```
 [@v(Chrieder) war.
@@ -353,8 +394,7 @@ sehen @v(Pfern), unwegen @v(Wort), @v(in) @v(Wir) nahmen
 graden und als death.
 »@v(Capt)'n! @v(Winnen) konntersetzt von icht
 ```
-* Karl May
-* 3 Zeichen Lookbehind
+* Western-Romantik?
 
 ```
 @v(Auton2) großen bei @v(Netfline) bessor
@@ -372,8 +412,7 @@ Tödliche @v(Micross)-@v(Platter) @v(Klimaketen)
 @v(Behirn)": @v(Weg) im @v(Adventrauch) desäusen
 GPS-Überkzeugt @v(Gesignert) @v(Raden) unterne
 ```
-* Heise Newsticker
-* 3 Zeichen Lookbehind
+* IT-News
 
 ```
 [@v(Chromontor) heutigams @v(Pferd) wohl
@@ -391,8 +430,8 @@ klettern genommen, also nahm meiner wir
 zu fangen, was zu berückkehrung empfigen,
 @v(Mr). @v(Roten) bindem @v(Gewaltigkeit) von anden
 ```
-* Karl May
-* 4 Zeichen Lookbehind
+* Old Death ist Zeichen für Karl Mays Winnetou
+* Winnetou I - III
 
 ```
 @v(Auto)-@v(Bränität)
@@ -411,13 +450,25 @@ nachbar machtsferiesigner @v(Pro) @v(2019) jetzt
 @v(Last)-@v(Minute)
 ```
 * Heise Newsticker
-* 4 Zeichen Lookbehind
 
 !(imgs/win.png)
 * effiziente Speicherung der Daten
+* 0 Zeichen Backlog: 482 Bytes
+* 1 Zeichen Backlog: 7.399 Bytes
+* 2 Zeichen Backlog: 51.954 Bytes
+* 3 Zeichen Backlog: 195.771 Bytes
+* 4 Zeichen Backlog: 525.886 Bytes
+* Original: 1.123.330 Bytes
 
 !(imgs/heise.png)
-* größer als ursprüngliche Datei
+* wir größer als ursprüngliche Datei
+* 0 Zeichen Backlog: 366 Bytes
+* 1 Zeichen Backlog: 4.827 Bytes
+* 2 Zeichen Backlog: 23.590 Bytes
+* 3 Zeichen Backlog: 52.193 Bytes
+* 4 Zeichen Backlog: 80.407 Bytes
+* Original: 18.604 Bytes
+* keine effiziente Methode, um kurze Dokumente zu speichern
 
 ## Nächste Schritte
 ### Meta-Fragmente
@@ -426,34 +477,53 @@ nachbar machtsferiesigner @v(Pro) @v(2019) jetzt
 ### Tabulator-Kaskadierung
 ### Verweise
 ### Grafik-Formate
+* mögliche nächste Schritte für `hex`
 
 ### Meta-Fragmente
 #### don't repeat yourself
+* Meta-Fragmente können unterschiedliche Fragmente erweitern
+* parametrisierbar
 
 ### integrierte Editoren
 #### Zeilen-Editor
 #### visueller Editor
 #### Integration `make` und `git`
+* Anlehnung an "Software-Tools"
+* IDE im Terminal
 
 ### weitere Ausgabe-Formate
 #### direkt PDF erzeugen
 #### Buchsatz
+* Literate Programming mit abdecken
 
 ### Tabulator-Kaskadierung
 #### besserer Python-Support
+* generiert allgemein besser lesbaren Source-Code
+* Fragmente müssen bei der Expandierung wissen wie tief sie eingerückt
+  werden müssen
 
 ### Verweise
 #### Hyperlinks wie bei CWEB
+* Navigationsmöglichkeiten von HTML nutzen
 
 ### Grafik-Formate
 #### SVG
 #### DOT
+* direkt Grafik-Code im Source integrieren
+* so dass nicht weitere Dokumente notwendig sind
+* externe Bilder können bereits eingebunden werden
 
 ## Links
 ### `https://github.com/itmm/` `entwicklertag-@v(2020)-ffm`
 ### `https://github.com/itmm/hex`
 ### `www.literateprogramming.com`
 ### `timm@knp.de`
+* Verweis auf dieses Dokument
+* und alles was zu dessen Erstellung notwendig ist
+* und auf `hex` selbst
+* zusätzlich netter Einstiegspunkt zum Literate Programming
+* und meine E-Mail Adresse
 
 !(imgs/qr-code.png)
-
+* bitte bewertet diesen Vortrag
+* vielen Dank!
