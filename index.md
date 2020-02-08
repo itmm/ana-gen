@@ -412,6 +412,12 @@ nachbar machtsferiesigner @v(Pro) @v(2019) jetzt
 * Heise Newsticker
 * 4 Zeichen Lookbehind
 
+!(imgs/win.jpg)
+* effiziente Speicherung der Daten
+
+!(imgs/heise.jpg)
+* größer als ursprüngliche Datei
+
 ## Nächste Schritte
 ### Meta-Fragmente
 ### integrierte Editoren
@@ -441,6 +447,12 @@ nachbar machtsferiesigner @v(Pro) @v(2019) jetzt
 ### Grafik-Formate
 #### SVG
 #### DOT
+
+## Links
+### `https://github.com/itmm/` `entwicklertag-@v(2020)-ffm`
+### `https://github.com/itmm/hex`
+### `www.literateprogramming.com`
+### `timm@knp.de`
 
 !(imgs/qr-code.png)
 
