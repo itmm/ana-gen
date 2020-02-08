@@ -1,4 +1,11 @@
 # Literate Programming
+## -von Büchern zu Präsentationen
+* Einführung in Literate Programming
+* Vorteile gegenüber getrennter Dokumentation
+* Schwächen bei klassischem Ansatz
+* Vorstellung einer Verbesserung
+
+# Literate Programming
 ## von Büchern zu Präsentationen
 * Einführung in Literate Programming
 * Vorteile gegenüber getrennter Dokumentation
@@ -6,9 +13,39 @@
 * Vorstellung einer Verbesserung
 
 ## Programme sind schwer
+### -lang
+### -komplex
+### -unübersichtlich
+
+## Programme sind schwer
+### lang
+### -komplex
+### -unübersichtlich
+
+## Programme sind schwer
+### lang
+### komplex
+### -unübersichtlich
+
+## Programme sind schwer
 ### lang
 ### komplex
 ### unübersichtlich
+
+## Programme sind daher
+### -schwer zu verstehen
+### -schwer zu erweitern
+### -schwer zu korrigieren
+
+## Programme sind daher
+### schwer zu verstehen
+### -schwer zu erweitern
+### -schwer zu korrigieren
+
+## Programme sind daher
+### schwer zu verstehen
+### schwer zu erweitern
+### -schwer zu korrigieren
 
 ## Programme sind daher
 ### schwer zu verstehen
@@ -27,12 +64,27 @@
 ## Dokumentation
 
 ## Sicht des illiteraten Programmierers
+### -Source-Code ⊇ Dokumentation
+* Source-Code und dessen Dokumentation hängen zusammen
+* müssen zusammen gepflegt und versioniert werden
+* aber Source-Code ist für die Ausführung am wichtigsten
+* Source-Code ist selbsterklärend
+* Beispiele: javadoc, doxygen
+
+## Sicht des illiteraten Programmierers
 ### Source-Code ⊇ Dokumentation
 * Source-Code und dessen Dokumentation hängen zusammen
 * müssen zusammen gepflegt und versioniert werden
 * aber Source-Code ist für die Ausführung am wichtigsten
 * Source-Code ist selbsterklärend
 * Beispiele: javadoc, doxygen
+
+## Sicht von Literate Programming
+### -Source-Code ⊆ Dokumentation
+* Dokumentation beschreibt, was ein Programm macht
+* und wie das Programm etwas macht
+* und warum das Programm etwas macht
+* der Source-Code ist ein Teil dieser Dokumentation
 
 ## Sicht von Literate Programming
 ### Source-Code ⊆ Dokumentation
@@ -44,6 +96,24 @@
 ## Illiterate Programme
 * Beispiele für Programme, die nicht nach den Prinzipien des Literate
   Programming dokumentiert werden
+
+## Open Source
+### -Linux
+### -Apache
+### -GCC, LLVM
+* viele Open Source Projekte sind auf den Code konzentriert
+
+## Open Source
+### Linux
+### -Apache
+### -GCC, LLVM
+* viele Open Source Projekte sind auf den Code konzentriert
+
+## Open Source
+### Linux
+### Apache
+### -GCC, LLVM
+* viele Open Source Projekte sind auf den Code konzentriert
 
 ## Open Source
 ### Linux
@@ -84,6 +154,27 @@
 
 !(imgs/understanding-mp3.jpg)
 * Ruckert beschreibt Bibliothek zum dekodieren von MP3
+
+## Strukturierung von Literate Programs
+### -Fragmente = Super-Makros
+### -Vorwärts-Deklaration
+### -Erweiterbarkeit
+* können verwendet werden, bevor sie definiert werden
+* können erweitert werden
+
+## Strukturierung von Literate Programs
+### Fragmente = Super-Makros
+### -Vorwärts-Deklaration
+### -Erweiterbarkeit
+* können verwendet werden, bevor sie definiert werden
+* können erweitert werden
+
+## Strukturierung von Literate Programs
+### Fragmente = Super-Makros
+### Vorwärts-Deklaration
+### -Erweiterbarkeit
+* können verwendet werden, bevor sie definiert werden
+* können erweitert werden
 
 ## Strukturierung von Literate Programs
 ### Fragmente = Super-Makros
@@ -127,6 +218,29 @@ std::cout << "Hello World.\n";
 ```
 * Source Literate Programming
 
+## Vorteile Literate Programming
+### -Zusammenhang
+### -Intelligente Ordnung
+### -Ausdrucksstärke
+### -Querverweise
+
+## Vorteile Literate Programming
+### Zusammenhang
+### -Intelligente Ordnung
+### -Ausdrucksstärke
+### -Querverweise
+
+## Vorteile Literate Programming
+### Zusammenhang
+### Intelligente Ordnung
+### -Ausdrucksstärke
+### -Querverweise
+
+## Vorteile Literate Programming
+### Zusammenhang
+### Intelligente Ordnung
+### Ausdrucksstärke
+### -Querverweise
 
 ## Vorteile Literate Programming
 ### Zusammenhang
@@ -135,7 +249,25 @@ std::cout << "Hello World.\n";
 ### Querverweise
 
 ### Zusammenhang
+#### -Source-Code und Dokumentation leichter synchron
+
+### Zusammenhang
 #### Source-Code und Dokumentation leichter synchron
+
+### Intelligente Ordnung
+#### -interessante Themen vorziehen
+#### -uninteressante Themen in den Anhang (oder ausgelassen)
+#### -Programm kann wie ein Buch gelesen werden
+
+### Intelligente Ordnung
+#### interessante Themen vorziehen
+#### -uninteressante Themen in den Anhang (oder ausgelassen)
+#### -Programm kann wie ein Buch gelesen werden
+
+### Intelligente Ordnung
+#### interessante Themen vorziehen
+#### uninteressante Themen in den Anhang (oder ausgelassen)
+#### -Programm kann wie ein Buch gelesen werden
 
 ### Intelligente Ordnung
 #### interessante Themen vorziehen
@@ -143,12 +275,54 @@ std::cout << "Hello World.\n";
 #### Programm kann wie ein Buch gelesen werden
 
 ### Ausdrucksstärke
+#### -komplizierte Stellen können erklärt werden
+
+### Ausdrucksstärke
 #### komplizierte Stellen können erklärt werden
+
+### Querverweise
+#### -Vorwärts: Verweise auf benutzte Fragmente
+#### -Rückwärts: Verweise auf Aufrufe
+#### -mächtiger Index
+
+### Querverweise
+#### Vorwärts: Verweise auf benutzte Fragmente
+#### -Rückwärts: Verweise auf Aufrufe
+#### -mächtiger Index
+
+### Querverweise
+#### Vorwärts: Verweise auf benutzte Fragmente
+#### Rückwärts: Verweise auf Aufrufe
+#### -mächtiger Index
 
 ### Querverweise
 #### Vorwärts: Verweise auf benutzte Fragmente
 #### Rückwärts: Verweise auf Aufrufe
 #### mächtiger Index
+
+## Nachteile Literate Programming
+### -Nicht aufbauend
+### -Granularität
+### -Vollständigkeit
+### -Syntax
+
+## Nachteile Literate Programming
+### Nicht aufbauend
+### -Granularität
+### -Vollständigkeit
+### -Syntax
+
+## Nachteile Literate Programming
+### Nicht aufbauend
+### Granularität
+### -Vollständigkeit
+### -Syntax
+
+## Nachteile Literate Programming
+### Nicht aufbauend
+### Granularität
+### Vollständigkeit
+### -Syntax
 
 ## Nachteile Literate Programming
 ### Nicht aufbauend
@@ -157,22 +331,95 @@ std::cout << "Hello World.\n";
 ### Syntax
 
 ### Nicht aufbauend
+#### -Verständnis erst nach vollständigem Durcharbeiten
+#### -Springen oft notwendig
+#### -Keine Zwischenstände des Codes möglich
+
+### Nicht aufbauend
+#### Verständnis erst nach vollständigem Durcharbeiten
+#### -Springen oft notwendig
+#### -Keine Zwischenstände des Codes möglich
+
+### Nicht aufbauend
+#### Verständnis erst nach vollständigem Durcharbeiten
+#### Springen oft notwendig
+#### -Keine Zwischenstände des Codes möglich
+
+### Nicht aufbauend
 #### Verständnis erst nach vollständigem Durcharbeiten
 #### Springen oft notwendig
 #### Keine Zwischenstände des Codes möglich
+
+### Granularität
+#### -Blöcke oft zu lang und zu kompliziert
+#### -Seitenweise Codes möglich
+
+### Granularität
+#### Blöcke oft zu lang und zu kompliziert
+#### -Seitenweise Codes möglich
 
 ### Granularität
 #### Blöcke oft zu lang und zu kompliziert
 #### Seitenweise Codes möglich
 
 ### Vollständigkeit
+#### -Vollständigkeit nicht erzwungen
+#### -oft gekürzt, um Buch-Rahmen nicht zu sprengen
+
+### Vollständigkeit
+#### Vollständigkeit nicht erzwungen
+#### -oft gekürzt, um Buch-Rahmen nicht zu sprengen
+
+### Vollständigkeit
 #### Vollständigkeit nicht erzwungen
 #### oft gekürzt, um Buch-Rahmen nicht zu sprengen
+
+## Syntax
+### -Dokumentation in LaTeX
+### -Source-Code wird mathematisiert
+
+## Syntax
+### Dokumentation in LaTeX
+### -Source-Code wird mathematisiert
 
 ## Syntax
 ### Dokumentation in LaTeX
 ### Source-Code wird mathematisiert
 
+## Slide-Programming ⊇ Literate-Programming
+### -Folien
+### -aufbauend
+### -modular
+### -sprach-neutral
+### -Markdown, HTML
+
+## Slide-Programming ⊇ Literate-Programming
+### Folien
+### -aufbauend
+### -modular
+### -sprach-neutral
+### -Markdown, HTML
+
+## Slide-Programming ⊇ Literate-Programming
+### Folien
+### aufbauend
+### -modular
+### -sprach-neutral
+### -Markdown, HTML
+
+## Slide-Programming ⊇ Literate-Programming
+### Folien
+### aufbauend
+### modular
+### -sprach-neutral
+### -Markdown, HTML
+
+## Slide-Programming ⊇ Literate-Programming
+### Folien
+### aufbauend
+### modular
+### sprach-neutral
+### -Markdown, HTML
 
 ## Slide-Programming ⊇ Literate-Programming
 ### Folien
@@ -182,9 +429,39 @@ std::cout << "Hello World.\n";
 ### Markdown, HTML
 
 ### Folien
+#### -Folien mit Notizen statt seitenlanger Fragmente
+#### -klare Grenze für Umfang
+#### -erklärende Folien möglich
+
+### Folien
+#### Folien mit Notizen statt seitenlanger Fragmente
+#### -klare Grenze für Umfang
+#### -erklärende Folien möglich
+
+### Folien
+#### Folien mit Notizen statt seitenlanger Fragmente
+#### klare Grenze für Umfang
+#### -erklärende Folien möglich
+
+### Folien
 #### Folien mit Notizen statt seitenlanger Fragmente
 #### klare Grenze für Umfang
 #### erklärende Folien möglich
+
+### aufbauend
+#### -nach jeder Folie kann ein ausführbares Programm erstellt werden
+#### -undefinierte Fragmente sind kein Fehler
+#### -Fragmente können später umdefiniert werden
+
+### aufbauend
+#### nach jeder Folie kann ein ausführbares Programm erstellt werden
+#### -undefinierte Fragmente sind kein Fehler
+#### -Fragmente können später umdefiniert werden
+
+### aufbauend
+#### nach jeder Folie kann ein ausführbares Programm erstellt werden
+#### undefinierte Fragmente sind kein Fehler
+#### -Fragmente können später umdefiniert werden
 
 ### aufbauend
 #### nach jeder Folie kann ein ausführbares Programm erstellt werden
@@ -192,19 +469,52 @@ std::cout << "Hello World.\n";
 #### Fragmente können später umdefiniert werden
 
 ### modular
+#### -große Projekte können aufgeteilt werden
+
+### modular
 #### große Projekte können aufgeteilt werden
+
+### sprach-neutral
+#### -alles was mit einem Text-Editor bearbeitet werden kann
+#### -nicht auf bestimmte Programmiersprache beschränkt
+
+### sprach-neutral
+#### alles was mit einem Text-Editor bearbeitet werden kann
+#### -nicht auf bestimmte Programmiersprache beschränkt
 
 ### sprach-neutral
 #### alles was mit einem Text-Editor bearbeitet werden kann
 #### nicht auf bestimmte Programmiersprache beschränkt
 
 ### Markdown
+#### -einfacher als LaTeX
+#### -schneller zu Parsen
+
+### Markdown
+#### einfacher als LaTeX
+#### -schneller zu Parsen
+
+### Markdown
 #### einfacher als LaTeX
 #### schneller zu Parsen
 
 ### HTML
+#### -Folien werden als Webseite generiert
+#### -diese Präsentation ist in `hex` erstellt
+
+### HTML
+#### Folien werden als Webseite generiert
+#### -diese Präsentation ist in `hex` erstellt
+
+### HTML
 #### Folien werden als Webseite generiert
 #### diese Präsentation ist in `hex` erstellt
+
+## Beispiel-Programm
+### -kleines Beispiel aus den Anfängen der künstlichen Intelligenz
+* Slide-Programming an konkretem Beispiel erfahren
+* Texte im bestimmten Stil generieren
+* Referenz: Computer-Kurzweil
 
 ## Beispiel-Programm
 ### kleines Beispiel aus den Anfängen der künstlichen Intelligenz
@@ -299,7 +609,6 @@ std::cout << "Hello World.\n";
 ```
 * fügt Zeichen in die Statistik ein
 * eigenes globales Fragment, um es später zu ersetzen
-
 
 ```
 @def(write table)
@@ -844,6 +1153,15 @@ std::cout << "Hello World.\n";
 * `key` wird neu instantiiert
 * wenn die Länge zu kurz ist, wird statt dessen 2 verwendet
 
+```
+@inc(ana-1.md)
+@inc(gen.md)
+@inc(ana-n.md)
+```
+* erst einfache Häufigkeits-Analyse
+* dann daraus Text generieren
+* dann auf feste Sequenz-Längen erweitern
+
 ## Zwei Beispiele
 
 ```
@@ -1042,6 +1360,54 @@ nachbar machtsferiesigner @v(Pro) @v(2019) jetzt
 * größer als ursprüngliche Datei
 
 ## Nächste Schritte
+### -Meta-Fragmente
+### -integrierte Editoren
+### -weitere Ausgabe-Formate
+### -Tabulator-Kaskadierung
+### -Verweise
+### -Grafik-Formate
+
+## Nächste Schritte
+### Meta-Fragmente
+### -integrierte Editoren
+### -weitere Ausgabe-Formate
+### -Tabulator-Kaskadierung
+### -Verweise
+### -Grafik-Formate
+
+## Nächste Schritte
+### Meta-Fragmente
+### integrierte Editoren
+### -weitere Ausgabe-Formate
+### -Tabulator-Kaskadierung
+### -Verweise
+### -Grafik-Formate
+
+## Nächste Schritte
+### Meta-Fragmente
+### integrierte Editoren
+### weitere Ausgabe-Formate
+### -Tabulator-Kaskadierung
+### -Verweise
+### -Grafik-Formate
+
+## Nächste Schritte
+### Meta-Fragmente
+### integrierte Editoren
+### weitere Ausgabe-Formate
+### Tabulator-Kaskadierung
+### -Verweise
+### -Grafik-Formate
+
+## Nächste Schritte
+### Meta-Fragmente
+### integrierte Editoren
+### weitere Ausgabe-Formate
+### Tabulator-Kaskadierung
+### Verweise
+### -Grafik-Formate
+
+## Nächste Schritte
 ### Meta-Fragmente
 ### integrierte Editoren
 ### weitere Ausgabe-Formate
@@ -1050,7 +1416,25 @@ nachbar machtsferiesigner @v(Pro) @v(2019) jetzt
 ### Grafik-Formate
 
 ### Meta-Fragmente
+#### -don't repeat yourself
+
+### Meta-Fragmente
 #### don't repeat yourself
+
+### integrierte Editoren
+#### -Zeilen-Editor
+#### -visueller Editor
+#### -Integration `make` und `git`
+
+### integrierte Editoren
+#### Zeilen-Editor
+#### -visueller Editor
+#### -Integration `make` und `git`
+
+### integrierte Editoren
+#### Zeilen-Editor
+#### visueller Editor
+#### -Integration `make` und `git`
 
 ### integrierte Editoren
 #### Zeilen-Editor
@@ -1058,18 +1442,64 @@ nachbar machtsferiesigner @v(Pro) @v(2019) jetzt
 #### Integration `make` und `git`
 
 ### weitere Ausgabe-Formate
+#### -direkt PDF erzeugen
+#### -Buchsatz
+
+### weitere Ausgabe-Formate
+#### direkt PDF erzeugen
+#### -Buchsatz
+
+### weitere Ausgabe-Formate
 #### direkt PDF erzeugen
 #### Buchsatz
+
+### Tabulator-Kaskadierung
+#### -besserer Python-Support
 
 ### Tabulator-Kaskadierung
 #### besserer Python-Support
 
 ### Verweise
+#### -Hyperlinks wie bei CWEB
+
+### Verweise
 #### Hyperlinks wie bei CWEB
+
+### Grafik-Formate
+#### -SVG
+#### -DOT
+
+### Grafik-Formate
+#### SVG
+#### -DOT
 
 ### Grafik-Formate
 #### SVG
 #### DOT
+
+## Links
+### -`https://github.com/itmm/` `entwicklertag-@v(2020)-ffm`
+### -`https://github.com/itmm/hex`
+### -`www.literateprogramming.com`
+### -`timm@knp.de`
+
+## Links
+### `https://github.com/itmm/` `entwicklertag-@v(2020)-ffm`
+### -`https://github.com/itmm/hex`
+### -`www.literateprogramming.com`
+### -`timm@knp.de`
+
+## Links
+### `https://github.com/itmm/` `entwicklertag-@v(2020)-ffm`
+### `https://github.com/itmm/hex`
+### -`www.literateprogramming.com`
+### -`timm@knp.de`
+
+## Links
+### `https://github.com/itmm/` `entwicklertag-@v(2020)-ffm`
+### `https://github.com/itmm/hex`
+### `www.literateprogramming.com`
+### -`timm@knp.de`
 
 ## Links
 ### `https://github.com/itmm/` `entwicklertag-@v(2020)-ffm`

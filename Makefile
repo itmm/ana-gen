@@ -8,7 +8,7 @@ CXXFLAGS += -Wall -std=c++17
 all: hx-run-combined hx-run
 
 index-combined.md: $(MDs)
-	$(error "update $@!")
+	expand-hex > $@
 
 hx-run: $(MDs)
 	@echo "HX"
