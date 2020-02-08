@@ -18,7 +18,7 @@
 
 ## Warum verstehen Programmierer Programme?
 
-!(imgs/git-locs.jpg)
+!(imgs/git-locs.png)
 * erster Commit: 1.284 Zeilen
 * neuster Commit: 1.195.350 Zeilen
 * Faktor: 930,96
@@ -93,10 +93,10 @@
 * können verwendet werden, bevor sie definiert werden
 * können erweitert werden
 
-!(imgs/hello-1.jpg)
+!(imgs/hello-1.png)
 * Beispiel Literate Programming
 
-!(imgs/hello-2.jpg)
+!(imgs/hello-2.png)
 * zweite Seite
 
 ```
@@ -413,10 +413,10 @@ nachbar machtsferiesigner @v(Pro) @v(2019) jetzt
 * Heise Newsticker
 * 4 Zeichen Lookbehind
 
-!(imgs/win.jpg)
+!(imgs/win.png)
 * effiziente Speicherung der Daten
 
-!(imgs/heise.jpg)
+!(imgs/heise.png)
 * größer als ursprüngliche Datei
 
 ## Nächste Schritte
