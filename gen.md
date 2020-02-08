@@ -148,7 +148,7 @@
 	};
 @end(list prereqs)
 ```
-* initialisiert einen Zufallsgenerator (Mystery-Twister)
+* initialisiert einen Zufallsgenerator (Mersenne-Twister)
 
 ```
 @def(next ch)
