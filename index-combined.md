@@ -136,38 +136,61 @@
 * viele Open Source Projekte sind auf den Code konzentriert
 
 !(imgs/operating-systems.jpg)
-* Tanenbaum beschreibt Minix-System in seinem Buch
+* von Andrew S. Tanenbaum, Albert S. Woodhull
+* Januar 1997, 939 Seiten
+* beschreibt Minix-System in seinem Buch
+* kompletter Source-Code in zweiter Hälfte
 
 !(imgs/project-oberon.jpg)
-* Wirth beschreibt ein Betriebssystem mit Compiler in seinem Buch
+* von Niklaus Wirth, Jörg Gutknecht
+* November 1992, 488 Seiten
+* beschreibt ein Betriebssystem mit Compiler in seinem Buch
+* enthält Source-Code gemischt mit Text
 
 !(imgs/software-tools.jpg)
-* Kernighan beschreibt eine Sammlung von Kommandozeilen-Tools in Fortran
+* von Brian W. Kernighan, P.J. Plauger
+* Juni 1976, 352 Seiten
+* beschreibt eine Sammlung von Kommandozeilen-Tools in Fortran
+* kompletter Pseudo-Fortran Source-Code zu einzelnen Tools
+* Pascal-Version verfügbar
 
 !(imgs/sargon.jpg)
-* Sargon Chess ist in Z80-Assembler geschrieben
+* von Dan Spracklen, Kathe Spracklen
+* November 1978, 120 Seiten
+* komplettes Schach-Programm in Z80-Assembler
 
 !(imgs/mazes.jpg)
 * von Jamis Buck
+* August 2015, 275 Seiten
 * Labyrinthe bauen in Ruby
 
 !(imgs/building-git.jpg)
-* ein Buch, in dem `git` in Ruby nachgebaut wird
+* von James Coglan
+* Oktober 2019, 732 Seiten
+* `git` in Ruby nachgebaut
 
 ## Literate Programs
 * Beispiele für Literate Programs
 
 !(imgs/tex-book.jpg)
+* von Donald E. Knuth
+* April 1986, 624 Seiten
 * erster Kontakt mit TeX
 
 !(imgs/physically-based-rendering.jpg)
+* von Matt Pharr, Wenzel Jakob, Greg Humphreys
+* November 2016, 1.266 Seiten
 * Raytracer beschreibt Grundlagen des Raytracings neben deme Code
 
 !(imgs/a-retargetable-c-compiler.jpg)
-* C-Compiler ist ein portabler C-Compiler in C
+* von Christopher Fraser, David Hanson
+* März 1995, 584 Seiten
+* portabler C-Compiler in C
 
 !(imgs/understanding-mp3.jpg)
-* Ruckert beschreibt Bibliothek zum dekodieren von MP3
+* Martin Ruckert,
+* Juni 2005, 262 Seiten
+* Bibliothek zum dekodieren von MP3
 
 ## Strukturierung von Literate Programs
 ### -Fragmente = Super-Makros
