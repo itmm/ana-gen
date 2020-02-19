@@ -8,7 +8,7 @@
 <h2>Dokumente generieren</h2>
 <div class="slides">
 <div class="page">
-<div class="slide"><div class="headers">
+<div class="slide"><div class="slide-nr">1</div><div class="headers">
 <h2>Dokumente generieren</h2>
 </div></div>
 <ul><li>
@@ -17,7 +17,7 @@ erzeugt Dokumente mit vorgegebener Sequenz-Häufigkeit
 liest die Häufigkeitsverteilung über Standard-Eingabe
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">2</div>
 <code>
 <span class="macro">@Def(<span class="name">file: gen.cpp</span>)</span><br/>
 <span class="in1"></span><span class="macro">@put(<span class="name">main prereqs</span>)</span>;<br/>
@@ -37,14 +37,14 @@ und generiert passende Zeichen
 <h2>Zufällige Zeichen generieren</h2>
 <div class="slides">
 <div class="page">
-<div class="slide"><div class="headers">
+<div class="slide"><div class="slide-nr">3</div><div class="headers">
 <h2>Zufällige Zeichen generieren</h2>
 </div></div>
 <ul><li>
 generiert zufällige Zeichen
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">4</div>
 <code>
 <span class="macro">@def(<span class="name">main prereqs</span>)</span><br/>
 <span class="in1"></span><span class="macro">@put(<span class="name">next prereqs</span>)</span>;<br/>
@@ -61,7 +61,7 @@ generiert zufällige Zeichen
 wirft Exception, wenn kein Zeichen generiert werden konnte
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">5</div>
 <code>
 <span class="macro">@add(<span class="name">main prereqs</span>)</span><br/>
 <span class="in1"></span><span class="keyword">#include</span> &lt;<span class="var">iostream</span>&gt;<br/>
@@ -71,7 +71,7 @@ wirft Exception, wenn kein Zeichen generiert werden konnte
 benötigt <code><span class="type">std</span>::<span class="var">cin</span></code>, <code><span class="type">std</span>::<span class="var">cout</span></code>, etc.
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">6</div>
 <code>
 <span class="macro">@def(<span class="name">loop</span>)</span><br/>
 <span class="in1"></span><span class="macro">@mul(<span class="name">initialise</span>)</span>;<br/>
@@ -92,7 +92,7 @@ und gib die generierten Zeichen aus
 wenn kein Zeichen generiert werden kann, initialisiere den Zustand neu
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">7</div>
 <code>
 <span class="macro">@inc(<span class="name"><a href="prefix.html">prefix.md</a></span>)</span><br/>
 </code></div>
@@ -102,7 +102,7 @@ definiert Klasse für Byte-Arrays einheitlicher Länge
 die als Schlüssel von <code><span class="type">std</span>::<span class="type">map</span></code> verwendet werden
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">8</div>
 <code>
 <span class="macro">@def(<span class="name">collection prereqs</span>)</span><br/>
 <span class="in1"></span><span class="macro">@Mul(<span class="name">prefix</span>)</span><br/>
@@ -114,7 +114,7 @@ integriert die Definition von <code><span class="type">Prefix</span></code> in d
 wird ebenfalls im erweiterten Analysator verwendet
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">9</div>
 <code>
 <span class="macro">@add(<span class="name">collection prereqs</span>)</span><br/>
 <span class="in1"></span><span class="keyword">#include</span> &lt;<span class="type">map</span>&gt;<br/>
@@ -124,7 +124,7 @@ wird ebenfalls im erweiterten Analysator verwendet
 benötigt <code><span class="type">std</span>::<span class="type">map</span></code>
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">10</div>
 <code>
 <span class="macro">@def(<span class="name">list prereqs</span>)</span><br/>
 <span class="in1"></span><span class="type">struct</span> <span class="type">Entry</span> {<br/>
@@ -140,7 +140,7 @@ benötigt <code><span class="type">std</span>::<span class="type">map</span></co
 <code><span class="type">Entry</span></code> zählt wie häufig ein Zeichen <code><span class="var">ch</span></code> nach einem Präfix vorkommt
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">11</div>
 <code>
 <span class="macro">@add(<span class="name">collection prereqs</span>)</span><br/>
 <span class="in1"></span><span class="macro">@put(<span class="name">list prereqs</span>)</span>;<br/>
@@ -160,7 +160,7 @@ Liste von <code><span class="type">Entry</span></code>s
 zusätzlich wird die Gesamtsumme vorgehalten
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">12</div>
 <code>
 <span class="macro">@def(<span class="name">next prereqs</span>)</span><br/>
 <span class="in1"></span><span class="macro">@put(<span class="name">collection prereqs</span>)</span>;<br/>
@@ -173,7 +173,7 @@ zusätzlich wird die Gesamtsumme vorgehalten
 der Generator verwendet eine Abbildung von Präfixen auf Listen
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">13</div>
 <code>
 <span class="macro">@def(<span class="name">list publics</span>)</span><br/>
 <span class="in1"></span><span class="type">void</span> <span class="fn">add</span>(<span class="type">char</span> <span class="var">ch</span>, <span class="type">int</span> <span class="var">count</span>) {<br/>
@@ -190,7 +190,7 @@ fügt ein neues Zeichen zur Liste hinzu
 und passt die Gesamtsumme an
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">14</div>
 <code>
 <span class="macro">@add(<span class="name">list publics</span>)</span><br/>
 <span class="in1"></span><span class="keyword">class</span> <span class="type">No_Entries</span> { };<br/>
@@ -208,7 +208,7 @@ liefert ein zufälliges Zeichen
 wenn keine Einträge hinterlegt sind, wird eine Exception generiert
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">15</div>
 <code>
 <span class="macro">@add(<span class="name">list prereqs</span>)</span><br/>
 <span class="in1"></span><span class="keyword">#include</span> &lt;<span class="var">random</span>&gt;<br/>
@@ -221,7 +221,7 @@ wenn keine Einträge hinterlegt sind, wird eine Exception generiert
 initialisiert einen Zufallsgenerator (Mersenne-Twister)
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">16</div>
 <code>
 <span class="macro">@def(<span class="name">next ch</span>)</span><br/>
 <span class="in1"></span><span class="type">auto</span> <span class="var">dist</span> {<br/>
@@ -237,7 +237,7 @@ initialisiert einen Zufallsgenerator (Mersenne-Twister)
 ermittelt eine Zufallszahl zwischen <code><span class="num">0</span></code> und <code><span class="var">sum_</span> - <span class="num">1</span></code>
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">17</div>
 <code>
 <span class="macro">@add(<span class="name">next ch</span>)</span><br/>
 <span class="in1"></span><span class="keyword">for</span> (<span class="type">const</span> <span class="type">auto</span> &amp;<span class="var">i</span> : <span class="var">entries_</span>) {<br/>
@@ -252,7 +252,7 @@ ermittelt eine Zufallszahl zwischen <code><span class="num">0</span></code> und 
 wählt Zeichen anhand der Zufallszahl
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">18</div>
 <code>
 <span class="macro">@add(<span class="name">next prereqs</span>)</span><br/>
 <span class="in1"></span><span class="type">Prefix</span> <span class="var">state</span>;<br/>
@@ -262,7 +262,7 @@ wählt Zeichen anhand der Zufallszahl
 der Zustand ist ein Präfix mit den letzten ausgegebenen Zeichen
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">19</div>
 <code>
 <span class="macro">@def(<span class="name">initialise</span>)</span><br/>
 <span class="in1"></span><span class="fn">init</span>(<span class="var">state</span>);<br/>
@@ -272,7 +272,7 @@ der Zustand ist ein Präfix mit den letzten ausgegebenen Zeichen
 initialsiert den Zustand auf Null-Bytes
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">20</div>
 <code>
 <span class="macro">@def(<span class="name">next</span>)</span><br/>
 <span class="in1"></span><span class="keyword">try</span> {<br/>
@@ -293,14 +293,14 @@ ermittelt das nächste zufällige Zeichen
 <h2>Rezept einlesen</h2>
 <div class="slides">
 <div class="page">
-<div class="slide"><div class="headers">
+<div class="slide"><div class="slide-nr">21</div><div class="headers">
 <h2>Rezept einlesen</h2>
 </div></div>
 <ul><li>
 liest Häufigkeitsverteilung von Standard-Eingabe
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">22</div>
 <code>
 <span class="macro">@add(<span class="name">main prereqs</span>)</span><br/>
 <span class="in1"></span><span class="macro">@put(<span class="name">normalize prereqs</span>)</span>;<br/>
@@ -320,7 +320,7 @@ liest Häufigkeitsverteilung von Standard-Eingabe
 wandelt Escape-Sequenzen in Schlüsseln in die passenden Bytes um
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">23</div>
 <code>
 <span class="macro">@def(<span class="name">normalize char</span>)</span><br/>
 <span class="in1"></span><span class="keyword">if</span> (<span class="var">key</span>[<span class="var">i</span>] == <span class="str">'%'</span>) {<br/>
@@ -337,7 +337,7 @@ Escape-Sequenzen beginnen mit <code>%</code>
 alles andere wird direkt kopiert
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">24</div>
 <code>
 <span class="macro">@def(<span class="name">normalize prereqs</span>)</span><br/>
 <span class="in1"></span><span class="type">int</span> <span class="fn">hex_digit</span>(<span class="type">char</span> <span class="var">ch</span>) {<br/>
@@ -357,7 +357,7 @@ alles andere wird direkt kopiert
 wandelt hexadezimale Ziffer in numerischen Wert um
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">25</div>
 <code>
 <span class="macro">@def(<span class="name">unescape</span>)</span><br/>
 <span class="in1"></span><span class="var">result</span> += <span class="var">static_cast</span>&lt;<span class="type">char</span>&gt;(<br/>
@@ -370,7 +370,7 @@ wandelt hexadezimale Ziffer in numerischen Wert um
 Escape-Sequenzen bestehen aus zwei hexadezimalen Ziffern
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">26</div>
 <code>
 <span class="macro">@def(<span class="name">read receipt</span>)</span><br/>
 <span class="in1"></span><span class="type">bool</span> <span class="var">first</span> { <span class="num">true</span> };<br/>
@@ -392,7 +392,7 @@ Rezepte bestehen aus einer Liste von Schlüssel/Anzahl Paaren
 der erste Schlüssel bestimmt wie lang die Präfixe sind
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">27</div>
 <code>
 <span class="macro">@def(<span class="name">read key</span>)</span><br/>
 <span class="in1"></span><span class="type">std</span>::<span class="type">string</span> <span class="var">key</span>;<br/>
@@ -407,7 +407,7 @@ liest Schlüssel
 und expandiert Escape-Sequenzen
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">28</div>
 <code>
 <span class="macro">@def(<span class="name">read count</span>)</span><br/>
 <span class="in1"></span><span class="type">int</span> <span class="var">count</span>;<br/>
@@ -419,7 +419,7 @@ und expandiert Escape-Sequenzen
 liest die Anzahl
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">29</div>
 <code>
 <span class="macro">@def(<span class="name">setup length</span>)</span><br/>
 <span class="in1"></span><span class="var">prefix_length</span> = <span class="var">key</span>.<span class="fn">size</span>() - <span class="num">1</span>;<br/>
@@ -430,7 +430,7 @@ liest die Anzahl
 Länge ist eins weniger als die Schlüssel-Länge
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">30</div>
 <code>
 <span class="macro">@def(<span class="name">add entry</span>)</span><br/>
 <span class="in1"></span><span class="keyword">for</span> (<span class="type">unsigned</span> <span class="var">i</span> { <span class="num">0</span> };<br/>

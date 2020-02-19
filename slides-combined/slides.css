@@ -142,6 +142,9 @@ html, body {
 .slides {
 	position: relative;
 }
+.slide {
+	position: relative;
+}
 .page {
 	display: block;
 	position: relative;
@@ -151,4 +154,10 @@ html, body {
 }
 .hidden {
 	visibility: hidden;
+}
+div.slide-nr {
+	position: absolute;
+	right: 8px;
+	bottom: 4px;
+	font-size: small;
 }

@@ -8,7 +8,7 @@
 <h1>Byte-Folgen analysieren</h1>
 <div class="slides">
 <div class="page">
-<div class="slide"><div class="headers">
+<div class="slide"><div class="slide-nr">1</div><div class="headers">
 <h1>Byte-Folgen analysieren</h1>
 </div></div>
 <ul><li>
@@ -17,7 +17,7 @@ passt das Programm an, um ganze Byte-Folgen fester Länge zu analysieren
 anstatt nur einzelner Bytes
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">2</div>
 <code>
 <span class="macro">@Rep(<span class="name">write key</span>)</span><br/>
 <span class="macro">@End(<span class="name">write key</span>)</span><br/>
@@ -28,7 +28,7 @@ löscht das Fragment, da es sonst Zwischenstände gibt, die nicht  kompilieren
 nach der Typ-Änderung werden die Fragmente neu gefüllt
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">3</div>
 <code>
 <span class="macro">@Rep(<span class="name">add to collection</span>)</span><br/>
 <span class="macro">@End(<span class="name">add to collection</span>)</span><br/>
@@ -39,7 +39,7 @@ löscht das Fragment, da es sonst Zwischenstände gibt, die nicht  kompilieren
 nach der Typ-Änderung werden die Fragmente neu gefüllt
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">4</div>
 <code>
 <span class="macro">@inc(<span class="name"><a href="prefix.html">prefix.md</a></span>)</span><br/>
 </code></div>
@@ -47,7 +47,7 @@ nach der Typ-Änderung werden die Fragmente neu gefüllt
 definiert <code><span class="type">Prefix</span></code>
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">5</div>
 <code>
 <span class="macro">@Rep(<span class="name">def collection</span>)</span><br/>
 <span class="in1"></span><span class="macro">@Mul(<span class="name">prefix</span>)</span>;<br/>
@@ -59,7 +59,7 @@ definiert <code><span class="type">Prefix</span></code>
 Collection zählt nun <code><span class="type">Prefix</span></code> Instanzen
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">6</div>
 <code>
 <span class="macro">@Def(<span class="name">init state</span>)</span><br/>
 <span class="in1"></span><span class="type">Prefix</span> <span class="var">state</span>;<br/>
@@ -72,7 +72,7 @@ Zustand ist nun eine <code><span class="type">Prefix</span></code> Instanz
 und die wird initialisiert
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">7</div>
 <code>
 <span class="macro">@Rep(<span class="name">add to collection</span>)</span><br/>
 <span class="in1"></span><span class="fn">push</span>(<span class="var">state</span>, <span class="var">ch</span>);<br/>
@@ -85,7 +85,7 @@ passt Schlüssel an
 und zählt neuen Schlüssel 
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">8</div>
 <code>
 <span class="macro">@Rep(<span class="name">write key</span>)</span><br/>
 <span class="in1"></span><span class="type">unsigned</span> <span class="var">i</span> { <span class="num">0</span> };<br/>
@@ -102,7 +102,7 @@ gibt alle Bytes des Schlüssels aus
 <h3>Andere Längen der Byte-Folgen</h3>
 <div class="slides">
 <div class="page">
-<div class="slide"><div class="headers">
+<div class="slide"><div class="slide-nr">9</div><div class="headers">
 <h3>Andere Längen der Byte-Folgen</h3>
 </div></div>
 <ul><li>
@@ -113,7 +113,7 @@ um andere Längen zu verwenden, kann die neue Länge mit der Option  <code>-<spa
 so betrachtet zum Beispiel <code>-<span class="var">n3</span></code> Byte-Folgen der Länge 3
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">10</div>
 <code>
 <span class="macro">@Def(<span class="name">parse args</span>)</span><br/>
 <span class="in1"></span><span class="keyword">if</span> (<span class="var">argc</span> == <span class="num">2</span>) {<br/>
@@ -131,7 +131,7 @@ so betrachtet zum Beispiel <code>-<span class="var">n3</span></code> Byte-Folgen
 bearbeite Option <code>-<span class="var">n</span></code>
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">11</div>
 <code>
 <span class="macro">@def(<span class="name">change length</span>)</span><br/>
 <span class="in1"></span><span class="var">prefix_length</span> = <span class="type">std</span>::<span class="fn">stoi</span>(<span class="var">arg</span> + <span class="num">2</span>);<br/>

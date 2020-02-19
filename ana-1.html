@@ -8,7 +8,7 @@
 <h1>Dateien analysieren</h1>
 <div class="slides">
 <div class="page">
-<div class="slide"><div class="headers">
+<div class="slide"><div class="slide-nr">1</div><div class="headers">
 <h1>Dateien analysieren</h1>
 </div></div>
 <ul><li>
@@ -21,7 +21,7 @@ also die die Häufigkeiten der einzelnen Bytes
 das Programm wird später für beliebige Byte-Folgen fester Länge  erweitert
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">2</div>
 <code>
 <span class="macro">@Def(<span class="name">file: ana.cpp</span>)</span><br/>
 <span class="in1"></span><span class="macro">@put(<span class="name">main prereqs</span>)</span>;<br/>
@@ -46,14 +46,14 @@ zum Schluss schreibt <code><span class="fn">main</span></code> die resultierende
 <h2>Datenstruktur für Statistik</h2>
 <div class="slides">
 <div class="page">
-<div class="slide"><div class="headers">
+<div class="slide"><div class="slide-nr">3</div><div class="headers">
 <h2>Datenstruktur für Statistik</h2>
 </div></div>
 <ul><li>
 für jedes gelesene Byte wird gezählt, wie häufig der Byte-Wert in der  gelesenen Eingabe vorkommt
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">4</div>
 <code>
 <span class="macro">@Def(<span class="name">def collection</span>)</span><br/>
 <span class="in1"></span><span class="keyword">using</span> <span class="type">Collection</span> =<br/>
@@ -68,7 +68,7 @@ später wird die <code><span class="type">Collection</span></code> umdefinieren
 daher ist die Definition in einem eigenen globalen Fragment gekapselt
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">5</div>
 <code>
 <span class="macro">@def(<span class="name">main prereqs</span>)</span><br/>
 <span class="in1"></span><span class="keyword">#include</span> &lt;<span class="type">map</span>&gt;<br/>
@@ -80,7 +80,7 @@ daher ist die Definition in einem eigenen globalen Fragment gekapselt
 es gibt eine globale Variable, welche die Häufigkeiten enthält
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">6</div>
 <code>
 <span class="macro">@add(<span class="name">main prereqs</span>)</span><br/>
 <span class="in1"></span><span class="keyword">#include</span> &lt;<span class="var">iostream</span>&gt;<br/>
@@ -90,7 +90,7 @@ es gibt eine globale Variable, welche die Häufigkeiten enthält
 benötigt Standard Ein- und Ausgabe
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">7</div>
 <code>
 <span class="macro">@def(<span class="name">read input</span>)</span><br/>
 <span class="in1"></span><span class="macro">@Put(<span class="name">init state</span>)</span>;<br/>
@@ -110,7 +110,7 @@ das passende Fragment wird schon vorab definiert
 aber nicht gefüllt
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">8</div>
 <code>
 <span class="macro">@Def(<span class="name">add to collection</span>)</span><br/>
 <span class="in1"></span>++<span class="var">collection</span>[<span class="var">ch</span>];<br/>
@@ -122,7 +122,7 @@ fügt Zeichen in die Statistik ein
 eigenes globales Fragment, um es später zu ersetzen
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">9</div>
 <code>
 <span class="macro">@def(<span class="name">write table</span>)</span><br/>
 <span class="in1"></span><span class="keyword">for</span> (<span class="type">const</span> <span class="type">auto</span> &amp;<span class="var">e</span> : <span class="var">collection</span>) {<br/>
@@ -136,7 +136,7 @@ eigenes globales Fragment, um es später zu ersetzen
 jeder Eintrag der Statistik wird ausgegeben
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">10</div>
 <code>
 <span class="macro">@add(<span class="name">main prereqs</span>)</span><br/>
 <span class="in1"></span><span class="keyword">#include</span> &lt;<span class="var">cctype</span>&gt;<br/>
@@ -159,7 +159,7 @@ andere Bytes werden escaped
 so können Unix-Tools die Datei in Spalten aufteilen
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">11</div>
 <code>
 <span class="macro">@def(<span class="name">write escaped</span>)</span><br/>
 <span class="in1"></span><span class="keyword">static</span> <span class="type">const</span> <span class="type">char</span> <span class="var">digits</span>[] {<br/>
@@ -176,7 +176,7 @@ andere Bytes werden mit dem Präfix <code>%</code> als zwei hexadezimale Ziffern
 auch das Zeichen <code>%</code> muss so kodiert werden
 </li></ul>
 </div>
-<div class="page"><div class="slide">
+<div class="page"><div class="slide"><div class="slide-nr">12</div>
 <code>
 <span class="macro">@Def(<span class="name">write key</span>)</span><br/>
 <span class="in1"></span><span class="fn">write_byte</span>(<span class="var">e</span>.<span class="var">first</span>);<br/>
